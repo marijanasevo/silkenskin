@@ -1,0 +1,8 @@
+.home-intro {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: min(8vmin, calc(.5rem + 1.8vmin), 2.2rem);
+  line-height: min(8vmin, calc(.8rem + 1.8vmin), 2.2rem);
+  max-width: min(80%, 60rem);
+  margin:  min(5rem, 10vmin) auto auto auto;
+}

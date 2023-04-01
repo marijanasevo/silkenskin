@@ -1,0 +1,4 @@
+.app-container {
+  width: min(100%, 130rem);
+  margin-inline: auto;
+}

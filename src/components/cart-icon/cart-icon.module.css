@@ -1,0 +1,4 @@
+.cart-icon {
+  width: min(6.5vmin, calc(1.3rem + 1.2vmax));;
+  height: min(6.5vmin, calc(1.3rem + 1.2vmax));;
+}

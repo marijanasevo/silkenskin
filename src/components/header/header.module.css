@@ -1,0 +1,35 @@
+.header {
+  position: fixed;
+  background-color: white;
+  width: 100%;
+  top: 0;
+}
+
+.notice {
+  background-color: #FFF8F2;
+  padding: 1rem;
+  font-size: min(4vmin, calc(0.8rem + 0.5vmax));
+  text-align: center;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem;
+  font-size: min(6.5vmin, calc(1.3rem + 1.2vmax));
+  font-weight: 200;
+}
+
+.menu-button {
+  flex-basis: 4rem;
+}
+
+.cart-icon {
+  flex-basis: 4rem;
+  display: flex;
+  justify-content: end;
+}
+
+.logo-link {
+  text-decoration: none;
+}
