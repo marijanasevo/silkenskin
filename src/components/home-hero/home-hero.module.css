@@ -7,7 +7,7 @@
   background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1522108098940-de49801b5b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80') no-repeat center;
   background-size: cover;
   color: white;
-  margin-top: 10rem;
+  margin-top: 9.4rem;
   padding: min(8.5vmin, 2.5rem);
 
   @media (min-width: 350px) {

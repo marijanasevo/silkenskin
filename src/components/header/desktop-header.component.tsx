@@ -1,7 +1,7 @@
 import CartIcon from "../cart-icon/cart-icon.component";
 import HeartIcon from "../heart-icon/heart-icon.component";
 import AvatarIcon from "../avatar-icon/avatar-icon.component";
-import { ReactComponent as Logo } from "../../../public/favicon.svg";
+import { ReactComponent as Logo } from "../../assets/logo.svg";
 import css from './desktop-header.module.css';
 
 const DesktopHeader = () => {
@@ -14,13 +14,13 @@ const DesktopHeader = () => {
 
       <nav className={css['navigation'] + ' side-space'}>
         <div className={css["left-side-nav"]}>
-          <a href="#">SHOP</a>
-          <a href="#">BLOG</a>
-          <a href="#">ABOUT</a>
+          <a href="/shop">SHOP</a>
+          <a href="/blog">BLOG</a>
+          <a href="/about">ABOUT</a>
         </div>
 
         <div className={css["logo-container"]}>
-          <a className={css['logo-link'] + ' logo'} href="#">
+          <a className={css['logo-link'] + ' logo'} href="/">
             <Logo className={css['logo']} />
           </a>
         </div>
@@ -30,10 +30,10 @@ const DesktopHeader = () => {
             <AvatarIcon />
           </a>
           <a href="">
-            <CartIcon />
+            <HeartIcon />
           </a>
           <a href="">
-            <HeartIcon />
+            <CartIcon />
           </a>
         </div>
       </nav>

@@ -57,6 +57,7 @@ const CategoriesContainer = () => {
 
         return (
           <CategoryItem 
+            key={category.id}
             category={category} 
             bgImage={bgContainerStyle} 
           />

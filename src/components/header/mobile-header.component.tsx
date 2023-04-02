@@ -11,7 +11,7 @@ const MobileHeader = () => {
 
         <div className={css['base-menu']}>
           <div className={css["logo"]}>
-            <a className={css['logo-link']} href="#">Silken Skin Co.</a>
+            <a className={css['logo-link']} href="/">Silken Skin Co.</a>
           </div>
           <div className={css["cart-icon"]}><CartIcon /></div>
         </div>
@@ -23,9 +23,9 @@ const MobileHeader = () => {
         <aside className={css["sidebar-menu"]}>
           <ul className={css['menu-items']}>
             <li><a href="#">LOGIN | SIGN IN</a></li>
-            <li><a href="#">SHOP</a></li>
-            <li><a href="#">REFLECTIONS</a></li>
-            <li><a href="#">ABOUT</a></li>
+            <li><a href="/shop">SHOP</a></li>
+            <li><a href="/blog">BLOG</a></li>
+            <li><a href="/about">ABOUT</a></li>
             <li><a href="#"><span>your favorites</span> ♡ </a></li>
           </ul>
         </aside>

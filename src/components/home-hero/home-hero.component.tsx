@@ -6,7 +6,7 @@ const HomeHero = () => {
     <div className={css['home-hero']}>
 
       <div className={css["home-hero__details"]}>
-        <span className={css['home-hero__subtitle']}>nourishment for your skin</span>
+        <span className={css['home-hero__subtitle']}>nourish your skin</span>
 
         <h1 className={css['home-hero__title']}>
           Experience the power of natural ingredients
