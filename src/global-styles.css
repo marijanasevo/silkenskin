@@ -20,6 +20,7 @@ h1, h2 {
 a {
   color: black;
   font-family: var(--standard-font);
+  text-decoration: none;
 }
 
 .em {
@@ -40,4 +41,9 @@ a {
   @extend .title;
   text-align: center;
   margin: min(8rem, 10vmin) 0;
+}
+
+.icon {
+  width: min(6.5vmin, calc(1.3rem + 1.2vmax));
+  height: min(6.5vmin, calc(1.3rem + 1.2vmax));
 }

@@ -20,4 +20,5 @@
 .category-shop-link {
   color: white;
   font-size: min(4vmin, calc(1.3rem + 1vmax));
+  text-decoration: underline;
 }

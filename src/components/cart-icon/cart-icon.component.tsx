@@ -3,7 +3,7 @@ import css from './cart-icon.module.css';
 
 const CartIcon = () => {
   return (
-    <BagSvg className={css['cart-icon']} />
+    <BagSvg className='icon' />
   );
 };
 

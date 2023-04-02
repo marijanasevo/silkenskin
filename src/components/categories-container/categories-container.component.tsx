@@ -47,12 +47,8 @@ const CategoriesContainer = () => {
   ];
 
   return (
-    <div 
-      className={'side-space'}
-    >
-      <h2 className='section-title'>
-        What we've got
-      </h2>
+    <div className={'side-space'}>
+      <h2 className='section-title'>What we've got</h2>
 
       {categories.map(category => {
         const bgContainerStyle: BgContainerStyle = {

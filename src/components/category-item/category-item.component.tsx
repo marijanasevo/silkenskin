@@ -1,6 +1,7 @@
-import css from './category-item.module.css';
 import { Category } from '../categories-container/categories-container.component';
 import { BgContainerStyle } from '../categories-container/categories-container.component';
+import css from './category-item.module.css';
+
 
 type CategoryItemProps = {
   category: Category,
