@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import CartIcon from "../cart-icon/cart-icon.component";
 import HeartIcon from "../heart-icon/heart-icon.component";
 import AvatarIcon from "../avatar-icon/avatar-icon.component";
@@ -14,27 +16,27 @@ const DesktopHeader = () => {
 
       <nav className={css['navigation'] + ' side-space'}>
         <div className={css["left-side-nav"]}>
-          <a href="/shop">SHOP</a>
-          <a href="/blog">BLOG</a>
-          <a href="/about">ABOUT</a>
+          <Link to="/shop">SHOP</Link>
+          <Link to="/blog">BLOG</Link>
+          <Link to="/about">ABOUT</Link>
         </div>
 
         <div className={css["logo-container"]}>
-          <a className={css['logo-link'] + ' logo'} href="/">
+          <Link className={css['logo-link'] + ' logo'} to="/">
             <Logo className={css['logo']} />
-          </a>
+          </Link>
         </div>
 
         <div className={css["right-side-nav"]}>
-          <a href="">
+          <Link to="">
             <AvatarIcon />
-          </a>
-          <a href="">
+          </Link>
+          <Link to="">
             <HeartIcon />
-          </a>
-          <a href="">
+          </Link>
+          <Link to="">
             <CartIcon />
-          </a>
+          </Link>
         </div>
       </nav>
     </header>

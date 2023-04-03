@@ -19,10 +19,12 @@ const Navigation = () => {
   }, []);
 
   return (
-    <>
-      {isMobile ? (<MobileHeader />) : (<DesktopHeader />)}
-      <Outlet />
-    </>
+      <>
+        {isMobile ? (<MobileHeader />) : (<DesktopHeader />)}
+        <div className='container'>
+          <Outlet />
+        </div>
+      </>
     
   );
 }

@@ -23,8 +23,21 @@ a {
   text-decoration: none;
 }
 
+img {
+  width: 100%;
+}
+
 .em {
   color: #a89565;
+}
+
+.serif {
+  font-family: var(--serif-font);
+}
+
+.container {
+  margin-top: 10rem;
+  display: flow-root;
 }
 
 .side-space {

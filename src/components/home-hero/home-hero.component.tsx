@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import css from './home-hero.module.css';
 
 const HomeHero = () => {
@@ -13,7 +14,7 @@ const HomeHero = () => {
         </h1>
       </div>
 
-      <button className={css['square-button']}>SHOP NOW</button>
+      <Link to="shop" className={css['square-button']}>SHOP NOW</Link>
     </div>
   )
 };
