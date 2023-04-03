@@ -28,7 +28,7 @@ const DesktopHeader = () => {
         </div>
 
         <div className={css["right-side-nav"]}>
-          <Link to="">
+          <Link to="/login">
             <AvatarIcon />
           </Link>
           <Link to="">
