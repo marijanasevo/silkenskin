@@ -7,7 +7,7 @@ const Shop = () => {
 
   return (
     <>
-      <h1 className={css['title']}>Shop</h1>
+      <h1 className={'page-heading'}>Shop</h1>
       <ShopCategories />
       <ProductCard />
     </>

@@ -121,18 +121,16 @@
 .sidebar-menu {
   transition: translate var(--animation-timing), height var(--animation-timing);
   translate: -300%;
-  padding-left: var(--hamburger-margin);
-  /* padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 2rem);  */
-  padding-top: 1rem;
-  max-width: min(30rem, 100%);
+  padding: 1rem 1rem 2rem var(--hamburger-margin);
+  max-width: 100%;
   font-size: min(1.5rem, calc(2.7rem + 1vmax));
   background-color: var(--background);
-  height: 0vh;
+  border-bottom: 1px solid #FFF8F2;
+  z-index: -1;
 }
 
 .hamburger-menu:has(input:checked) + .sidebar-menu {
   translate: 0;
-  height: 100vh;
 }
 
 .menu-items {
@@ -149,4 +147,8 @@
       text-decoration: underline;
     }
   }
+}
+
+.inline-links a {
+  display: inline-block;
 }

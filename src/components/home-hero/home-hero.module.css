@@ -31,7 +31,7 @@
   font-size: min(4vmin, calc(0.8rem + 0.3vmax));
 }
 
-.square-button {
+.accented-link {
   background: rgba(0, 0, 0, .2);
   color: #F5DDBA;
   border: 1px solid #F5DDBA;

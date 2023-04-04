@@ -50,6 +50,13 @@ img {
   font-size: min(7.5vmin, calc(2.7rem + 1.2vmax));
 }
 
+.page-heading {
+  font-family: var(--serif-font);
+  font-size: min(7.5vmin, calc(2.7rem + 1.2vmax));
+  margin: min(4rem, 10vmin) 0 min(6rem, 10vmin);
+  text-align: center;
+}
+
 .section-title {
   @extend .title;
   text-align: center;
@@ -59,4 +66,54 @@ img {
 .icon {
   width: min(6.5vmin, calc(1.3rem + 1.2vmax));
   height: min(6.5vmin, calc(1.3rem + 1.2vmax));
+}
+
+.auth-form-container {
+  max-width: 40rem;
+  margin: auto;
+  padding: min(1rem, 3vmin);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  padding: 1rem;
+  display: block;
+  width: 100%;
+  background: black;
+  color: white;
+  font-size: min(7vmin, calc(0.6rem + 1vmin), 1.5rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+  border: 2px solid black;
+  transition: .1s all ease-in;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    color: black;
+  }
+
+  &-white {
+    background-color: white;
+    color: black;
+
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+}
+
+.underlined-link {
+  display: block;
+  text-align: center;
+  font-size: min(7vmin, calc(0.6rem + 1vmin), 1.5rem);
+  text-decoration: underline;
+  margin-top: min(4rem, 10vmin);
+  text-transform: uppercase;
 }

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CartIcon from "../cart-icon/cart-icon.component";
 import css from './mobile-header.module.css';
 
@@ -11,7 +12,7 @@ const MobileHeader = () => {
 
         <div className={css['base-menu']}>
           <div className={css["logo"]}>
-            <a className={css['logo-link']} href="/">Silken Skin Co.</a>
+            <Link className={css['logo-link']} to="/">Silken Skin Co.</Link>
           </div>
           <div className={css["cart-icon"]}><CartIcon /></div>
         </div>
@@ -22,11 +23,13 @@ const MobileHeader = () => {
 
         <aside className={css["sidebar-menu"]}>
           <ul className={css['menu-items']}>
-            <li><a href="#">LOGIN | SIGN IN</a></li>
-            <li><a href="/shop">SHOP</a></li>
-            <li><a href="/blog">BLOG</a></li>
-            <li><a href="/about">ABOUT</a></li>
-            <li><a href="#"><span>your favorites</span> ♡ </a></li>
+            <li className={css['inline-links']}>
+              <Link to='/login'>LOGIN</Link> | <Link to="/sign-up">SIGN UP</Link>
+            </li>
+            <li><Link to="/shop">SHOP</Link></li>
+            <li><Link to='/blog'>BLOG</Link></li>
+            <li><Link to="/about">ABOUT</Link></li>
+            <li><Link to="#">YOUR FAVORITES</Link></li>
           </ul>
         </aside>
       </nav>

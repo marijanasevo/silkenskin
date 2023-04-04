@@ -16,6 +16,9 @@ export default defineConfig({
     postcss: {
       plugins: [ postcssExtend(), postcssNested(), logPlugin() ]
     }
+  },
+  server: {
+    host: true
   }
 })
 

@@ -32,8 +32,8 @@
   align-items: center;
   font-weight: 200;
   background: white;
-  height: 6rem;
-
+  height: 6.6rem;
+  border-bottom: 1px solid #FFF8F2;
 }
 
 .left-side-nav, .right-side-nav {

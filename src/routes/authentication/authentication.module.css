@@ -1,0 +1,33 @@
+.login-form {
+}
+
+.subheading {
+  display: block;
+  font-size: min(4vmin, calc(0.7rem + 0.7vmax));
+  text-align: center;
+  margin: min(4rem, 10vmin) 0 min(3rem, 10vmin) 0;
+}
+
+.form-input-field {
+  margin-bottom: 2rem;
+
+  &__label {    
+    display: block;
+    font-size: 14px;
+    width: 100%;
+    font-weight: 500;
+    line-height: 17px;
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    font-family: var(--standard-font);
+    font-size: 14px;
+    line-height: 1;
+    padding: 12px 20px 12px 12px;
+    width: 100%;
+    outline: 1px solid #e5e5e5;
+  }
+}

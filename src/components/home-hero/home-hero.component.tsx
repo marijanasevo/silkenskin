@@ -14,7 +14,7 @@ const HomeHero = () => {
         </h1>
       </div>
 
-      <Link to="shop" className={css['square-button']}>SHOP NOW</Link>
+      <Link to="shop" className={css['accented-link']}>SHOP NOW</Link>
     </div>
   )
 };
