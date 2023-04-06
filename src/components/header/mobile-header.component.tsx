@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { signOutUser } from '../../utils/firebase/firebase.utils';
@@ -9,8 +9,31 @@ import css from './mobile-header.module.css';
 
 const MobileHeader = () => {
   const { currentUser } = useContext(UserContext);
-
   const navigate = useNavigate();
+  const checkboxRef = useRef(null);
+
+  useEffect(() => {
+    setTimeout(() => {
+      checkboxRef.current = document.querySelector('.checkbox');
+    }, 0);
+    
+    const handleClickOutside = (event) => {
+      if ( 
+          checkboxRef.current &&
+          checkboxRef.current.checked &&
+          event.target !== checkboxRef.current.parentElement &&
+          event.target !== checkboxRef.current
+        ) {
+        checkboxRef.current.checked = false;
+      }
+    };
+  
+    document.addEventListener('click', handleClickOutside);
+  
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   const signOutHandler = async () => {
     await signOutUser();
@@ -31,8 +54,8 @@ const MobileHeader = () => {
           <div className={css["cart-icon"]}><CartIcon /></div>
         </div>
 
-        <label className={css["hamburger-menu"]}>
-          <input type="checkbox" />
+        <label className={css["hamburger-menu"] + ' hamburger-menu'}>
+          <input className='checkbox' ref={checkboxRef} type="checkbox" />
         </label>
 
         <aside className={css["sidebar-menu"]}>
