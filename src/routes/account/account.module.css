@@ -1,0 +1,75 @@
+.account-container {
+  width: min(80rem, 80vw);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  font-size: min(4vmin, calc(0.7rem + 0.7vmax));
+}
+
+.account-menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  text-align: center;
+  gap: .5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.account-menu-item {
+  padding: 1rem;
+  width: 10rem;
+  margin-bottom: .5rem;
+
+  &:first-child {
+    background: #FFFaF7;
+    color: black;
+  }
+
+  &.sign-out, &.settings {
+    cursor: pointer;
+    transition: .1s background linear;
+
+    &:hover {
+      background: #FFFaF7;
+    }
+  }
+}
+
+.account-content {
+  flex: 1;
+  color: grey;
+}
+
+.order-table {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  & > * {
+    display: grid;
+    grid-template-columns: minmax(0,.4fr) minmax(0, .4fr) minmax(0,.6fr) minmax(0,.6fr) minmax(0,.3fr);
+    gap: 1rem;
+    padding: 2rem 1rem;
+  }
+}
+
+.order-table-header {
+  text-transform: uppercase;
+  padding: 1rem;
+}
+
+.order-table-row {
+  background: #fafafa;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .account-menu {
+    flex: 1 1 100%;
+    display: flex;
+  }
+}

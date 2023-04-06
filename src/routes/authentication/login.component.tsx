@@ -1,12 +1,10 @@
-import { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { 
   signInWithGooglePopup, 
   createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPass
 } from './../../utils/firebase/firebase.utils';
-
-import { UserContext } from '../../contexts/user.context';
 
 import FormInputField from '../../components/form-input-field/form-input-field.component';
 import Button from '../../components/button/button.component';
@@ -18,19 +16,13 @@ const defaultFormFields = {
 };
 
 export const logGoogleUser = async () => {
-  const { user } = await signInWithGooglePopup();
-  await createUserDocumentFromAuth(user);
+  await signInWithGooglePopup();
 };
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const {email, password} = formFields;
-
-  const { setCurrentUser } = useContext(UserContext);
-
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -42,8 +34,7 @@ const Login = () => {
 
     try {
       const { user } = await signInAuthUserWithEmailAndPass(email, password);
-      setCurrentUser(user);
-      resetFormFields()
+      navigate('/account');
     } catch (error: any) {
 
       switch(error.code) {
@@ -72,7 +63,7 @@ const Login = () => {
 
       <span className={css['subheading']}>Or your e-mail and password</span>
 
-      <form className={css['login-form']} onSubmit={handleSubmit}>
+      <form className={css['form']} onSubmit={handleSubmit}>
 
         <FormInputField 
           label='Email' 
@@ -96,7 +87,7 @@ const Login = () => {
       </form>
 
       <span className={css['subheading']}>New Customer?</span>
-      <Link className='underlined-link-button' to='/sign-up'>CREATE AN ACCOUNT</Link>
+      <Link className='underlined-link' to='/sign-up'>CREATE AN ACCOUNT</Link>
 
     </div>
   );

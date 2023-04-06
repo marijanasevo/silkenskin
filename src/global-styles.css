@@ -89,11 +89,9 @@ form {
 .underlined-link {
   display: block;
   text-decoration: underline;
-
-  &-button {
-    text-align: center;
-    font-size: min(7vmin, calc(0.6rem + 1vmin), 1.5rem);
-    margin-top: min(4rem, 10vmin);
-    text-transform: uppercase;
-  }
+  text-align: center;
+  font-size: min(7vmin, calc(0.6rem + 1vmin), 1.5rem);
+  margin-top: min(4rem, 10vmin);
+  text-transform: uppercase
+  
 }

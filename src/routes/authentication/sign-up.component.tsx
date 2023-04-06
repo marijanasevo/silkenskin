@@ -1,5 +1,5 @@
-import { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { FirebaseError } from "firebase/app";
 
 import { 
@@ -7,13 +7,10 @@ import {
   createUserDocumentFromAuth
 } from '../../utils/firebase/firebase.utils.js';
 
-import { UserContext } from '../../contexts/user.context.js';
-
 import { logGoogleUser } from './login.component';
 
 import FormInputField from '../../components/form-input-field/form-input-field.component.js';
 import Button from '../../components/button/button.component.js';
-
 import css from './authentication.module.css';
 
 const defaultFormFields = {
@@ -24,20 +21,19 @@ const defaultFormFields = {
 };
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   const [formFields, setFormFields] = useState(defaultFormFields);
-
-  const { displayName, email, password, confirmPassword } = formFields;
-
-  const { setCurrentUser } = useContext(UserContext);
-
-  const resetFormFields = () => {
-    setFormFields(defaultFormFields);
-  }
+  const { 
+    displayName, 
+    email, 
+    password, 
+    confirmPassword 
+  } = formFields;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setFormFields({...formFields, [name]: value})
-    console.log(formFields);
+    setFormFields({...formFields, [name]: value});
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -50,9 +46,9 @@ const SignUp = () => {
 
     try {
       const { user } = await createAuthUserWithEmailAndPass(email, password);
-      await createUserDocumentFromAuth(user, { displayName });
-      setCurrentUser(user);
-      resetFormFields()
+      const res = await createUserDocumentFromAuth(user, { displayName });
+
+      navigate('/account-created');
     } catch (error: unknown) {
 
       if (error instanceof FirebaseError) {
@@ -84,7 +80,7 @@ const SignUp = () => {
         Or with your e-mail and password
       </span>
 
-      <form onSubmit={handleSubmit} action="">
+      <form onSubmit={handleSubmit} className={css['form']}>
         <FormInputField 
           label='Display Name' 
           onChange={handleChange}
@@ -124,7 +120,7 @@ const SignUp = () => {
         <Button buttonType={'basic'} type="submit">Sign Up</Button>
       </form>
 
-      <Link className='underlined-link-button' to='/login'>Go back to Login</Link>
+      <Link className='underlined-link' to='/login'>Go back to Login</Link>
     </div>
   )
 };

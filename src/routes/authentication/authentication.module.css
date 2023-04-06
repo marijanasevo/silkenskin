@@ -1,6 +1,3 @@
-.login-form {
-}
-
 .subheading {
   display: block;
   font-size: min(4vmin, calc(0.7rem + 0.7vmax));
@@ -8,8 +5,12 @@
   margin: min(4rem, 10vmin) 0 min(3rem, 10vmin) 0;
 }
 
+.form button {
+  margin-top: min(4rem, 10vmin);
+}
+
 .form-input-field {
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 
   &__label {    
     display: block;
