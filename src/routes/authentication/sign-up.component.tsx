@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { FirebaseError } from "firebase/auth";
+import { FirebaseError } from "firebase/app";
 
 import { 
   createAuthUserWithEmailAndPass,
   createUserDocumentFromAuth
 } from '../../utils/firebase/firebase.utils.js';
+
+import { UserContext } from '../../contexts/user.context.js';
 
 import { logGoogleUser } from './login.component';
 
@@ -25,6 +27,8 @@ const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
 
   const { displayName, email, password, confirmPassword } = formFields;
+
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -46,15 +50,22 @@ const SignUp = () => {
 
     try {
       const { user } = await createAuthUserWithEmailAndPass(email, password);
-      const userDocRef = await createUserDocumentFromAuth(user, { displayName });
-
+      await createUserDocumentFromAuth(user, { displayName });
+      setCurrentUser(user);
       resetFormFields()
-    } catch (error: FirebaseError) {
+    } catch (error: unknown) {
 
-      if(error.code === 'auth/email-already-in-use'){
-        alert('This email is already in use');
-      } else if (error.code === 'auth/invalid-email') {
-        alert('This email is invalid');
+      if (error instanceof FirebaseError) {
+        switch (error.code) {
+          case 'auth/email-already-in-use':
+            alert('This email is already in use');
+            break;
+          case 'auth/invalid-email':
+            alert('This email is invalid');
+            break;
+          default:
+            console.log("We haven't dealt with this Firebase error code");
+        }
       } else {
         console.log('error during registration' + error);
       }
@@ -113,7 +124,7 @@ const SignUp = () => {
         <Button buttonType={'basic'} type="submit">Sign Up</Button>
       </form>
 
-      <Link className='underlined-link' to='/login'>Go back to Login</Link>
+      <Link className='underlined-link-button' to='/login'>Go back to Login</Link>
     </div>
   )
 };

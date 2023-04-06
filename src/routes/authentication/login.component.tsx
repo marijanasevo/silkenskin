@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   signInWithGooglePopup, 
   createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPass
 } from './../../utils/firebase/firebase.utils';
+
+import { UserContext } from '../../contexts/user.context';
 
 import FormInputField from '../../components/form-input-field/form-input-field.component';
 import Button from '../../components/button/button.component';
@@ -22,8 +24,9 @@ export const logGoogleUser = async () => {
 
 const Login = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-
   const {email, password} = formFields;
+
+  const { setCurrentUser } = useContext(UserContext);
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -38,8 +41,9 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPass(email, password);
-      console.log(response);
+      const { user } = await signInAuthUserWithEmailAndPass(email, password);
+      setCurrentUser(user);
+      resetFormFields()
     } catch (error: any) {
 
       switch(error.code) {
@@ -52,7 +56,7 @@ const Login = () => {
         default:
           console.log(error);
       }
-      
+
     }
   };
 
@@ -92,7 +96,7 @@ const Login = () => {
       </form>
 
       <span className={css['subheading']}>New Customer?</span>
-      <Link className='underlined-link' to='/sign-up'>CREATE AN ACCOUNT</Link>
+      <Link className='underlined-link-button' to='/sign-up'>CREATE AN ACCOUNT</Link>
 
     </div>
   );

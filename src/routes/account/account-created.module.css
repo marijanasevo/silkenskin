@@ -1,0 +1,23 @@
+.note {
+  max-width: min(80ch, 90vw);
+  line-height: min(4.5vmin, calc(1rem + 1vmax));
+  font-size: min(4vmin, calc(0.7rem + 0.7vmax));
+  display: block;
+  margin: 0 auto min(3rem, 10vmin) auto;
+  text-align: center;
+}
+
+
+
+.action-tiles-container {
+  width: min(80rem, 80vw);
+  margin: auto;
+  margin-top: min(6rem, 10vmin);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr
+  }
+}

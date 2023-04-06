@@ -1,0 +1,31 @@
+.action-tile {
+  display: flex;
+  flex: 0 1 35.5rem;
+  flex-direction: column;
+  gap: min(1.8rem, 4vmin);
+  padding: min(8.5vmin, 2.5rem);
+  border-radius: 10px;
+  background: #FFFaF5;
+  transition: .2s transform linear;
+  cursor: pointer;
+
+  &:hover {
+    background: #FFF8F2;
+    transform: scale(1.02);
+  }
+
+  &__icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__title {
+    display: block;
+    font-size: 2rem
+  }
+
+  &__link {
+    display: block;
+    font-size: 1.5rem;
+  }
+}

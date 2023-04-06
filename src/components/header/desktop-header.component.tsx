@@ -7,6 +7,7 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 import css from './desktop-header.module.css';
 
 const DesktopHeader = () => {
+
   return (
     <header className={css['header']}>
 

@@ -126,11 +126,13 @@
   font-size: min(1.5rem, calc(2.7rem + 1vmax));
   background-color: var(--background);
   border-bottom: 1px solid #FFF8F2;
-  z-index: -1;
+  z-index: -1;  
+  height: 0vh;
 }
 
 .hamburger-menu:has(input:checked) + .sidebar-menu {
   translate: 0;
+  height: auto;
 }
 
 .menu-items {
