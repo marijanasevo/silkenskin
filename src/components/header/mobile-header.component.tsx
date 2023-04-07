@@ -13,10 +13,6 @@ const MobileHeader = () => {
   const checkboxRef = useRef(null);
 
   useEffect(() => {
-    setTimeout(() => {
-      checkboxRef.current = document.querySelector('.checkbox');
-    }, 0);
-    
     const handleClickOutside = (event) => {
       if ( 
           checkboxRef.current &&
