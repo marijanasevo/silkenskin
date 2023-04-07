@@ -2,3 +2,51 @@
   width: min(100%, 130rem);
   margin-inline: auto;
 }
+
+
+
+/* scrollbar thickness */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 15px;
+}
+
+/* Track */
+/* ::-webkit-scrollbar-track {
+  background: transparent; 
+} */
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6f6f6f; 
+  transition: 0.5s;
+  border-radius: 25px;
+  margin-left: 5px;
+}
+
+.article ::-webkit-scrollbar-thumb {
+  border-bottom: 7px solid #333;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+} 
+
+/* Invinsible scroll buttons to shorten scroll track */
+.article ::-webkit-scrollbar-button {
+  border: 1px solid transparent;
+  height: 20px;
+  width: 15px;
+  border-radius: 100px;
+}
+
+/* For webkit-based browsers */
+::-webkit-scrollbar-track {
+  background-color: #FFFaF7; /* Set the background color of the track */
+}
+
+/* For Firefox */
+::-moz-scrollbar-track {
+  background-color: #FFFaF7; /* Set the background color of the track */
+}

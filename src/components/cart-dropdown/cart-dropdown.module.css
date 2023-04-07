@@ -1,0 +1,26 @@
+.cart-dropdown-container {
+  position: absolute;
+  right: -1rem;
+  top: 6rem;
+  width: min(100vw, 20rem);
+  height: 30rem;
+  background: #FFFaF7;
+  display: flex;
+  overflow-y: scroll;
+
+  & > button {
+    align-self: end;
+    margin: 1.5rem;
+  }
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-top: 1rem solid transparent;
+  border-left: 2rem solid #FFF8F2;
+  border-bottom: 1rem solid transparent;
+  transform: rotate(270deg);
+  position: absolute;
+  top: 4rem;
+}

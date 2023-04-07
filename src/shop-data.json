@@ -1,0 +1,85 @@
+[
+  {
+    "id": 1,
+    "name": "Natural Vegan Bar Soap",
+    "price": 30,
+    "thumbnailUrl": "https://i.etsystatic.com/20857969/r/il/685b5c/3473397710/il_794xN.3473397710_k13w.jpg",
+    "suited": "All skin types"
+  },
+  {
+    "id": 2,
+    "name": "Handmade Gentle Soap",
+    "price": 30,
+    "thumbnailUrl": "https://i.etsystatic.com/15249051/r/il/bd6ebd/4624582521/il_794xN.4624582521_ck6q.jpg",
+    "suited": "All skin types"
+  },
+  {
+    "id": 3,
+    "name": "Rosen",
+    "price": 30,
+    "thumbnailUrl": "https://www.thegoodtrade.com/wp-content/uploads/2023/01/avocado-body-melt.jpeg.webp",
+    "suited": "All skin types"
+  },
+  {
+    "id": 4,
+    "name": "Handmade Gentle Soap",
+    "price": 30,
+    "thumbnailUrl": "https://i.etsystatic.com/18085967/r/il/9461e2/3656019278/il_794xN.3656019278_ke2k.jpg",
+    "suited": "All skin types"
+  },
+  {
+    "id": 5,
+    "name": "Velvet Body Melt",
+    "price": 30,
+    "thumbnailUrl": "https://down-my.img.susercontent.com/file/368292d267cdb748b38829ce4aedd533",
+    "suited": "All skin types"
+  },
+  {
+    "id": 6,
+    "name": "Tansy & Almond Body Oil",
+    "price": 30,
+    "thumbnailUrl": "https://i.etsystatic.com/17167654/r/il/7ef617/4173602780/il_794xN.4173602780_n5sv.jpg",
+    "suited": "All skin types"
+  },
+  {
+    "id": 7,
+    "name": "Velvet Body Lotion",
+    "price": 35,
+    "thumbnailUrl": "https://i.shgcdn.com/aeed2923-7059-4468-a5e3-33919857e7e2/-/format/auto/-/preview/3000x3000/-/quality/lighter/",
+    "suited": "All skin types"
+  },
+  {
+    "id": 8,
+    "name": "N°28 EXFOLIATING BODY POLISH",
+    "price": 44,
+    "thumbnailUrl": "https://cdn.shopify.com/s/files/1/0253/6790/4328/products/4_1800x1800.jpg?v=1651525307",
+    "suited": "All skin types"
+  },
+  {
+    "id": 9,
+    "name": "Bathe in herbaceous landscapes",
+    "price": 44,
+    "thumbnailUrl": "https://unicorn.lush.com/media/products/lakes_bath_bomb_kitchen_2021.png",
+    "suited": "All skin types"
+  },
+  {
+    "id": 10,
+    "name": "Organic Whipped Body Butter",
+    "price": 44,
+    "thumbnailUrl": "https://i.etsystatic.com/16773548/r/il/7e1915/3356764249/il_794xN.3356764249_2z0r.jpg",
+    "suited": "All skin types"
+  },
+  {
+    "id": 11,
+    "name": "Coconut & vanilla body butter",
+    "price": 44,
+    "thumbnailUrl": "https://i.etsystatic.com/28401230/r/il/bf88cd/3094947712/il_1140xN.3094947712_cfb5.jpg",
+    "suited": "All skin types"
+  },
+  {
+    "id": 12,
+    "name": "Bagat Body Butter",
+    "thumbnailUrl": "https://i.etsystatic.com/33720763/r/il/4eaa46/4536733079/il_794xN.4536733079_3k3e.jpg",
+    "price": 16
+  }
+]

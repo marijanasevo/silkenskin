@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
+// import CartDropdown from '../../components/cart-dropdown/cart-dropdown.component';
 import DesktopHeader from '../../components/header/desktop-header.component';
 import MobileHeader from '../../components/header/mobile-header.component';
 
@@ -20,7 +21,7 @@ const Navigation = () => {
 
   return (
       <>
-        {isMobile ? (<MobileHeader />) : (<DesktopHeader />)}
+        { isMobile ? (<MobileHeader />) : (<DesktopHeader />) }
         <div className='container'>
           <Outlet />
         </div>

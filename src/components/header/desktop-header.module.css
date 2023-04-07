@@ -40,7 +40,7 @@
   font-size: min(1.5rem, calc(2.7rem + 1vmax));
   font-weight: 300;
 
-  & a {
+  & a, & > div {
     padding: 1rem;
   }
 }
@@ -51,6 +51,7 @@
 
 .right-side-nav {
   grid-column: 3;
+  display: flex;
 }
 
 .logo-container {

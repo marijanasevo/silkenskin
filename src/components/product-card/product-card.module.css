@@ -1,16 +1,12 @@
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, min(22.5rem, 100%));
-  justify-content: center;
-  column-gap: 20px;
-  row-gap: 50px;
-  margin-top: min(6rem, 10vmin);
-}
-
 .product {
   display: flex;
   flex-direction: column;
   gap: min(1rem, 2vw);
+
+  &__image {
+    height: 30rem;
+    object-fit: cover;
+  }
 
   &__details {
     display: flex;
@@ -20,7 +16,7 @@
 
     &__title, &__price, &__desc, &__button {
       font-family: var(--serif-font);
-      font-size: min(8vmin, calc(1.2rem + .8vmin), 2.2rem);
+      font-size: min(7vmin, calc(1rem + .6vmin), 2.2rem);
       margin: 0;
       font-weight: 500;
     }
@@ -41,6 +37,7 @@
       padding: 1rem;
       font-weight: 400;
       border: 1px solid black;
+      font-family: var(--standard-font);
 
       &:hover {
         background: black;

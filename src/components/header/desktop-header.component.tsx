@@ -35,9 +35,9 @@ const DesktopHeader = () => {
           <Link to="">
             <HeartIcon />
           </Link>
-          <Link to="">
+          <div>
             <CartIcon />
-          </Link>
+          </div>
         </div>
       </nav>
     </header>
