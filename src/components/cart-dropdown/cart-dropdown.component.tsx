@@ -2,7 +2,6 @@ import Button from '../button/button.component';
 import css from './cart-dropdown.module.css';
 
 const CartDropdown = () => {
-
   return (
     <>
       <div className={css['triangle']}></div>

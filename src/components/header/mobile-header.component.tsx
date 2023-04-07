@@ -3,17 +3,19 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 import { UserContext } from '../../contexts/user.context';
+import { CartContext } from '../../contexts/cart.context';
 
 import CartIcon from "../cart-icon/cart-icon.component";
 import css from './mobile-header.module.css';
 
 const MobileHeader = () => {
   const { currentUser } = useContext(UserContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
   const navigate = useNavigate();
   const checkboxRef = useRef(null);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const closeMenuOnClickElsewhere = (event) => {
       if ( 
           checkboxRef.current &&
           checkboxRef.current.checked &&
@@ -22,12 +24,18 @@ const MobileHeader = () => {
         ) {
         checkboxRef.current.checked = false;
       }
+
+      // if (isCartOpen) {
+      //   setIsCartOpen(false);
+      //   console.log('l');
+      // }
+      // console.log('k', isCartOpen);
     };
   
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('click', closeMenuOnClickElsewhere);
   
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('click', closeMenuOnClickElsewhere);
     };
   }, []);
 
