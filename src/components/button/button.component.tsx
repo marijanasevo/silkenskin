@@ -3,7 +3,8 @@ import css from './button.module.css';
 const BUTTON_TYPE_CLASSES = {
   basic: 'basic-button',
   inverted: 'inverted-button',
-  accented: 'accented-button'
+  accented: 'accented-button',
+  transparentBg: 'transparent-bg-button'
 };
 
 const Button = ({ children, buttonType, ...otherProps }) => {

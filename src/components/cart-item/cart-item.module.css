@@ -1,0 +1,33 @@
+.cart-item-container {
+  display: flex;
+  gap: .7rem;
+  margin-bottom: 1rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.cart-item-thumbnail {
+  width: 5rem;
+  min-width: 5rem;
+  height: 6rem;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  justify-content: space-evenly;
+}
+
+.cart-item-title {
+  font-family: var(--serif-font);
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.cart-item-price-quantity {
+  font-size: 1.25rem;
+}

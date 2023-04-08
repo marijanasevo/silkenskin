@@ -6,15 +6,16 @@
   position: absolute;
   right: -1rem;
   top: calc(var(--dropdown-top) + 2rem);
-  width: min(100vw, 20rem);
+  width: min(100vw, 22rem);
   height: 30rem;
+  padding: 1.1rem;
   background: #FFFaF7;
   display: flex;
-  overflow-y: auto;
+  flex-direction: column;
+  cursor: auto;
 
   & > button {
-    align-self: end;
-    margin: 1.5rem;
+    margin-top: auto;
   }
 }
 
@@ -27,4 +28,16 @@
   transform: rotate(270deg);
   position: absolute;
   top: var(--dropdown-top);
+  cursor: auto;
+}
+
+.cart-items {
+  height: 23rem;
+  overflow-y: auto;
+  margin-right: -.5rem;
+  padding-right: 1rem;
+
+  &::-webkit-scrollbar {
+    width: .5rem;
+  }
 }

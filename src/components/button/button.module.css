@@ -27,3 +27,7 @@
     color: white;
   }
 }
+
+.transparent-bg-button:hover {
+  background: transparent;
+}
