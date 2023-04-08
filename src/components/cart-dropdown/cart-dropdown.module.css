@@ -10,7 +10,7 @@
   height: 30rem;
   background: #FFFaF7;
   display: flex;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   & > button {
     align-self: end;

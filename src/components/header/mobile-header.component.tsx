@@ -14,29 +14,7 @@ const MobileHeader = () => {
   const checkboxRef = useRef(null);
   const dropdownMenuRef = useRef(null);
 
-  // useEffect(() => {
-  //   const closeMenuOnClickElsewhere = (event) => {
-  //     console.log('runs each time you click mf');
-  //     if ( 
-  //         checkboxRef.current &&
-  //         checkboxRef.current.checked &&
-  //         event.target !== checkboxRef.current.parentElement &&
-  //         event.target !== checkboxRef.current
-  //       ) {
-  //       checkboxRef.current.checked = false;
-  //     }
-  //   };
-  
-  //   document.addEventListener('click', closeMenuOnClickElsewhere);
-  
-  //   return () => {
-  //     document.removeEventListener('click', closeMenuOnClickElsewhere);
-  //   };
-  // }, []);
-
   const closeMenuOnClickOutside = (event) => {
-    console.log('runs each time you click mf');
-    console.log(checkboxRef.current, event.target);
     if ( 
         isMenuOpen
         && !dropdownMenuRef.current.contains(event.target)
