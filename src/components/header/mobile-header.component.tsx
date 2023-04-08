@@ -1,43 +1,64 @@
-import { useContext, useRef, useEffect } from 'react';
+import { useContext, useRef, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 import { UserContext } from '../../contexts/user.context';
-import { CartContext } from '../../contexts/cart.context';
 
 import CartIcon from "../cart-icon/cart-icon.component";
 import css from './mobile-header.module.css';
 
 const MobileHeader = () => {
   const { currentUser } = useContext(UserContext);
-  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const [isMenuOpen, setIsMenuOpen ] = useState(false);
   const navigate = useNavigate();
   const checkboxRef = useRef(null);
+  const dropdownMenuRef = useRef(null);
+
+  // useEffect(() => {
+  //   const closeMenuOnClickElsewhere = (event) => {
+  //     console.log('runs each time you click mf');
+  //     if ( 
+  //         checkboxRef.current &&
+  //         checkboxRef.current.checked &&
+  //         event.target !== checkboxRef.current.parentElement &&
+  //         event.target !== checkboxRef.current
+  //       ) {
+  //       checkboxRef.current.checked = false;
+  //     }
+  //   };
+  
+  //   document.addEventListener('click', closeMenuOnClickElsewhere);
+  
+  //   return () => {
+  //     document.removeEventListener('click', closeMenuOnClickElsewhere);
+  //   };
+  // }, []);
+
+  const closeMenuOnClickOutside = (event) => {
+    console.log('runs each time you click mf');
+    console.log(checkboxRef.current, event.target);
+    if ( 
+        isMenuOpen
+        && !dropdownMenuRef.current.contains(event.target)
+        && !event.target.contains(checkboxRef.current)
+      ) {
+      setIsMenuOpen(false);
+    }
+  };
 
   useEffect(() => {
-    const closeMenuOnClickElsewhere = (event) => {
-      if ( 
-          checkboxRef.current &&
-          checkboxRef.current.checked &&
-          event.target !== checkboxRef.current.parentElement &&
-          event.target !== checkboxRef.current
-        ) {
-        checkboxRef.current.checked = false;
-      }
+    if (isMenuOpen) {
+      document.addEventListener("mousedown", closeMenuOnClickOutside);
+    } else {
+      document.removeEventListener("mousedown", closeMenuOnClickOutside);
+    }
 
-      // if (isCartOpen) {
-      //   setIsCartOpen(false);
-      //   console.log('l');
-      // }
-      // console.log('k', isCartOpen);
-    };
-  
-    document.addEventListener('click', closeMenuOnClickElsewhere);
-  
-    return () => {
-      document.removeEventListener('click', closeMenuOnClickElsewhere);
-    };
-  }, []);
+    return () => document.removeEventListener('mousedown', closeMenuOnClickOutside);
+  }, [isMenuOpen]);
+
+  const handleMenuChange = () => {
+    setIsMenuOpen(!isMenuOpen);
+  }
 
   const signOutHandler = async () => {
     await signOutUser();
@@ -59,10 +80,18 @@ const MobileHeader = () => {
         </div>
 
         <label className={css["hamburger-menu"] + ' hamburger-menu'}>
-          <input className='checkbox' ref={checkboxRef} type="checkbox" />
+          <input  
+            ref={checkboxRef} 
+            checked={isMenuOpen}
+            onChange={handleMenuChange}
+            className='checkbox'
+            type="checkbox" 
+          />
         </label>
 
-        <aside className={css["sidebar-menu"]}>
+        <aside 
+          ref={dropdownMenuRef}
+          className={css["sidebar-menu"]}>
           <ul className={css['menu-items']}>
             <li className={css['inline-links']}>
               {currentUser ? (
