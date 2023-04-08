@@ -7,33 +7,48 @@ import css from './cart-icon.module.css';
 
 const CartIcon = () => {
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
-  const dropdownMenuRef = useRef(null);
+  const cartContainerRef = useRef(null);
 
   const closeCartDropdownOnOutsideClick = (event) => {
-    if (!dropdownMenuRef.current.contains(event.target)) setIsCartOpen(false);
+    if (!cartContainerRef.current.contains(event.target))  {
+      setIsCartOpen(false);
+    }
   }
 
   useEffect(() => {
     if (isCartOpen) {
-      document.addEventListener("mousedown", closeCartDropdownOnOutsideClick);
+      document.addEventListener(
+        "mousedown", 
+        closeCartDropdownOnOutsideClick
+      );
     } else {
-      document.removeEventListener("mousedown", closeCartDropdownOnOutsideClick);
+      document.removeEventListener(
+        "mousedown", 
+        closeCartDropdownOnOutsideClick
+      );
     }
 
     return () => {
-      document.removeEventListener("mousedown", closeCartDropdownOnOutsideClick);
+      document.removeEventListener(
+        "mousedown", 
+        closeCartDropdownOnOutsideClick
+      );
     };
   }, [isCartOpen]);
 
-  const toggleCartDropdown = () => setIsCartOpen(!isCartOpen);
+  const toggleCartDropdown = (event) => {
+    setIsCartOpen(!isCartOpen);
+  }
 
   return (
     <div 
-      ref={dropdownMenuRef} 
+      ref={cartContainerRef} 
       className={css["cart-icon-container"]}
-      onClick={toggleCartDropdown}
     >
-      <ShoppingBagSvg className={css['shopping-icon']} />
+      <ShoppingBagSvg 
+        className={css['shopping-icon']} 
+        onClick={toggleCartDropdown}
+      />
       <span className={css['item-count']}>10</span>
       { isCartOpen && <CartDropdown />}
     </div>
