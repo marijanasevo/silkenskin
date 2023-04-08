@@ -9,30 +9,30 @@ const CartIcon = () => {
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
   const dropdownMenuRef = useRef(null);
 
+  const closeCartDropdownOnOutsideClick = (event) => {
+    if (!dropdownMenuRef.current.contains(event.target)) setIsCartOpen(false);
+  }
+
   useEffect(() => {
-    const toggleIsCartOpen = (event) => {
-      if (
-        !isCartOpen
-        && dropdownMenuRef.current.contains(event.target)
-         ) {
-          setIsCartOpen(true);
-      } else if (
-        isCartOpen
-        && !dropdownMenuRef.current.contains(event.target)
-        || event.target instanceof SVGElement
-      ) {
-          setIsCartOpen(false)
-      }
+    if (isCartOpen) {
+      document.addEventListener("mousedown", closeCartDropdownOnOutsideClick);
+    } else {
+      document.removeEventListener("mousedown", closeCartDropdownOnOutsideClick);
     }
 
-    document.addEventListener('click', toggleIsCartOpen);
-
-    return() => document.removeEventListener('click', toggleIsCartOpen);
+    return () => {
+      document.removeEventListener("mousedown", closeCartDropdownOnOutsideClick);
+    };
   }, [isCartOpen]);
 
+  const toggleCartDropdown = () => setIsCartOpen(!isCartOpen);
 
   return (
-    <div ref={dropdownMenuRef} className={css["cart-icon-container"]}>
+    <div 
+      ref={dropdownMenuRef} 
+      className={css["cart-icon-container"]}
+      onClick={toggleCartDropdown}
+    >
       <ShoppingBagSvg className={css['shopping-icon']} />
       <span className={css['item-count']}>10</span>
       { isCartOpen && <CartDropdown />}
