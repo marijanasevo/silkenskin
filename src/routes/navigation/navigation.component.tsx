@@ -5,6 +5,8 @@ import { Outlet } from 'react-router-dom';
 import DesktopHeader from '../../components/header/desktop-header.component';
 import MobileHeader from '../../components/header/mobile-header.component';
 
+import css from './navigation.module.css';
+
 const Navigation = () => {
   const [isMobile, setIsMobile] = useState(true);
 
