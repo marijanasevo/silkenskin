@@ -17,10 +17,9 @@ const MobileHeader = () => {
   const closeMenuOnClickOutside = (event) => {
     if ( 
         isMenuOpen
-        && !dropdownMenuRef.current.contains(event.target)
         && !event.target.contains(checkboxRef.current)
       ) {
-      setIsMenuOpen(false);
+      setTimeout(() => setIsMenuOpen(false), 200);
     }
   };
 

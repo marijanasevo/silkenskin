@@ -1,0 +1,4 @@
+.checkout-items-container {
+  border-top: 1px solid grey;
+  margin-top: min(6rem, 10vmin);
+}
