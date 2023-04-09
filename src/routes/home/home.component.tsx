@@ -9,12 +9,12 @@ import css from '../../App.module.css';
 const Home = () => {
 
   return (
-    <div className={css['app-container']}>
+    <>
       <HomeHero />
       <HomeIntro />
       <CategoriesContainer />
       <NewArriwalsContainer />
-    </div>
+    </>
   )
 }
 

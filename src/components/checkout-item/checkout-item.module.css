@@ -1,0 +1,60 @@
+.checkout-item-container {
+  display: grid;
+  grid-template-columns: 3fr 4fr 1fr 1fr;
+  gap: min(5rem, 10vmin);
+  max-height: 15rem;
+  font-size: min(8vmin, calc(1rem + 1vmin), 2.2rem);
+}
+
+.thumbnail {
+  width: 100%;
+  max-height: 15rem;
+  object-fit: cover;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.title {
+  font-size: min(8vmin, calc(1.2rem + 1vmin));
+  font-weight: 600;
+  margin: 0;
+  font-family: var(--serif-font);
+}
+
+.suited {
+  color: grey;
+}
+
+.price {
+  font-size: min(8vmin, calc(1.2rem + 1vmin));
+  font-weight: 400;
+  display: flex;
+  gap: 0.3rem;
+}
+
+.arrow {
+  cursor: pointer;
+}
+
+.currency {
+  font-size: min(5vmin, calc(0.9rem + 0.4vmax));
+  margin-top: 0.2rem;
+  font-weight: 500;
+}
+
+.total-price {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 4rem;
+}
+
+.clear-item {
+  font-size: min(5vmin, calc(1.8rem + .6vmax));
+  font-weight: 800;
+  cursor: pointer;
+}

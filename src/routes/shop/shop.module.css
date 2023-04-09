@@ -5,4 +5,6 @@
   column-gap: 20px;
   row-gap: 50px;
   margin-top: min(6rem, 10vmin);
+  margin-inline: auto;
+  width: min(130rem, 100%);
 }

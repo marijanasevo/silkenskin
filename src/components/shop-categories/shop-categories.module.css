@@ -3,6 +3,7 @@
   margin: 0;
   padding: 3rem 2vw;
   border: 1px solid rgb(212, 212, 212);
+  border-inline: 0;
   display: flex;
   flex-wrap: wrap;
   row-gap: 1rem;

@@ -35,11 +35,6 @@ img {
   font-family: var(--serif-font);
 }
 
-.container {
-  margin-top: 10rem;
-  display: flow-root;
-}
-
 .side-space {
   padding-inline: min(5vw, 3rem);
 }

@@ -24,7 +24,7 @@ const Navigation = () => {
   return (
       <>
         { isMobile ? (<MobileHeader />) : (<DesktopHeader />) }
-        <div className='container'>
+        <div className={css['container']}>
           <Outlet />
         </div>
       </>

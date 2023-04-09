@@ -8,6 +8,7 @@
   background-size: cover;
   color: white;
   padding: min(8.5vmin, 2.5rem);
+  margin-inline: min(-10vmin, -3rem);;
 
   @media (min-width: 350px) {
     min-height: 50vh;

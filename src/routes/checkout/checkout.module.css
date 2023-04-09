@@ -1,4 +1,26 @@
+.cart-heading-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: min(8vmin, calc(1rem + 1vmin), 2.2rem);
+}
+
+.accent-detail {
+  font-size: min(5vmin, calc(1.8rem + .6vmax));
+  font-family: var(--serif-font);
+  font-weight: 700;
+}
+
+.number-of-items, .price {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+
 .checkout-items-container {
   border-top: 1px solid grey;
-  margin-top: min(6rem, 10vmin);
+  margin-top: min(3rem, 5vmin);
+  padding: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }

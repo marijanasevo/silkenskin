@@ -1,4 +1,7 @@
 .container {
   width: min(100%, 130rem);
   margin-inline: auto;
+  margin-top: 10rem;
+  display: flow-root;
+  padding-inline: min(10vmin, 3rem);
 }
