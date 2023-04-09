@@ -46,7 +46,7 @@ const CartIcon = () => {
       className={css["cart-icon-container"]}
     >
       <ShoppingBagSvg 
-        className={css['shopping-icon']} 
+        className={css['shopping-icon'] + ' icon'} 
         onClick={toggleCartDropdown}
       />
       <span className={css['item-count']}>{ cartCount }</span>

@@ -4,8 +4,8 @@
 }
 
 .item-count {
-  font-size: min(7vmin, calc(.7rem + 0.12vmax));
-  line-height: min(7vmin, calc(.7rem + 0.12vmax));
+  font-size: .8rem;
+  line-height: .8rem;
   font-weight: 500;
   position: absolute;
   right: -4px;
