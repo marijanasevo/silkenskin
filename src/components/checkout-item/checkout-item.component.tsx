@@ -56,7 +56,7 @@ const CheckoutItem = ({ cartItem }) => {
     <div className={css["total-price"]}>
       <span className={css["price"]}>
         <span className={css['currency']}>$</span>
-        {price * quantity}
+        { (price * quantity).toLocaleString() }
       </span>
 
       <span 
