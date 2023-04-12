@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { CategoriesContext } from '../../contexts/categories.context';
@@ -11,10 +11,15 @@ import css from './shop.module.css';
 const Shop = () => {
   let { category } = useParams();
   const { categoriesMap } = useContext(CategoriesContext);
+  const [products, setProducts] = useState([]);
 
-  const products = category === undefined ? 
-    Object.values(categoriesMap).flat() : 
-    Array.from(categoriesMap[category.replace(/-/g, " ")]);
+  useEffect(() => {
+    const currentProducts = category === undefined ? 
+      Object.values(categoriesMap).flat() : 
+      Array.from(categoriesMap[category?.replace(/-/g, " ")] || []);
+
+    setProducts(currentProducts);
+  }, [category, categoriesMap]);
 
   return (
     <>
