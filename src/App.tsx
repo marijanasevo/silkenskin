@@ -23,20 +23,18 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Navigation />}>
           <Route index element={<Home />} />
-          <Route path='/shop' element={<Shop />} />
+          <Route path='/shop/:category?' element={<Shop />} />
           <Route path='/account' element={<Accout />} />
           <Route path='/account-created' element={<AccoutCreated />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route 
             path='/login' 
             element={currentUser ? 
-              <Navigate to="/account" replace /> : <Login />} 
-          />
+              <Navigate to="/account" replace /> : <Login />} />
           <Route 
             path='/sign-up' 
             element={currentUser ?
-              <Navigate to="/account" replace /> : <SignUp />} 
-          />
+              <Navigate to="/account" replace /> : <SignUp />} />
         </Route>
         
       </Routes>

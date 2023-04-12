@@ -1,6 +1,7 @@
 import { useContext } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { ProductsContext } from '../../contexts/products.context';
+import { CategoriesContext } from '../../contexts/categories.context';
 
 import ShopCategories from '../../components/shop-categories/shop-categories.component';
 import ProductCard from '../../components/product-card/product-card.component';
@@ -8,7 +9,12 @@ import ProductCard from '../../components/product-card/product-card.component';
 import css from './shop.module.css';
 
 const Shop = () => {
-  const { products } = useContext(ProductsContext);
+  let { category } = useParams();
+  const { categoriesMap } = useContext(CategoriesContext);
+
+  const products = category === undefined ? 
+    Object.values(categoriesMap).flat() : 
+    Array.from(categoriesMap[category.replace(/-/g, " ")]);
 
   return (
     <>
@@ -17,10 +23,9 @@ const Shop = () => {
       <ShopCategories />
       
       <div className={css["products"]}>
-      {products.map(product => (
+        {products.map(product => (
           <ProductCard key={product.id} product={product} />
-        
-      ))}
+        ))}
       </div>
     </>
   )
