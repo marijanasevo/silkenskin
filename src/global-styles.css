@@ -1,6 +1,6 @@
 :root {
-  --serif-font: 'Inria Serif', 'Baskerville', 'Georgia', Times, serif;
-  --standard-font: 'Inter', 'Helvetica', 'Calibri', sans-serif;
+  --serif-font: "Inria Serif", "Baskerville", "Georgia", Times, serif;
+  --standard-font: "Inter", "Helvetica", "Calibri", sans-serif;
 }
 
 html {
@@ -9,11 +9,14 @@ html {
   font-size: 62.5%;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
@@ -87,8 +90,7 @@ form {
   text-align: center;
   font-size: min(7vmin, calc(0.6rem + 1vmin), 1.5rem);
   margin-top: min(4rem, 10vmin);
-  text-transform: uppercase
-  
+  text-transform: uppercase;
 }
 
 /* scrollbar thickness */
@@ -96,10 +98,10 @@ form {
   width: 10px;
   height: 15px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #6f6f6f; 
+  background: #6f6f6f;
   transition: 0.5s;
   border-radius: 25px;
   margin-left: 5px;
@@ -111,8 +113,8 @@ form {
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-} 
+  background: #555;
+}
 
 /* Invinsible scroll buttons to shorten scroll track */
 .article ::-webkit-scrollbar-button {
@@ -124,10 +126,10 @@ form {
 
 /* For webkit-based browsers */
 ::-webkit-scrollbar-track {
-  background-color: #FFFaF7; /* Set the background color of the track */
+  background-color: #fffaf7; /* Set the background color of the track */
 }
 
 /* For Firefox */
 ::-moz-scrollbar-track {
-  background-color: #FFFaF7; /* Set the background color of the track */
+  background-color: #fffaf7; /* Set the background color of the track */
 }

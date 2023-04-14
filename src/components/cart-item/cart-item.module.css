@@ -1,8 +1,8 @@
 .cart-item-container {
   display: flex;
-  gap: .7rem;
+  gap: 0.7rem;
   margin-bottom: 1rem;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -18,7 +18,7 @@
 .cart-item-details {
   display: flex;
   flex-direction: column;
-  gap: .7rem;
+  gap: 0.7rem;
   justify-content: space-evenly;
 }
 

@@ -4,11 +4,13 @@
   justify-content: space-evenly;
   align-items: center;
   min-height: 30vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1522108098940-de49801b5b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80') no-repeat center;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+    url("https://images.unsplash.com/photo-1522108098940-de49801b5b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80")
+      no-repeat center;
   background-size: cover;
   color: white;
   padding: min(8.5vmin, 2.5rem);
-  margin-inline: min(-10vmin, -3rem);;
+  margin-inline: min(-10vmin, -3rem);
 
   @media (min-width: 350px) {
     min-height: 50vh;
@@ -33,17 +35,17 @@
 }
 
 .accented-link {
-  background: rgba(0, 0, 0, .2);
-  color: #F5DDBA;
-  border: 1px solid #F5DDBA;
+  background: rgba(0, 0, 0, 0.2);
+  color: #f5ddba;
+  border: 1px solid #f5ddba;
   padding: min(7vmin, 1rem) min(7vmin, 2rem);
-  font-size: min(6vmin, calc(.8rem + 0.5vmax));
+  font-size: min(6vmin, calc(0.8rem + 0.5vmax));
   cursor: pointer;
   justify-self: end;
-  transition: all .1s linear;
+  transition: all 0.1s linear;
 
   &:hover {
-    background: #F5DDBA;
+    background: #f5ddba;
     color: black;
     transform: scale(1.05);
     font-weight: 500;

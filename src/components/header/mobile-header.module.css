@@ -1,6 +1,6 @@
 :root {
   --bar-width: min(4rem, 8vmin);
-  --bar-height: .2rem;
+  --bar-height: 0.2rem;
   --hamburger-gap: 1rem;
   --hamburger-margin: 2rem;
   --foreground: #333;
@@ -18,7 +18,7 @@
 /* Free shippinig worldwide */
 
 .notice {
-  background-color: #FFF8F2;
+  background-color: #fff8f2;
   padding: 1rem;
   font-size: min(4vmin, calc(0.8rem + 0.5vmax));
   text-align: center;
@@ -87,10 +87,8 @@
   background-color: var(--foreground);
   border-radius: 10px;
   transform-origin: left center;
-  transition: opacity var(--animation-timing), 
-              width var(--animation-timing),
-              rotate var(--animation-timing),
-              translate var(--animation-timing);
+  transition: opacity var(--animation-timing), width var(--animation-timing),
+    rotate var(--animation-timing), translate var(--animation-timing);
 }
 
 .hamburger-menu:has(input:checked)::before {
@@ -125,8 +123,8 @@
   max-width: 100%;
   font-size: min(1.5rem, calc(2.7rem + 1vmax));
   background-color: var(--background);
-  border-bottom: 1px solid #FFF8F2;
-  z-index: -1;  
+  border-bottom: 1px solid #fff8f2;
+  z-index: -1;
   height: 0vh;
 }
 
@@ -142,7 +140,7 @@
   font-weight: 350;
 
   & a {
-    padding: .8rem 0;
+    padding: 0.8rem 0;
     display: block;
 
     &:hover {

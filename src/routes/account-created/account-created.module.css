@@ -7,8 +7,6 @@
   text-align: center;
 }
 
-
-
 .action-tiles-container {
   width: min(80rem, 80vw);
   margin: auto;
@@ -16,8 +14,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
-  
+
   @media (max-width: 700px) {
-    grid-template-columns: 1fr
+    grid-template-columns: 1fr;
   }
 }

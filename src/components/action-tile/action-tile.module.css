@@ -5,12 +5,12 @@
   gap: min(1.8rem, 4vmin);
   padding: min(8.5vmin, 2.5rem);
   border-radius: 10px;
-  background: #FFFaF5;
-  transition: .2s transform linear;
+  background: #fffaf5;
+  transition: 0.2s transform linear;
   cursor: pointer;
 
   &:hover {
-    background: #FFF8F2;
+    background: #fff8f2;
     transform: scale(1.02);
   }
 
@@ -21,7 +21,7 @@
 
   &__title {
     display: block;
-    font-size: 2rem
+    font-size: 2rem;
   }
 
   &__link {

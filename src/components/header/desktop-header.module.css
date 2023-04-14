@@ -1,6 +1,6 @@
 :root {
   --bar-width: min(4rem, 8vmin);
-  --bar-height: .2rem;
+  --bar-height: 0.2rem;
   --hamburger-gap: 1rem;
   --hamburger-margin: 2rem;
   --foreground: #333;
@@ -18,7 +18,7 @@
 /* Free shippinig worldwide */
 
 .notice {
-  background-color: #FFF8F2;
+  background-color: #fff8f2;
   padding: 1rem;
   font-size: min(4vmin, calc(0.8rem + 0.5vmax));
   text-align: center;
@@ -33,14 +33,16 @@
   font-weight: 200;
   background: white;
   height: 6.6rem;
-  border-bottom: 1px solid #FFF8F2;
+  border-bottom: 1px solid #fff8f2;
 }
 
-.left-side-nav, .right-side-nav {
+.left-side-nav,
+.right-side-nav {
   font-size: min(1.5rem, calc(2.7rem + 1vmax));
   font-weight: 300;
 
-  & a, & > div {
+  & a,
+  & > div {
     padding: 1rem;
   }
 }

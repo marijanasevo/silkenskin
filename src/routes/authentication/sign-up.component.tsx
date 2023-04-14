@@ -1,46 +1,41 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 
-import { 
+import {
   createAuthUserWithEmailAndPass,
-  createUserDocumentFromAuth
-} from '../../utils/firebase/firebase.utils.js';
+  createUserDocumentFromAuth,
+} from "../../utils/firebase/firebase.utils.js";
 
-import { logGoogleUser } from './login.component';
+import { logGoogleUser } from "./login.component";
 
-import FormInputField from '../../components/form-input-field/form-input-field.component.js';
-import Button from '../../components/button/button.component.js';
-import css from './authentication.module.css';
+import FormInputField from "../../components/form-input-field/form-input-field.component.js";
+import Button from "../../components/button/button.component.js";
+import css from "./authentication.module.css";
 
 const defaultFormFields = {
-  displayName: '',
-  email: '',
-  password: '',
-  confirmPassword: ''
+  displayName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
 };
 
 const SignUp = () => {
   const navigate = useNavigate();
 
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { 
-    displayName, 
-    email, 
-    password, 
-    confirmPassword 
-  } = formFields;
+  const { displayName, email, password, confirmPassword } = formFields;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    setFormFields({...formFields, [name]: value});
+    setFormFields({ ...formFields, [name]: value });
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert('Your passwords are not matching');
+      alert("Your passwords are not matching");
       return;
     }
 
@@ -48,81 +43,85 @@ const SignUp = () => {
       const { user } = await createAuthUserWithEmailAndPass(email, password);
       const res = await createUserDocumentFromAuth(user, { displayName });
 
-      navigate('/account-created');
+      navigate("/account-created");
     } catch (error: unknown) {
-
       if (error instanceof FirebaseError) {
         switch (error.code) {
-          case 'auth/email-already-in-use':
-            alert('This email is already in use');
+          case "auth/email-already-in-use":
+            alert("This email is already in use");
             break;
-          case 'auth/invalid-email':
-            alert('This email is invalid');
+          case "auth/invalid-email":
+            alert("This email is invalid");
             break;
           default:
             console.log("We haven't dealt with this Firebase error code");
         }
       } else {
-        console.log('error during registration' + error);
+        console.log("error during registration" + error);
       }
     }
-
-  }
+  };
 
   return (
-    <div className='auth-form-container'>
-      <h1 className='page-heading'>Sign Up</h1>
+    <div className="auth-form-container">
+      <h1 className="page-heading">Sign Up</h1>
 
-      <span className={css['subheading']}>Sign Up with Google</span>
-      <Button buttonType={'inverted'}  onClick={logGoogleUser}>Sign Up with Google</Button>
+      <span className={css["subheading"]}>Sign Up with Google</span>
+      <Button buttonType={"inverted"} onClick={logGoogleUser}>
+        Sign Up with Google
+      </Button>
 
-      <span className={css['subheading']}>
+      <span className={css["subheading"]}>
         Or with your e-mail and password
       </span>
 
-      <form onSubmit={handleSubmit} className={css['form']}>
-        <FormInputField 
-          label='Display Name' 
+      <form onSubmit={handleSubmit} className={css["form"]}>
+        <FormInputField
+          label="Display Name"
           onChange={handleChange}
-          type='text'
+          type="text"
           required
-          name='displayName'
+          name="displayName"
           value={displayName}
         />
 
-        <FormInputField 
-          label='Email' 
+        <FormInputField
+          label="Email"
           onChange={handleChange}
-          type='email'
+          type="email"
           required
-          name='email'
+          name="email"
           value={email}
         />
 
-        <FormInputField 
-          label='Password' 
+        <FormInputField
+          label="Password"
           onChange={handleChange}
-          type='password'
+          type="password"
           required
-          name='password'
+          name="password"
           value={password}
         />
 
-        <FormInputField 
-          label='Confirm Password' 
+        <FormInputField
+          label="Confirm Password"
           onChange={handleChange}
-          type='password'
+          type="password"
           required
-          name='confirmPassword'
+          name="confirmPassword"
           value={confirmPassword}
         />
 
-        <Button buttonType={'basic'} type="submit">Sign Up</Button>
+        <Button buttonType={"basic"} type="submit">
+          Sign Up
+        </Button>
       </form>
 
-      <Link className='underlined-link' to='/login'>Go back to Login</Link>
+      <Link className="underlined-link" to="/login">
+        Go back to Login
+      </Link>
     </div>
-  )
+  );
 };
 
 export default SignUp;

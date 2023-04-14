@@ -5,12 +5,13 @@
 }
 
 .accent-detail {
-  font-size: min(5vmin, calc(1.8rem + .6vmax));
+  font-size: min(5vmin, calc(1.8rem + 0.6vmax));
   font-family: var(--serif-font);
   font-weight: 700;
 }
 
-.number-of-items, .price {
+.number-of-items,
+.price {
   display: flex;
   align-items: baseline;
   gap: 1.5rem;

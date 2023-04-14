@@ -1,13 +1,16 @@
 import { createContext, useEffect, useState } from "react";
 
-import { addCollectionAndDocuments, getCategoriesAndDocuments } from "../utils/firebase/firebase.utils";
+import {
+  addCollectionAndDocuments,
+  getCategoriesAndDocuments,
+} from "../utils/firebase/firebase.utils";
 
 // import PRODUCTS_DATA from "../products-data";
 // import { addCollectionAndDocuments } from "../utils/firebase/firebase.utils";
 // addCollectionAndDocuments(PRODUCTS_DATA, 'categories');
 
 export const CategoriesContext = createContext({
-  categoriesMap: {}
+  categoriesMap: {},
 });
 
 export const CategoriesProvider = ({ children }) => {
@@ -17,7 +20,7 @@ export const CategoriesProvider = ({ children }) => {
     const getCategoriesMap = async () => {
       const categoryMap = await getCategoriesAndDocuments();
       setCategoriesMap(categoryMap);
-    }
+    };
 
     getCategoriesMap();
   }, []);
@@ -26,7 +29,7 @@ export const CategoriesProvider = ({ children }) => {
 
   return (
     <CategoriesContext.Provider value={value}>
-      { children }
+      {children}
     </CategoriesContext.Provider>
-  )
+  );
 };

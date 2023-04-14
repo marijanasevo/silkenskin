@@ -1,4 +1,5 @@
-.button-container, .basic-button {
+.button-container,
+.basic-button {
   padding: 1rem;
   display: block;
   width: 100%;
@@ -9,7 +10,7 @@
   text-transform: uppercase;
   text-align: center;
   border: 2px solid black;
-  transition: .1s all ease-in;
+  transition: 0.1s all ease-in;
   cursor: pointer;
 
   &:hover {

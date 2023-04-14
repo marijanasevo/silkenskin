@@ -1,24 +1,22 @@
-import { Category } from '../categories-container/categories-container.component';
-import { BgContainerStyle } from '../categories-container/categories-container.component';
-import css from './category-item.module.css';
-
+import { Category } from "../categories-container/categories-container.component";
+import { BgContainerStyle } from "../categories-container/categories-container.component";
+import css from "./category-item.module.css";
 
 type CategoryItemProps = {
-  category: Category,
-  bgImage: BgContainerStyle
-}
+  category: Category;
+  bgImage: BgContainerStyle;
+};
 
-const CategoryItem = ({category, bgImage}: CategoryItemProps) => {
-
+const CategoryItem = ({ category, bgImage }: CategoryItemProps) => {
   return (
-    <div 
+    <div
       key={category.id}
-      className={css['category-container']} 
+      className={css["category-container"]}
       style={bgImage}
     >
       <div className={css.details}>
-        <h2 className='title'>{category.title}</h2>
-        <a className={css['category-shop-link']} href="#">
+        <h2 className="title">{category.title}</h2>
+        <a className={css["category-shop-link"]} href="#">
           SHOP NOW
         </a>
       </div>

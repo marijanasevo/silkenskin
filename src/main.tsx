@@ -9,7 +9,10 @@ import App from "./App";
 import { CategoriesProvider } from "./contexts/categories.context";
 import { CartProvider } from "./contexts/cart.context";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+import "normalize.css";
+import "./global-styles.css";
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
@@ -21,4 +24,4 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
-)
+);

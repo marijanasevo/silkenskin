@@ -54,7 +54,7 @@
 }
 
 .clear-item {
-  font-size: min(5vmin, calc(1.8rem + .6vmax));
+  font-size: min(5vmin, calc(1.8rem + 0.6vmax));
   font-weight: 800;
   cursor: pointer;
 }

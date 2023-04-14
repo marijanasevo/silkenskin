@@ -1,6 +1,7 @@
 .category-container {
-  --bg-image: '';
-  background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.30)), var(--bg-image) no-repeat center;
+  --bg-image: "";
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),
+    var(--bg-image) no-repeat center;
   background-size: cover;
   height: 90vw;
   display: flex;

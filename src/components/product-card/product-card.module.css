@@ -14,14 +14,18 @@
     gap: min(1rem, 2vw);
     justify-content: space-between;
 
-    &__title, &__price, &__desc, &__button {
+    &__title,
+    &__price,
+    &__desc,
+    &__button {
       font-family: var(--serif-font);
-      font-size: min(7vmin, calc(1rem + .6vmin), 2.2rem);
+      font-size: min(7vmin, calc(1rem + 0.6vmin), 2.2rem);
       margin: 0;
       font-weight: 500;
     }
 
-    &__desc, &__button {
+    &__desc,
+    &__button {
       font-size: min(8vmin, calc(0.9rem + 1vmin), 1.5rem);
       flex: 1 0 100%;
       margin: 0;

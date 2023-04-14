@@ -9,7 +9,7 @@
   width: min(100vw, 22rem);
   height: 30rem;
   padding: 1.1rem;
-  background: #FFFaF7;
+  background: #fffaf7;
   display: flex;
   flex-direction: column;
   cursor: auto;
@@ -23,7 +23,7 @@
   width: 0;
   height: 0;
   border-top: 1rem solid transparent;
-  border-left: 2rem solid #FFF8F2;
+  border-left: 2rem solid #fff8f2;
   border-bottom: 1rem solid transparent;
   transform: rotate(270deg);
   position: absolute;
@@ -34,10 +34,10 @@
 .cart-items {
   height: 23rem;
   overflow-y: auto;
-  margin-right: -.5rem;
+  margin-right: -0.5rem;
   padding-right: 1rem;
 
   &::-webkit-scrollbar {
-    width: .5rem;
+    width: 0.5rem;
   }
 }

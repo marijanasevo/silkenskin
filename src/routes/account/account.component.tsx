@@ -1,30 +1,31 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { signOutUser } from '../../utils/firebase/firebase.utils';
+import { Link, useNavigate } from "react-router-dom";
+import { signOutUser } from "../../utils/firebase/firebase.utils";
 
-import css from './account.module.css';
+import css from "./account.module.css";
 
 const Account = () => {
   const navigate = useNavigate();
 
   const signOutHandler = async () => {
     await signOutUser();
-    navigate('/');
-  }
+    navigate("/");
+  };
 
   return (
     <>
-      <h1 className='page-heading'>Your Account</h1>
+      <h1 className="page-heading">Your Account</h1>
       <div className={css["account-container"]}>
-        <ul className={css['account-menu']}>
-          <li className={css['account-menu-item']}>Orders</li>
-          <li className={
-            css['account-menu-item'] + ' ' +
-            css['settings']
-          }>Settings</li>
-          <li 
+        <ul className={css["account-menu"]}>
+          <li className={css["account-menu-item"]}>Orders</li>
+          <li className={css["account-menu-item"] + " " + css["settings"]}>
+            Settings
+          </li>
+          <li
             onClick={signOutHandler}
-            className={css['account-menu-item'] + ' ' + css['sign-out']}
-          >Sign Out</li>
+            className={css["account-menu-item"] + " " + css["sign-out"]}
+          >
+            Sign Out
+          </li>
         </ul>
         <div className={css["account-content"]}>
           <div className={css["order-table"]}>
@@ -57,7 +58,7 @@ const Account = () => {
         </div>
       </div>
     </>
-  )
+  );
 };
 
 export default Account;
