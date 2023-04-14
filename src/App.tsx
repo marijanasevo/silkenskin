@@ -1,7 +1,9 @@
-import { useContext } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { UserContext } from './contexts/user.context';
+import { setCurrentUser } from "./store/user/user.action";
 
 import Navigation from './routes/navigation/navigation.component';
 import Login from './routes/authentication/login.component';
@@ -10,13 +12,27 @@ import Accout from './routes/account/account.component';
 import AccoutCreated from './routes/account-created/account-created.component';
 import Checkout from './routes/checkout/checkout.component';
 
-import Home from './routes/home/home.component';
-import Shop from './routes/shop/shop.component';
-import css from './App.module.css';
+import Home from "./routes/home/home.component";
+import Shop from "./routes/shop/shop.component";
+import css from "./App.module.css";
+import {
+  createUserDocumentFromAuth,
+  onAuthStateChangedListener,
+} from "./utils/firebase/firebase.utils";
+import { selectCurrentUser } from "./store/user/user.selector";
 
 const App = () => {
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
 
-  const { currentUser } = useContext(UserContext);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedListener(async (user) => {
+      if (user) await createUserDocumentFromAuth(user);
+      dispatch(setCurrentUser(user));
+    });
+
+    return unsubscribe;
+  }, []);
 
   return (
     <div className={css['app-container']}>

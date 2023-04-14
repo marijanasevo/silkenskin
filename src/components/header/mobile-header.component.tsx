@@ -1,15 +1,17 @@
-import { useContext, useRef, useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useRef, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import { signOutUser } from '../../utils/firebase/firebase.utils';
-import { UserContext } from '../../contexts/user.context';
+import { selectCurrentUser } from "../../store/user/user.selector";
+
+import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 import CartIcon from "../cart-icon/cart-icon.component";
 import css from './mobile-header.module.css';
 
 const MobileHeader = () => {
-  const { currentUser } = useContext(UserContext);
-  const [isMenuOpen, setIsMenuOpen ] = useState(false);
+  const currentUser = useSelector(selectCurrentUser);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const checkboxRef = useRef(null);
   const dropdownMenuRef = useRef(null);
