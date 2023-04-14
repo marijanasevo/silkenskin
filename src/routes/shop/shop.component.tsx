@@ -1,7 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
-import { CategoriesContext } from "../../contexts/categories.context";
+import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
+import { selectCategoriesMap } from "../../store/category/category.selector";
+import { setCategoriesMap } from "../../store/category/category.action";
 
 import ShopCategories from "../../components/shop-categories/shop-categories.component";
 import ProductCard from "../../components/product-card/product-card.component";
@@ -9,17 +12,28 @@ import ProductCard from "../../components/product-card/product-card.component";
 import css from "./shop.module.css";
 
 const Shop = () => {
+  const dispatch = useDispatch();
+  const categoriesMap = useSelector(selectCategoriesMap);
+
   let { category } = useParams();
-  const { categoriesMap } = useContext(CategoriesContext);
-  const [products, setProducts] = useState([]);
+  const [productsToShow, setProductsToShow] = useState([]);
 
   useEffect(() => {
-    const currentProducts =
+    const getCategoriesMap = async () => {
+      const categoryMap = await getCategoriesAndDocuments();
+      dispatch(setCategoriesMap(categoryMap));
+    };
+
+    getCategoriesMap();
+  }, []);
+
+  useEffect(() => {
+    const filteredProducts =
       category === undefined
         ? Object.values(categoriesMap).flat()
         : Array.from(categoriesMap[category?.replace(/-/g, " ")] || []);
 
-    setProducts(currentProducts);
+    setProductsToShow(filteredProducts);
   }, [category, categoriesMap]);
 
   return (
@@ -29,7 +43,7 @@ const Shop = () => {
       <ShopCategories />
 
       <div className={css["products"]}>
-        {products.map((product) => (
+        {productsToShow.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
       </div>

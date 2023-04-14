@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 
 import App from "./App";
-import { CategoriesProvider } from "./contexts/categories.context";
 import { CartProvider } from "./contexts/cart.context";
 
 import "normalize.css";
@@ -16,11 +15,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <CategoriesProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </CategoriesProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
