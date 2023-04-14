@@ -83,12 +83,8 @@ export const CartProvider = ({ children }) => {
 
     dispatch(
       createAction(
-        CART_ACTION_TYPES.SET_CART_ITEMS, 
-        {
-          cartItems: newCartItems,
-          cartCount: newCartCount,
-          cartTotal: newCartTotal
-        }
+        CART_ACTION_TYPES.SET_CART_ITEMS,
+        { cartItems: newCartItems, cartCount: newCartCount, cartTotal: newCartTotal }
       )
     );
   }
