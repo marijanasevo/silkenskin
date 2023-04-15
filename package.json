@@ -17,6 +17,7 @@
     "react-router-dom": "^6.10.0",
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
+    "reselect": "^4.1.7",
     "vite-plugin-svgr": "^2.4.0"
   },
   "devDependencies": {
