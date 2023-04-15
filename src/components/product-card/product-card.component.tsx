@@ -1,13 +1,18 @@
-import { useContext } from "react";
-import { CartContext } from "../../contexts/cart.context";
+import { useDispatch, useSelector } from "react-redux";
+
+import { addItemToCart } from "../../store/cart/cart.action";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
 import css from "./product-card.module.css";
 
 const ProductCard = ({ product }) => {
-  const { name, price, thumbnailUrl } = product;
-  const { addItemToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
 
-  const addProductToCart = () => addItemToCart(product);
+  const { name, price, thumbnailUrl } = product;
+
+  const addProductToCartHandler = () =>
+    dispatch(addItemToCart(cartItems, product));
 
   return (
     <div className={css["product"]}>
@@ -17,7 +22,7 @@ const ProductCard = ({ product }) => {
         <span className={css["product__details__price"]}>{price}</span>
         <p className={css["product__details__desc"]}>For dry skin</p>
         <button
-          onClick={addProductToCart}
+          onClick={addProductToCartHandler}
           className={css["product__details__button"]}
         >
           ADD TO BAG

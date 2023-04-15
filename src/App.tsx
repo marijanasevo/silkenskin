@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { setCurrentUser } from "./store/user/user.action";
 
