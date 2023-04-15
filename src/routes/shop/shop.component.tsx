@@ -2,9 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
 import { selectCategoriesMap } from "../../store/category/category.selector";
-import { setCategories } from "../../store/category/category.action";
+import { fetchCategoriesAsync } from "../../store/category/category.action";
 
 import ShopCategories from "../../components/shop-categories/shop-categories.component";
 import ProductCard from "../../components/product-card/product-card.component";
@@ -19,12 +18,7 @@ const Shop = () => {
   const [productsToShow, setProductsToShow] = useState([]);
 
   useEffect(() => {
-    const getCategories = async () => {
-      const categoriesArray = await getCategoriesAndDocuments();
-      dispatch(setCategories(categoriesArray));
-    };
-
-    getCategories();
+    dispatch(fetchCategoriesAsync());
   }, []);
 
   useEffect(() => {
