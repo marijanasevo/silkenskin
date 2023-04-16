@@ -13,7 +13,9 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const middleWares = [logger];
+const middleWares = [process.env.NODE_ENV === "development" && logger].filter(
+  Boolean
+);
 
 export const store = configureStore({
   reducer: persistedReducer,
