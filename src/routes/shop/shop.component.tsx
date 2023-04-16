@@ -6,7 +6,7 @@ import {
   selectCategoriesIsLoading,
   selectCategoriesMap,
 } from "../../store/category/category.selector";
-import { fetchCategoriesAsync } from "../../store/category/category.action";
+import { fetchCategoriesAsync } from "../../store/category/category.reducer";
 import Spinner from "../../components/spinner/spinner.component";
 
 import ShopCategories from "../../components/shop-categories/shop-categories.component";
