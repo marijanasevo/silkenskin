@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.9.3",
     "firebase": "^9.19.1",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",
@@ -18,7 +19,6 @@
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.4.2",
     "reselect": "^4.1.7",
     "vite-plugin-svgr": "^2.4.0"
   },

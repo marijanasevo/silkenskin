@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setCurrentUser } from "./store/user/user.action";
+import { setCurrentUser } from "./store/user/user.reducer";
 
 import Navigation from "./routes/navigation/navigation.component";
 import Login from "./routes/authentication/login.component";
@@ -27,7 +27,12 @@ const App = () => {
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(async (user) => {
       if (user) await createUserDocumentFromAuth(user);
-      dispatch(setCurrentUser(user));
+
+      // Fix for non-serializable value in payload (not string, number or standard js object)
+      const pickedUser =
+        user && (({ accessToken, email }) => ({ accessToken, email }))(user);
+
+      dispatch(setCurrentUser(pickedUser));
     });
 
     return unsubscribe;
