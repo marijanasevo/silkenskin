@@ -17,6 +17,7 @@ import css from "./App.module.css";
 import {
   createUserDocumentFromAuth,
   onAuthStateChangedListener,
+  getUserDisplayName,
 } from "./utils/firebase/firebase.utils";
 import { selectCurrentUser } from "./store/user/user.selector";
 
@@ -26,11 +27,17 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(async (user) => {
-      if (user) await createUserDocumentFromAuth(user);
+      if (user) {
+        await createUserDocumentFromAuth(user);
+        user.displayName = await getUserDisplayName(user.uid);
+      }
 
       // Fix for non-serializable value in payload (not string, number or standard js object)
-      const pickedUser =
-        user && (({ accessToken, email }) => ({ accessToken, email }))(user);
+      const pickedUser = user && {
+        accessToken: user.accessToken,
+        email: user.email,
+        displayName: user.displayName,
+      };
 
       dispatch(setCurrentUser(pickedUser));
     });

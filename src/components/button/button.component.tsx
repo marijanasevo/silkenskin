@@ -1,21 +1,21 @@
 import css from "./button.module.css";
 
-const BUTTON_TYPE_CLASSES = {
+export const BUTTON_TYPE_CLASSES = {
   basic: "basic-button",
   inverted: "inverted-button",
   accented: "accented-button",
   transparentBg: "transparent-bg-button",
+  spinner: "spinner-container",
 };
 
-const Button = ({ children, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, disabled, ...otherProps }) => {
   return (
     <button
-      className={
-        css["button-container"] + " " + css[BUTTON_TYPE_CLASSES[buttonType]]
-      }
+      disabled={disabled}
+      className={css["button-container"] + " " + css[buttonType]}
       {...otherProps}
     >
-      {children}
+      {disabled ? <div className={css["spinner"]}></div> : children}
     </button>
   );
 };

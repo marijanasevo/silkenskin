@@ -4,17 +4,20 @@ import {
   selectCartCount,
   selectCartItems,
   selectCartTotal,
+  selectIsCartEmpty,
 } from "../../store/cart/cart.selector";
 
 import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 
 import css from "./checkout.module.css";
+import PaymentForm from "../../components/payment-form/payment-form.component";
 
 const Checkout = () => {
   const dispatch = useDispatch();
   const cartCount = useSelector(selectCartCount);
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
+  const isCartEmpty = useSelector(selectIsCartEmpty);
 
   return (
     <div className={css["checkout-container"]}>
@@ -38,10 +41,18 @@ const Checkout = () => {
       </div>
 
       <div className={css["checkout-items-container"]}>
-        {cartItems.map((cartItem) => (
-          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-        ))}
+        {isCartEmpty ? (
+          <div className={css["empty-cart-note"]}>
+            Your skincare routine must be on point already - your cart is empty!
+          </div>
+        ) : (
+          cartItems.map((cartItem) => (
+            <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+          ))
+        )}
       </div>
+
+      <PaymentForm />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import { selectCartItems } from "../../store/cart/cart.selector";
 
-import Button from "../button/button.component";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import CartItem from "../cart-item/cart-item.component";
 import css from "./cart-dropdown.module.css";
 
@@ -22,7 +22,10 @@ const CartDropdown = () => {
             <CartItem key={cartItem.id} cartItem={cartItem} />
           ))}
         </div>
-        <Button onClick={goToCheckoutHandler} buttonType={"transparentBg"}>
+        <Button
+          onClick={goToCheckoutHandler}
+          buttonType={BUTTON_TYPE_CLASSES.transparentBg}
+        >
           Go To Checkout
         </Button>
       </div>

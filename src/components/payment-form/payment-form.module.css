@@ -1,0 +1,37 @@
+.payment-form-container {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr 30rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin: min(6rem, 10vmin) 0;
+  position: relative;
+
+  & > * {
+    width: 30rem;
+    max-width: 30rem;
+    grid-column-start: 2;
+  }
+}
+
+.card-element {
+  /*margin-bottom: 3rem;*/
+}
+
+.payment-heading {
+  font-family: var(--serif-font);
+  margin: 0;
+}
+
+.overlay {
+  cursor: not-allowed;
+  position: absolute;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.test-card-data {
+  color: rosybrown;
+  text-align: right;
+  display: block;
+}

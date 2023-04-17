@@ -121,3 +121,9 @@ export const signOutUser = async () => signOut(auth);
 
 export const onAuthStateChangedListener = (callback) =>
   onAuthStateChanged(auth, callback);
+
+export const getUserDisplayName = async (userUid) => {
+  const userDocRef = doc(db, "users", userUid);
+  const userDoc = await getDoc(userDocRef);
+  return userDoc.data()?.displayName;
+};

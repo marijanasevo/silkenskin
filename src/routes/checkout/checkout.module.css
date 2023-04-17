@@ -19,9 +19,18 @@
 
 .checkout-items-container {
   border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
   margin-top: min(3rem, 5vmin);
   padding: 3rem 0;
   display: flex;
   flex-direction: column;
   gap: 3rem;
+}
+
+.empty-cart-note {
+  font-size: min(8vmin, calc(1rem + 1vmin), 2.2rem);
+  font-family: var(--serif-font);
+  text-align: center;
+  line-height: min(10vmin, calc(1.5rem + 1.5vmin), 2.5rem);
+  margin: min(2rem, 6vmin) 0;
 }
