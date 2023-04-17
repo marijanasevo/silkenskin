@@ -7,6 +7,7 @@ import {
 
 import FormInputField from "../../components/form-input-field/form-input-field.component";
 import Button from "../../components/button/button.component";
+import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
 import css from "./authentication.module.css";
 
 const defaultFormFields = {
@@ -54,7 +55,7 @@ const Login = () => {
 
       <span className={css["subheading"]}>Login with Google</span>
 
-      <Button buttonType={"inverted"} onClick={logGoogleUser}>
+      <Button buttonType={BUTTON_TYPE_CLASSES.inverted} onClick={logGoogleUser}>
         Log In with Google
       </Button>
 
@@ -79,7 +80,7 @@ const Login = () => {
           value={password}
         />
 
-        <Button buttonType={"basic"} type="submit">
+        <Button buttonType={BUTTON_TYPE_CLASSES.basic} type="submit">
           Log In
         </Button>
       </form>
