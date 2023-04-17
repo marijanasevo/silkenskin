@@ -43,7 +43,8 @@ const Checkout = () => {
       <div className={css["checkout-items-container"]}>
         {isCartEmpty ? (
           <div className={css["empty-cart-note"]}>
-            Your skincare routine must be on point already - your cart is empty!
+            Your skincare routine must be on point already <br /> - your cart is
+            empty!
           </div>
         ) : (
           cartItems.map((cartItem) => (
