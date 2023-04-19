@@ -3,7 +3,12 @@ import { ReactComponent as Phone } from "../../assets/phone.svg";
 import { ReactComponent as Question } from "../../assets/question-sign.svg";
 import { ReactComponent as Bag } from "../../assets/cart-bag.svg";
 
-const Icon = ({ icon, iconSize }) => {
+type IconProps = {
+  icon: string;
+  iconSize: string;
+};
+
+const Icon = ({ icon, iconSize }: IconProps) => {
   const size = {
     width: iconSize + "rem",
     height: iconSize + "rem",

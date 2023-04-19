@@ -1,14 +1,23 @@
 import css from "./button.module.css";
+import React, { ButtonHTMLAttributes, FC } from "react";
 
-export const BUTTON_TYPE_CLASSES = {
-  basic: "basic-button",
-  inverted: "inverted-button",
-  accented: "accented-button",
-  transparentBg: "transparent-bg-button",
-  spinner: "spinner-container",
-};
+export enum BUTTON_TYPE_CLASSES {
+  basic = "basic-button",
+  inverted = "inverted-button",
+  transparentBg = "transparent-bg-button",
+  spinner = "spinner-container",
+}
 
-const Button = ({ children, buttonType, disabled, ...otherProps }) => {
+export type ButtonProps = {
+  buttonType: BUTTON_TYPE_CLASSES;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Button: FC<ButtonProps> = ({
+  children,
+  buttonType,
+  disabled,
+  ...otherProps
+}) => {
   return (
     <button
       disabled={disabled}

@@ -9,8 +9,13 @@ import {
 import { selectCartItems } from "../../store/cart/cart.selector";
 
 import css from "./checkout-item.module.css";
+import { CartItem } from "../../store/cart/cart.types";
 
-const CheckoutItem = ({ cartItem }) => {
+type CheckoutItemProps = {
+  cartItem: CartItem;
+};
+
+const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
   const dispatch = useDispatch();
 
   const increaseProductCountHandler = () => dispatch(addItemToCart(cartItem));

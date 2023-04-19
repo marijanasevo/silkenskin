@@ -33,7 +33,8 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const { user } = await signInAuthUserWithEmailAndPass(email, password);
+      const response = await signInAuthUserWithEmailAndPass(email, password);
+      const user = response?.user;
       navigate("/account");
     } catch (error: any) {
       switch (error.code) {

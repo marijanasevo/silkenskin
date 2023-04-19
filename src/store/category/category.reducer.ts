@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
+import { Category, CategoryState } from "./category.types";
 
-const INITIAL_STATE = {
+const INITIAL_STATE: CategoryState = {
   categories: [],
   isLoading: false,
   error: null,
@@ -30,7 +31,7 @@ export const categoriesSlice = createSlice({
       })
       .addCase(fetchCategoriesAsync.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload;
+        state.error = action.payload as Error | null;
       });
   },
 });

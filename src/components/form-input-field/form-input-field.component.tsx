@@ -1,12 +1,17 @@
 import css from "./form-input-field.module.css";
+import { InputHTMLAttributes } from "react";
 
-const FormInputField = ({ label, ...otherProps }) => {
+type FormInputFieldProps = {
+  label: string;
+} & InputHTMLAttributes<HTMLInputElement>;
+
+const FormInputField = ({ label, ...otherProps }: FormInputFieldProps) => {
   return (
     <div className={css["form-input-field"]}>
       <label
         className={
           css["form-input-field__label"] +
-          ` ${otherProps.value.length ? css["shrink"] : ""}`
+          ` ${otherProps.value ? css["shrink"] : ""}`
         }
       >
         {label}

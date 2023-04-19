@@ -7,6 +7,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  User,
+  NextOrObserver,
 } from "firebase/auth";
 
 import {
@@ -19,6 +21,9 @@ import {
   query,
   getDocs,
 } from "firebase/firestore";
+import { Category } from "../../store/category/category.types";
+import firebase from "firebase/compat";
+import Unsubscribe = firebase.Unsubscribe;
 
 const firebaseConfig = {
   apiKey: "AIzaSyCIH2mpmnV7UhLhOhX0JvwyzQeySGj3grw",
@@ -44,9 +49,13 @@ export const signInWithGooglePopup = () =>
 
 export const db = getFirestore();
 
-export const addCollectionAndDocuments = async (
-  collectionKey,
-  objectsToAdd
+export type ObjectToAdd = {
+  title: string;
+};
+
+export const addCollectionAndDocuments = async <T extends ObjectToAdd>(
+  collectionKey: string,
+  objectsToAdd: T[]
 ) => {
   const collectionRef = collection(db, collectionKey);
   const batch = writeBatch(db);
@@ -60,17 +69,23 @@ export const addCollectionAndDocuments = async (
   console.log("done");
 };
 
-export const getCategoriesAndDocuments = async () => {
+export const getCategoriesAndDocuments = async (): Promise<Category[]> => {
   const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+  return querySnapshot.docs.map(
+    (docSnapshot) => docSnapshot.data() as Category
+  );
+};
+
+export type AdditionalInformation = {
+  displayName?: string;
 };
 
 export const createUserDocumentFromAuth = async (
-  userAuth,
-  additionalInformation = {}
+  userAuth: User,
+  additionalInformation = {} as AdditionalInformation
 ) => {
   if (!userAuth) return;
 
@@ -95,7 +110,7 @@ export const createUserDocumentFromAuth = async (
     }
   }
 
-  return userDocRef;
+  return userSnapshot;
 };
 
 export const createAuthUserWithEmailAndPass = async (
@@ -118,10 +133,11 @@ export const signInAuthUserWithEmailAndPass = async (
 
 export const signOutUser = async () => signOut(auth);
 
-export const onAuthStateChangedListener = (callback) =>
-  onAuthStateChanged(auth, callback);
+export const onAuthStateChangedListener = (
+  callback: NextOrObserver<User>
+): Unsubscribe => onAuthStateChanged(auth, callback);
 
-export const getUserDisplayName = async (userUid) => {
+export const getUserDisplayName = async (userUid: string) => {
   const userDocRef = doc(db, "users", userUid);
   const userDoc = await getDoc(userDocRef);
   return userDoc.data()?.displayName;

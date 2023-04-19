@@ -41,8 +41,10 @@ const SignUp = () => {
     }
 
     try {
-      const { user } = await createAuthUserWithEmailAndPass(email, password);
-      const res = await createUserDocumentFromAuth(user, { displayName });
+      const response = await createAuthUserWithEmailAndPass(email, password);
+      const user = response?.user;
+      if (!user) throw new Error("User is undefined. TypeScript was right.");
+      await createUserDocumentFromAuth(user, { displayName });
 
       navigate("/account-created");
     } catch (error: unknown) {

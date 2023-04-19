@@ -16,10 +16,10 @@ const CartIcon = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartCount = useSelector(selectCartCount);
 
-  const cartContainerRef = useRef(null);
+  const cartContainerRef = useRef<HTMLDivElement>(null);
 
-  const closeCartDropdownOnOutsideClick = (event) => {
-    if (!cartContainerRef.current.contains(event.target)) {
+  const closeCartDropdownOnOutsideClick = (event: MouseEvent) => {
+    if (!cartContainerRef.current?.contains(event.target as Node)) {
       dispatch(setIsCartOpen(false));
     }
   };
@@ -42,7 +42,9 @@ const CartIcon = () => {
     };
   }, [isCartOpen]);
 
-  const toggleCartDropdown = (event) => {
+  const toggleCartDropdown = (
+    e: React.MouseEvent<SVGSVGElement, MouseEvent>
+  ) => {
     dispatch(setIsCartOpen(!isCartOpen));
   };
 

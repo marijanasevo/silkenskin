@@ -1,11 +1,17 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
+import { configureStore, Middleware } from "@reduxjs/toolkit";
+import { persistStore, persistReducer, PersistConfig } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
 
 import { rootReducer } from "./root-reducer";
 
-const persistConfig = {
+export type RootState = ReturnType<typeof rootReducer>;
+
+type ExtendedPersistConfig = PersistConfig<RootState> & {
+  blacklist: (keyof RootState)[];
+};
+
+const persistConfig: ExtendedPersistConfig = {
   key: "root",
   storage,
   blacklist: ["user", "categories"],
@@ -14,7 +20,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const middleWares = [process.env.NODE_ENV === "development" && logger].filter(
-  Boolean
+  (middleWare): middleWare is Middleware => Boolean(middleWare)
 );
 
 export const store = configureStore({
@@ -26,5 +32,7 @@ export const store = configureStore({
       },
     }).concat(middleWares),
 });
+
+export type AppDispatch = typeof store.dispatch;
 
 export const persistor = persistStore(store);

@@ -24,7 +24,7 @@ const PaymentForm = () => {
   const elements = useElements();
   const dispatch = useDispatch();
 
-  const paymentHandler = async (e) => {
+  const paymentHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!stripe || !elements) return;
@@ -47,7 +47,7 @@ const PaymentForm = () => {
 
     const paymentResult = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: elements.getElement(CardElement),
+        card: elements.getElement(CardElement)!,
         billing_details: {
           name: currentUser ? currentUser.displayName : "Guest",
         },

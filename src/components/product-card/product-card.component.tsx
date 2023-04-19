@@ -5,8 +5,13 @@ import Button from "../button/button.component";
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import css from "./product-card.module.css";
+import { CategoryItem } from "../../store/category/category.types";
 
-const ProductCard = ({ product }) => {
+type ProductCardProps = {
+  product: CategoryItem;
+};
+
+const ProductCard = ({ product }: ProductCardProps) => {
   const dispatch = useDispatch();
 
   const { name, price, thumbnailUrl } = product;
@@ -22,7 +27,6 @@ const ProductCard = ({ product }) => {
         <p className={css["product__details__desc"]}>For dry skin</p>
         <Button
           buttonType={BUTTON_TYPE_CLASSES.inverted}
-          text="Add to cart"
           onClick={addProductToCartHandler}
         >
           ADD TO BAG

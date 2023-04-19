@@ -27,16 +27,18 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(async (user) => {
+      let displayName;
+
       if (user) {
         await createUserDocumentFromAuth(user);
-        user.displayName = await getUserDisplayName(user.uid);
+        displayName = await getUserDisplayName(user.uid);
       }
 
       // Fix for non-serializable value in payload (not string, number or standard js object)
       const pickedUser = user && {
-        accessToken: user.accessToken,
+        accessToken: await user.getIdToken(),
         email: user.email,
-        displayName: user.displayName,
+        displayName: displayName,
       };
 
       dispatch(setCurrentUser(pickedUser));

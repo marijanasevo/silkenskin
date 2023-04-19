@@ -1,6 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { CategoryItem } from "../category/category.types";
+import { CartState, CartItem } from "./cart.types";
 
-const INITIAL_STATE = {
+const INITIAL_STATE: CartState = {
   isCartOpen: false,
   cartItems: [],
 };
@@ -11,7 +13,6 @@ export const cartSlice = createSlice({
   reducers: {
     addItemToCart(state, action) {
       const newCartItems = addCartItem(state.cartItems, action.payload);
-      console.log("cartItems:", state.cartItems, "payload:", action.payload);
       state.cartItems = newCartItems;
     },
     removeItemFromCart(state, action) {
@@ -23,14 +24,17 @@ export const cartSlice = createSlice({
     setIsCartOpen(state, action) {
       state.isCartOpen = action.payload;
     },
-    setClearCart(state, action) {
+    setClearCart(state) {
       state.cartItems = [];
     },
   },
 });
 
 // Helpers
-const addCartItem = (cartItems, productToAdd) => {
+const addCartItem = (
+  cartItems: CartItem[],
+  productToAdd: CategoryItem
+): CartItem[] => {
   // console.log(cartItems, productToAdd);
   const existingProduct = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
@@ -47,7 +51,10 @@ const addCartItem = (cartItems, productToAdd) => {
   return [...cartItems, { ...productToAdd, quantity: 1 }];
 };
 
-const removeCartItem = (cartItems, productToRemove) => {
+const removeCartItem = (
+  cartItems: CartItem[],
+  productToRemove: CartItem
+): CartItem[] => {
   if (productToRemove.quantity === 1) {
     return cartItems.filter((cartItem) => productToRemove.id !== cartItem.id);
   }
@@ -59,7 +66,10 @@ const removeCartItem = (cartItems, productToRemove) => {
   );
 };
 
-const clearCartItem = (cartItems, productToClear) => {
+const clearCartItem = (
+  cartItems: CartItem[],
+  productToClear: CartItem
+): CartItem[] => {
   return cartItems.filter((cartItem) => cartItem.id !== productToClear.id);
 };
 
@@ -70,4 +80,5 @@ export const {
   setClearCart,
   setIsCartOpen,
 } = cartSlice.actions;
+
 export const cartReducer = cartSlice.reducer;

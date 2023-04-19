@@ -13,14 +13,16 @@ import ShopCategories from "../../components/shop-categories/shop-categories.com
 import ProductCard from "../../components/product-card/product-card.component";
 
 import css from "./shop.module.css";
+import { CategoryItem } from "../../store/category/category.types";
+import { AppDispatch } from "../../store/store";
 
 const Shop = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
 
   let { category } = useParams();
-  const [productsToShow, setProductsToShow] = useState([]);
+  const [productsToShow, setProductsToShow] = useState<CategoryItem[]>([]);
 
   useEffect(() => {
     dispatch(fetchCategoriesAsync());

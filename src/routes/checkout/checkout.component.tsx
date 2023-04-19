@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import {
   selectCartCount,
@@ -13,7 +13,6 @@ import css from "./checkout.module.css";
 import PaymentForm from "../../components/payment-form/payment-form.component";
 
 const Checkout = () => {
-  const dispatch = useDispatch();
   const cartCount = useSelector(selectCartCount);
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
