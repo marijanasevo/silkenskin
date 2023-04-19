@@ -22,8 +22,6 @@ import {
   getDocs,
 } from "firebase/firestore";
 import { Category } from "../../store/category/category.types";
-import firebase from "firebase/compat";
-import Unsubscribe = firebase.Unsubscribe;
 
 const firebaseConfig = {
   apiKey: "AIzaSyCIH2mpmnV7UhLhOhX0JvwyzQeySGj3grw",
@@ -133,9 +131,8 @@ export const signInAuthUserWithEmailAndPass = async (
 
 export const signOutUser = async () => signOut(auth);
 
-export const onAuthStateChangedListener = (
-  callback: NextOrObserver<User>
-): Unsubscribe => onAuthStateChanged(auth, callback);
+export const onAuthStateChangedListener = (callback: NextOrObserver<User>) =>
+  onAuthStateChanged(auth, callback);
 
 export const getUserDisplayName = async (userUid: string) => {
   const userDocRef = doc(db, "users", userUid);
