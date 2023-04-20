@@ -11,7 +11,7 @@ const FormInputField = ({ label, ...otherProps }: FormInputFieldProps) => {
       <label
         className={
           css["form-input-field__label"] +
-          ` ${otherProps.value ? css["shrink"] : ""}`
+          ` ${otherProps.value && css["shrink"]}`
         }
       >
         {label}

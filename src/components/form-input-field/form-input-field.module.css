@@ -8,23 +8,24 @@
     font-weight: 500;
     line-height: 17px;
     margin-bottom: 8px;
-    color: grey;
+    color: #a89565;
     pointer-events: none;
-    transform: translate(15px, 35px);
+    transform: translate(15px, 37px);
     transition: 300ms ease all;
 
     &.shrink {
-      transform: translate(0, 10px);
+      transform: translate(0, 13px);
       font-size: 12px;
-      color: black;
+      color: #a89565;
     }
   }
 
   &__input {
     border: 0;
-    border-bottom: 1px solid #000000;
+    border-bottom: 2px dashed #a89565;
+    color: #2f4f42;
     box-sizing: border-box;
-    font-family: var(--standard-font);
+    font-family: var(--serif-font);
     font-size: 14px;
     line-height: 1;
     padding: 12px 20px 12px 12px;
