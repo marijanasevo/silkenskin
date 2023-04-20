@@ -5,6 +5,8 @@ import {
   signInAuthUserWithEmailAndPass,
 } from "./../../utils/firebase/firebase.utils";
 
+import { AuthErrorCodes, AuthError } from "firebase/auth";
+
 import FormInputField from "../../components/form-input-field/form-input-field.component";
 import Button from "../../components/button/button.component";
 import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
@@ -35,17 +37,15 @@ const Login = () => {
     try {
       const response = await signInAuthUserWithEmailAndPass(email, password);
       const user = response?.user;
+
       navigate("/account");
-    } catch (error: any) {
-      switch (error.code) {
-        case "auth/wrong-password":
-          alert("Wrong password");
-          break;
-        case "auth/user-not-found":
-          alert("This user isn't registered");
-          break;
-        default:
-          console.log(error);
+    } catch (error) {
+      if ((error as AuthError).code === AuthErrorCodes.INVALID_PASSWORD) {
+        alert("Wrong password");
+      } else if ((error as AuthError).code === AuthErrorCodes.USER_DELETED) {
+        alert("This user isn't registered");
+      } else {
+        console.log("User login encountered an error", error);
       }
     }
   };

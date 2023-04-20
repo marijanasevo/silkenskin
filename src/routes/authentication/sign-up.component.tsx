@@ -7,6 +7,8 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils.js";
 
+import { AuthErrorCodes, AuthError } from "firebase/auth";
+
 import { logGoogleUser } from "./login.component";
 
 import FormInputField from "../../components/form-input-field/form-input-field.component.js";
@@ -49,18 +51,13 @@ const SignUp = () => {
       navigate("/account-created");
     } catch (error: unknown) {
       if (error instanceof FirebaseError) {
-        switch (error.code) {
-          case "auth/email-already-in-use":
-            alert("This email is already in use");
-            break;
-          case "auth/invalid-email":
-            alert("This email is invalid");
-            break;
-          default:
-            console.log("We haven't dealt with this Firebase error code");
+        if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
+          alert("This email is already in use");
+        } else if ((error as AuthError).code === AuthErrorCodes.INVALID_EMAIL) {
+          alert("This email is invalid");
+        } else {
+          console.log("User signup encountered an error", error);
         }
-      } else {
-        console.log("error during registration" + error);
       }
     }
   };
