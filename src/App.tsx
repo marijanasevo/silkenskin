@@ -5,6 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser } from "./store/user/user.reducer";
 import { selectCurrentUser } from "./store/user/user.selector";
 
+import {
+  createUserDocumentFromAuth,
+  onAuthStateChangedListener,
+  getUserDisplayName,
+} from "./utils/firebase/firebase.utils";
+
 import Spinner from "./components/spinner/spinner.component";
 const Navigation = lazy(
   () => import("./routes/navigation/navigation.component")
@@ -26,35 +32,25 @@ const App = () => {
   const currentUser = useSelector(selectCurrentUser);
 
   useEffect(() => {
-    const loadFirebaseMethods = async () => {
-      const {
-        createUserDocumentFromAuth,
-        onAuthStateChangedListener,
-        getUserDisplayName,
-      } = await import("./utils/firebase/firebase.utils");
+    const unsubscribe = onAuthStateChangedListener(async (user) => {
+      let displayName;
 
-      const unsubscribe = onAuthStateChangedListener(async (user) => {
-        let displayName;
+      if (user) {
+        await createUserDocumentFromAuth(user);
+        displayName = await getUserDisplayName(user.uid);
+      }
 
-        if (user) {
-          await createUserDocumentFromAuth(user);
-          displayName = await getUserDisplayName(user.uid);
-        }
+      // Fix for non-serializable value in payload (not string, number or standard js object)
+      const pickedUser = user && {
+        accessToken: await user.getIdToken(),
+        email: user.email,
+        displayName: displayName,
+      };
 
-        // Fix for non-serializable value in payload (not string, number or standard js object)
-        const pickedUser = user && {
-          accessToken: await user.getIdToken(),
-          email: user.email,
-          displayName: displayName,
-        };
+      dispatch(setCurrentUser(pickedUser));
+    });
 
-        dispatch(setCurrentUser(pickedUser));
-      });
-
-      return unsubscribe;
-    };
-
-    loadFirebaseMethods();
+    return unsubscribe;
   }, []);
 
   return (
