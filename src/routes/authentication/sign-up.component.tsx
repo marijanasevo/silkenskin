@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 
@@ -29,38 +29,46 @@ const SignUp = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormFields({ ...formFields, [name]: value });
-  };
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      setFormFields({ ...formFields, [name]: value });
+    },
+    [displayName, email, password, confirmPassword]
+  );
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
 
-    if (password !== confirmPassword) {
-      alert("Your passwords are not matching");
-      return;
-    }
+      if (password !== confirmPassword) {
+        alert("Your passwords are not matching");
+        return;
+      }
 
-    try {
-      const response = await createAuthUserWithEmailAndPass(email, password);
-      const user = response?.user;
-      if (!user) throw new Error("User is undefined. TypeScript was right.");
-      await createUserDocumentFromAuth(user, { displayName });
+      try {
+        const response = await createAuthUserWithEmailAndPass(email, password);
+        const user = response?.user;
+        if (!user) throw new Error("User is undefined. TypeScript was right.");
+        await createUserDocumentFromAuth(user, { displayName });
 
-      navigate("/account-created");
-    } catch (error: unknown) {
-      if (error instanceof FirebaseError) {
-        if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
-          alert("This email is already in use");
-        } else if ((error as AuthError).code === AuthErrorCodes.INVALID_EMAIL) {
-          alert("This email is invalid");
-        } else {
-          console.log("User signup encountered an error", error);
+        navigate("/account-created");
+      } catch (error: unknown) {
+        if (error instanceof FirebaseError) {
+          if ((error as AuthError).code === AuthErrorCodes.EMAIL_EXISTS) {
+            alert("This email is already in use");
+          } else if (
+            (error as AuthError).code === AuthErrorCodes.INVALID_EMAIL
+          ) {
+            alert("This email is invalid");
+          } else {
+            console.log("User signup encountered an error", error);
+          }
         }
       }
-    }
-  };
+    },
+    [displayName, email, password, confirmPassword]
+  );
 
   return (
     <div className="auth-form-container">

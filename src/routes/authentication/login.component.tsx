@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   signInWithGooglePopup,
@@ -26,29 +26,35 @@ const Login = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setFormFields({ ...formFields, [name]: value });
-  };
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      setFormFields({ ...formFields, [name]: value });
+    },
+    [email, password]
+  );
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = useCallback(
+    async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
 
-    try {
-      const response = await signInAuthUserWithEmailAndPass(email, password);
-      const user = response?.user;
+      try {
+        const response = await signInAuthUserWithEmailAndPass(email, password);
+        const user = response?.user;
 
-      navigate("/account");
-    } catch (error) {
-      if ((error as AuthError).code === AuthErrorCodes.INVALID_PASSWORD) {
-        alert("Wrong password");
-      } else if ((error as AuthError).code === AuthErrorCodes.USER_DELETED) {
-        alert("This user isn't registered");
-      } else {
-        console.log("User login encountered an error", error);
+        navigate("/account");
+      } catch (error) {
+        if ((error as AuthError).code === AuthErrorCodes.INVALID_PASSWORD) {
+          alert("Wrong password");
+        } else if ((error as AuthError).code === AuthErrorCodes.USER_DELETED) {
+          alert("This user isn't registered");
+        } else {
+          console.log("User login encountered an error", error);
+        }
       }
-    }
-  };
+    },
+    [email, password]
+  );
 
   return (
     <div className="auth-form-container">
