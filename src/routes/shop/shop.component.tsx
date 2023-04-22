@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectCategoriesIsLoading,
   selectCategoriesMap,
+  selectIsCategoriesEmpty,
 } from "../../store/category/category.selector";
 import { fetchCategoriesAsync } from "../../store/category/category.reducer";
 import Spinner from "../../components/spinner/spinner.component";
@@ -20,12 +21,15 @@ const Shop = () => {
   const dispatch = useDispatch<AppDispatch>();
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
+  const isCategoriesEmpty = useSelector(selectIsCategoriesEmpty);
 
   let { category } = useParams();
   const [productsToShow, setProductsToShow] = useState<CategoryItem[]>([]);
 
   useEffect(() => {
-    dispatch(fetchCategoriesAsync());
+    if (isCategoriesEmpty) {
+      dispatch(fetchCategoriesAsync());
+    }
   }, []);
 
   useEffect(() => {

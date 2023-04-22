@@ -1,8 +1,10 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import { selectCurrentUser } from "../../store/user/user.selector";
+import { selectIsMenuOpen } from "../../store/menu/menu.selector";
+import { setIsMenuOpen } from "../../store/menu/menu.reducer";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
@@ -10,8 +12,9 @@ import CartIcon from "../cart-icon/cart-icon.component";
 import css from "./mobile-header.module.css";
 
 const MobileHeader = () => {
+  const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMenuOpen = useSelector(selectIsMenuOpen);
   const navigate = useNavigate();
   const checkboxRef = useRef(null);
   const dropdownMenuRef = useRef(null);
@@ -19,9 +22,15 @@ const MobileHeader = () => {
   const closeMenuOnClickOutside = (event: MouseEvent) => {
     const target = event.target as Node;
     if (isMenuOpen && !target?.contains(checkboxRef.current)) {
-      setTimeout(() => setIsMenuOpen(false), 200);
+      setTimeout(() => dispatch(setIsMenuOpen(false)), 200);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(setIsMenuOpen(false));
+    };
+  }, []);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -35,7 +44,7 @@ const MobileHeader = () => {
   }, [isMenuOpen]);
 
   const handleMenuChange = () => {
-    setIsMenuOpen(!isMenuOpen);
+    dispatch(setIsMenuOpen(!isMenuOpen));
   };
 
   const signOutHandler = async () => {

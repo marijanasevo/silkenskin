@@ -16,12 +16,19 @@ const Button: FC<ButtonProps> = ({
   children,
   buttonType,
   disabled,
+  className,
   ...otherProps
 }) => {
   return (
     <button
       disabled={disabled}
-      className={css["button-container"] + " " + css[buttonType]}
+      className={
+        css["button-container"] +
+        " " +
+        css[buttonType] +
+        " " +
+        (className ? className : "")
+      }
       {...otherProps}
     >
       {disabled ? <div className={css["spinner"]}></div> : children}

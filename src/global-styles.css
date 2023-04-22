@@ -1,18 +1,27 @@
 :root {
   --serif-font: "Inria Serif", "Baskerville", "Georgia", Times, serif;
   --standard-font: "Inter", "Helvetica", "Calibri", sans-serif;
+  --soft-accent-color: #FFFBF5;
+  --moderate-accent-color: #f5ddba;
+  --strong-accent-color: #a89565;
+
 }
 
 html {
   box-sizing: border-box;
   font-family: var(--standard-font);
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 h1,
@@ -31,7 +40,7 @@ img {
 }
 
 .em {
-  color: #a89565;
+  color: var(--strong-accent-color);
 }
 
 .serif {
@@ -126,10 +135,22 @@ form {
 
 /* For webkit-based browsers */
 ::-webkit-scrollbar-track {
-  background-color: #fffaf7; /* Set the background color of the track */
+  background-color: var(--soft-accent-color); /* Set the background color of the track */
 }
 
 /* For Firefox */
 ::-moz-scrollbar-track {
-  background-color: #fffaf7; /* Set the background color of the track */
+  background-color: var(--soft-accent-color); /* Set the background color of the track */
+}
+
+.slick-slide {
+  transition: all .3s;
+}
+
+.slick-slide:not(.slick-active) {
+  filter: opacity(50%);
+}
+
+.submit-review-button {
+  margin-top: min(4rem, 10vmin);
 }

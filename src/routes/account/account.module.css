@@ -23,7 +23,7 @@
   margin-bottom: 0.5rem;
 
   &:first-child {
-    background: #fffaf7;
+    background: var(--soft-accent-color);
     color: black;
   }
 
@@ -33,7 +33,7 @@
     transition: 0.1s background linear;
 
     &:hover {
-      background: #fffaf7;
+      background: var(--soft-accent-color);
     }
   }
 }

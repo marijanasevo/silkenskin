@@ -18,7 +18,7 @@
 /* Free shippinig worldwide */
 
 .notice {
-  background-color: #fff8f2;
+  background-color: var(--soft-accent-color);
   padding: 1rem;
   font-size: min(4vmin, calc(0.8rem + 0.5vmax));
   text-align: center;
@@ -33,7 +33,7 @@
   font-weight: 200;
   background: white;
   height: 6.6rem;
-  border-bottom: 1px solid #fff8f2;
+  border-bottom: 1px solid var(--soft-accent-color);
 }
 
 .left-side-nav,

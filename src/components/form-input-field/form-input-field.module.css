@@ -8,7 +8,7 @@
     font-weight: 500;
     line-height: 17px;
     margin-bottom: 8px;
-    color: #a89565;
+    color: var(--strong-accent-color);
     pointer-events: none;
     transform: translate(15px, 37px);
     transition: 300ms ease all;
@@ -16,13 +16,13 @@
     &.shrink {
       transform: translate(0, 13px);
       font-size: 12px;
-      color: #a89565;
+      color: var(--strong-accent-color);
     }
   }
 
   &__input {
     border: 0;
-    border-bottom: 2px dashed #a89565;
+    border-bottom: 2px dashed var(--strong-accent-color);
     color: #2f4f42;
     box-sizing: border-box;
     font-family: var(--serif-font);

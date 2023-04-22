@@ -5,12 +5,12 @@
   gap: min(1.8rem, 4vmin);
   padding: min(8.5vmin, 2.5rem);
   border-radius: 10px;
-  background: #fffaf5;
+  background: var(--soft-accent-color);
   transition: 0.2s transform linear;
   cursor: pointer;
 
   &:hover {
-    background: #fff8f2;
+    filter: brightness(101%);
     transform: scale(1.02);
   }
 

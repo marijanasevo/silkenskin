@@ -9,10 +9,11 @@
   width: min(100vw, 22rem);
   height: 30rem;
   padding: 1.1rem;
-  background: #fffaf7;
+  background: white;
   display: flex;
   flex-direction: column;
   cursor: auto;
+  border: 2px dashed var(--moderate-accent-color);
 
   & > button {
     margin-top: auto;
@@ -23,11 +24,12 @@
   width: 0;
   height: 0;
   border-top: 1rem solid transparent;
-  border-left: 2rem solid #fff8f2;
+  border-left: 2rem dashed var(--moderate-accent-color);
   border-bottom: 1rem solid transparent;
   transform: rotate(270deg);
   position: absolute;
-  top: var(--dropdown-top);
+  top: calc(var(--dropdown-top) + .2rem);
+  z-index: 1;
   cursor: auto;
 }
 

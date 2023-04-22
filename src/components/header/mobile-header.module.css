@@ -13,12 +13,13 @@
   position: fixed;
   width: 100%;
   top: 0;
+  z-index: 1;
 }
 
 /* Free shippinig worldwide */
 
 .notice {
-  background-color: #fff8f2;
+  background-color: var(--soft-accent-color);
   padding: 1rem;
   font-size: min(4vmin, calc(0.8rem + 0.5vmax));
   text-align: center;
@@ -26,7 +27,6 @@
 }
 
 .navigation {
-  display: flex;
   justify-content: space-between;
   font-weight: 200;
   position: relative;
@@ -123,9 +123,9 @@
   max-width: 100%;
   font-size: min(1.5rem, calc(2.7rem + 1vmax));
   background-color: var(--background);
-  border-bottom: 1px solid #fff8f2;
+  border-bottom: 1px solid var(--soft-accent-color);
   z-index: -1;
-  height: 0vh;
+  height: 0;
 }
 
 .hamburger-menu:has(input:checked) + .sidebar-menu {

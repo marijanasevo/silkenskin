@@ -36,8 +36,8 @@
 
 .accented-link {
   background: rgba(0, 0, 0, 0.2);
-  color: #f5ddba;
-  border: 1px solid #f5ddba;
+  color: var(--moderate-accent-color);
+  border: 1px solid var(--moderate-accent-color);
   padding: min(7vmin, 1rem) min(7vmin, 2rem);
   font-size: min(6vmin, calc(0.8rem + 0.5vmax));
   cursor: pointer;
@@ -45,7 +45,7 @@
   transition: all 0.1s linear;
 
   &:hover {
-    background: #f5ddba;
+    background: var(--moderate-accent-color);
     color: black;
     transform: scale(1.05);
     font-weight: 500;

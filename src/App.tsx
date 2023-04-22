@@ -25,6 +25,8 @@ const Checkout = lazy(() => import("./routes/checkout/checkout.component"));
 
 const Home = lazy(() => import("./routes/home/home.component"));
 const Shop = lazy(() => import("./routes/shop/shop.component"));
+// const Product = lazy(() => import("./routes/product/product.component"));
+import Product from "./routes/product/product.component";
 import css from "./App.module.css";
 
 const App = () => {
@@ -60,6 +62,7 @@ const App = () => {
           <Route path="/" element={<Navigation />}>
             <Route index element={<Home />} />
             <Route path="/shop/:category?" element={<Shop />} />
+            <Route path="/product/:id" element={<Product />} />
             <Route path="/account" element={<Account />} />
             <Route path="/account-created" element={<AccountCreated />} />
             <Route path="/checkout" element={<Checkout />} />

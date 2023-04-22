@@ -24,3 +24,8 @@ export const selectCategoriesIsLoading = createSelector(
   [selectCategoryReducer],
   (categoriesSlice) => categoriesSlice.isLoading
 );
+
+export const selectIsCategoriesEmpty = createSelector(
+  [selectCategories],
+  (categories) => categories.length === 0
+);
