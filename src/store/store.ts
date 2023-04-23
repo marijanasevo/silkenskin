@@ -28,7 +28,11 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: ["persist/PERSIST"],
+        ignoredActions: [
+          "persist/PERSIST",
+          "reviews/fetchReviewsAsync/fullfilled",
+        ],
+        ignoredPaths: ["reviews"],
       },
     }).concat(middleWares),
 });

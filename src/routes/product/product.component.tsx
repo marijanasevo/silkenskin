@@ -8,8 +8,14 @@ import {
   selectIsCategoriesEmpty,
 } from "../../store/category/category.selector";
 
+import {
+  selectReviewsMap,
+  selectIsReviewsEmpty,
+} from "../../store/review/review.selector";
+
 import { fetchCategoriesAsync } from "../../store/category/category.reducer";
 import { addItemToCart } from "../../store/cart/cart.reducer";
+import { selectCurrentUser } from "../../store/user/user.selector";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -28,6 +34,12 @@ import Button, {
 import { AppDispatch } from "../../store/store";
 import { CategoryItem } from "../../store/category/category.types";
 import css from "./product.module.css";
+import {
+  createReview,
+  getReviewsAndDocuments,
+  Product,
+} from "../../utils/firebase/firebase.utils";
+import { fetchReviewsAsync } from "../../store/review/review.reducer";
 
 const carouselSettings = {
   className: "center",
@@ -40,20 +52,29 @@ const carouselSettings = {
   dots: false,
 };
 
-const defaultReviewFields = {
+type ReviewFieldsState = {
+  rating: number | null;
+  feedback: string;
+  name: string | null;
+};
+
+const defaultReviewFields: ReviewFieldsState = {
   rating: 0,
-  formReview: "",
+  feedback: "",
+  name: "",
 };
 
 const Product = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const currentUser = useSelector(selectCurrentUser);
   const isCategoriesEmpty = useSelector(selectIsCategoriesEmpty);
   const categoriesMap = useSelector(selectCategoriesMap);
+  const isReviewsEmpty = useSelector(selectIsReviewsEmpty);
+  const reviewsMap = useSelector(selectReviewsMap);
   const [product, setProduct] = useState<CategoryItem>();
   const { id } = useParams();
   const [formFields, setFormFields] = useState(defaultReviewFields);
-  const { rating, formReview } = formFields;
-  const [value, setValue] = useState<number | null>(null);
+  const { rating, feedback, name } = formFields;
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -69,13 +90,45 @@ const Product = () => {
   }, []);
 
   useEffect(() => {
+    if (isCategoriesEmpty) {
+      dispatch(fetchReviewsAsync());
+    }
+  }, []);
+
+  useEffect(() => {
     const currentProduct = Object.values(categoriesMap)
       .flat()
       .find((product) => product.id === Number(id));
 
     setProduct(currentProduct);
   }, [id, categoriesMap]);
-  console.log(product, value);
+
+  useEffect(() => {});
+
+  const submitReviewHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    let userName = currentUser ? currentUser.displayName : name;
+
+    if (!userName || !id || !rating) return;
+
+    let product: Product = {
+      userDisplayName: userName,
+      stars: rating,
+      body: feedback,
+      productId: id,
+      userEmail: currentUser?.email,
+    };
+
+    createReview(product);
+    // TODO: Figure out how to get back information and loop through it
+    // TODO: Map reviews just like categories productId: {reviews}
+    // TODO: Add a listener that will update reviews when a new one is written
+    // It's not efficient to fetch reviews every time product is opened
+    // TODO: Check out what's with mens and tools products
+
+    setFormFields(defaultReviewFields);
+  };
 
   return (
     <>
@@ -182,15 +235,66 @@ const Product = () => {
             sx={{
               marginTop: "-3rem",
             }}
+            onSubmit={submitReviewHandler}
           >
+            <TextField
+              id="standard-textarea"
+              label="Your name"
+              variant="standard"
+              onChange={handleChange}
+              name="name"
+              value={name}
+              sx={{
+                "&.MuiTextField-root": {
+                  margin: "0",
+                },
+                "& .Mui-focused.MuiInputLabel-root": {
+                  color: "var(--strong-accent-color)",
+                  fontSize: "1.9rem",
+                  top: "-0.5rem",
+                },
+                "& .MuiInputLabel-shrink": {
+                  top: "-0.5rem",
+                  fontSize: "1.9rem",
+                  color: "var(--strong-accent-color)",
+                },
+                "& .MuiInputLabel-root": {
+                  fontSize: "1.5rem",
+                  color: "var(--strong-accent-color)",
+                },
+                "& .MuiInputBase-root::before": {
+                  borderBottom: "0 !important",
+                },
+                "& .MuiInputBase-input": {
+                  fontSize: "1.4rem",
+                  padding: "1rem",
+                  borderBottom:
+                    "2px dashed var(--strong-accent-color) !important",
+                  lineHeight: "130%",
+                },
+                "& .MuiInputBase-input.Mui-focused::before": {
+                  fontSize: "1.4rem",
+                  padding: "1rem",
+                  borderBottom: "0",
+                },
+                "& .MuiInputBase-root.Mui-focused::after": {
+                  fontSize: "1.4rem",
+                  padding: "1rem",
+                  borderBottom: "0",
+                },
+                "& .MuiInputBase-root-MuiInput-root:after": {
+                  borderBottom: "0 !important",
+                },
+              }}
+            />
             <TextField
               id="standard-textarea"
               label="Your experience"
               multiline
               variant="standard"
               onChange={handleChange}
-              name="formReview"
-              value={formReview}
+              name="feedback"
+              value={feedback}
               sx={{
                 "&.MuiTextField-root": {
                   margin: "0",
@@ -232,6 +336,9 @@ const Product = () => {
                 "& .MuiInputBase-multiline:hover": {
                   borderBottom: "0 !important",
                 },
+                "& .MuiInputBase-root::after": {
+                  borderBottom: "0!important",
+                },
               }}
             />
 
@@ -241,10 +348,10 @@ const Product = () => {
                   color: "#a89565",
                 },
               }}
-              name="no-value"
-              value={value}
+              name="rating"
+              value={rating}
               onChange={(event, newValue) => {
-                setValue(newValue);
+                setFormFields({ ...formFields, rating: newValue });
               }}
               precision={0.5}
               size="large"

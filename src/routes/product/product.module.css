@@ -185,4 +185,5 @@
   display: flex;
   gap: 1.5rem;
   flex-direction: column;
+  filter: brightness(110%);
 }

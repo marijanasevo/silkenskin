@@ -20,8 +20,11 @@ import {
   writeBatch,
   query,
   getDocs,
+  addDoc,
 } from "firebase/firestore";
 import { Category } from "../../store/category/category.types";
+import { Review } from "../../store/review/review.types";
+import firebase from "firebase/compat";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCIH2mpmnV7UhLhOhX0JvwyzQeySGj3grw",
@@ -138,4 +141,43 @@ export const getUserDisplayName = async (userUid: string) => {
   const userDocRef = doc(db, "users", userUid);
   const userDoc = await getDoc(userDocRef);
   return userDoc.data()?.displayName;
+};
+
+export type Product = {
+  userDisplayName: string;
+  userEmail?: string;
+  productId: string;
+  stars: number;
+  body: string;
+};
+
+export const createReview = async (product: Product) => {
+  const { userDisplayName, userEmail, stars, body, productId } = product;
+  const createdAt = new Date();
+  console.log(userDisplayName, stars, body, createdAt);
+
+  const reviewColRef = collection(db, "reviews");
+
+  try {
+    const newDoc = await addDoc(reviewColRef, {
+      userDisplayName,
+      stars,
+      body,
+      createdAt,
+      productId,
+      userEmail,
+    });
+
+    console.log(newDoc);
+  } catch (err) {
+    console.log("Error setting new doc", err);
+  }
+};
+
+export const getReviewsAndDocuments = async (): Promise<Review[]> => {
+  const collectionRef = collection(db, "reviews");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data() as Review);
 };
