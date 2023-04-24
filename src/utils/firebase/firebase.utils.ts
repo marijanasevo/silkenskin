@@ -21,10 +21,10 @@ import {
   query,
   getDocs,
   addDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { Category } from "../../store/category/category.types";
 import { Review } from "../../store/review/review.types";
-import firebase from "firebase/compat";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCIH2mpmnV7UhLhOhX0JvwyzQeySGj3grw",
@@ -145,7 +145,7 @@ export const getUserDisplayName = async (userUid: string) => {
 
 export type Product = {
   userDisplayName: string;
-  userEmail?: string;
+  userEmail: string | null;
   productId: string;
   stars: number;
   body: string;
@@ -153,31 +153,32 @@ export type Product = {
 
 export const createReview = async (product: Product) => {
   const { userDisplayName, userEmail, stars, body, productId } = product;
+  console.log(userEmail);
   const createdAt = new Date();
-  console.log(userDisplayName, stars, body, createdAt);
+  const newReview = {
+    userDisplayName,
+    stars,
+    body,
+    createdAt,
+    productId,
+    userEmail,
+  };
 
-  const reviewColRef = collection(db, "reviews");
+  const reviewCollectionRef = collection(db, "reviews");
 
   try {
-    const newDoc = await addDoc(reviewColRef, {
-      userDisplayName,
-      stars,
-      body,
-      createdAt,
-      productId,
-      userEmail,
-    });
-
-    console.log(newDoc);
+    const newDoc = await addDoc(reviewCollectionRef, newReview);
+    const reviewUpdatedWithId = { ...newReview, id: newDoc.id };
+    await updateDoc(newDoc, reviewUpdatedWithId);
   } catch (err) {
     console.log("Error setting new doc", err);
   }
 };
 
-export const getReviewsAndDocuments = async (): Promise<Review[]> => {
+export const getReviewsAndDocuments = async () => {
   const collectionRef = collection(db, "reviews");
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data() as Review);
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };

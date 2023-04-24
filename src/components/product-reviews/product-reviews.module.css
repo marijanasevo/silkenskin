@@ -1,0 +1,28 @@
+.all-reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: gray;
+
+  & h3 {
+    margin: 0;
+    font-weight: 200;
+  }
+}
+
+.no-reviews-message {
+  font-size: min(8vmin, calc(0.5rem + 1.8vmin), 2.2rem);
+  line-height: 170%;
+}

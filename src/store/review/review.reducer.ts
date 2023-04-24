@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getReviewsAndDocuments } from "../../utils/firebase/firebase.utils";
-import { ReviewState } from "./review.types";
+import { Review, ReviewState } from "./review.types";
 
 const INITIAL_STATE: ReviewState = {
   reviews: [],
@@ -11,7 +11,13 @@ const INITIAL_STATE: ReviewState = {
 export const fetchReviewsAsync = createAsyncThunk(
   "reviews/fetchReviewsAsync",
   async () => {
-    return await getReviewsAndDocuments();
+    const reviewsArray = await getReviewsAndDocuments();
+    return reviewsArray.map((review) => {
+      return {
+        ...review,
+        createdAt: new Date(review.createdAt.seconds * 1000),
+      } as Review;
+    });
   }
 );
 

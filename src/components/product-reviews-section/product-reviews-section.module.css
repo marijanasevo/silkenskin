@@ -1,0 +1,12 @@
+.reviews-section {
+  display: flex;
+  flex-direction: column;
+  gap: 7rem;
+}
+
+
+.reviews-heading {
+  font-size: min(10vmin, calc(2rem + 1vmax));
+  font-family: var(--serif-font);
+  margin: 0;
+}

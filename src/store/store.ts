@@ -14,7 +14,7 @@ type ExtendedPersistConfig = PersistConfig<RootState> & {
 const persistConfig: ExtendedPersistConfig = {
   key: "root",
   storage,
-  blacklist: ["user", "categories"],
+  blacklist: ["user", "categories", "reviews"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -30,7 +30,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [
           "persist/PERSIST",
-          "reviews/fetchReviewsAsync/fullfilled",
+          "reviews/fetchReviewsAsync/fulfilled",
         ],
         ignoredPaths: ["reviews"],
       },

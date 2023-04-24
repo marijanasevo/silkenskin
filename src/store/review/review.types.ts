@@ -9,6 +9,7 @@ export type Review = {
   body: string;
   stars: number;
   createdAt: Date;
+  id: string;
 };
 
 export type ReviewState = {

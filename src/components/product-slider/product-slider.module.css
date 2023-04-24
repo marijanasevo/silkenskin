@@ -1,0 +1,15 @@
+.item-visual {
+  color: #333333;
+  margin-inline: calc(-1 * min(9vmin, 3rem));
+  margin-top: 2rem;
+}
+
+.item-image-container {
+  outline: none;
+  cursor: grab;
+  padding-inline: .7rem;
+}
+
+.item-image {
+  object-fit: cover;
+}
