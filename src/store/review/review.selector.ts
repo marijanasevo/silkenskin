@@ -21,7 +21,12 @@ export const selectIsReviewsEmpty = createSelector(
 
 export const selectProductReviews = (productId: string) =>
   createSelector([selectReviews], (reviews) =>
-    reviews.filter((review) => review.productId === productId)
+    reviews
+      .filter((review) => review.productId === productId)
+      .sort(
+        (reviewA, reviewB) =>
+          reviewB.createdAt.getTime() - reviewA.createdAt.getTime()
+      )
   );
 
 export const selectProductAverageStars = (productId: string) =>
@@ -30,7 +35,6 @@ export const selectProductAverageStars = (productId: string) =>
       (reviews) => reviews.productId === productId
     );
     const starsSum = productReviews.reduce((acc, currentReview) => {
-      console.log(acc + currentReview.stars);
       return acc + currentReview.stars;
     }, 0);
 
