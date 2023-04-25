@@ -96,10 +96,11 @@ const PaymentForm = () => {
         const order = {
           userEmail: currentUser.email,
           total: amount,
+          createdAt: new Date().getTime(),
           products: cartItems.map((product) => ({
             id: product.id,
-            name: product.name,
             brand: product.brand,
+            name: product.name,
             price: product.price,
             quantity: product.quantity,
             thumbnail: product.thumbnailUrl,

@@ -183,10 +183,23 @@ export const getReviewsAndDocuments = async () => {
   return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
 
-export const addUserOrder = async (order) => {
+export type Order = {
+  userEmail: string;
+  total: number;
+  createdAt: number;
+  products: {
+    id: number;
+    brand: string;
+    name: string;
+    price: number;
+    quantity: number;
+    thumbnail: string;
+  }[];
+};
+
+export const addUserOrder = async (order: Order) => {
   if (!order.userEmail) return;
   const { userEmail } = order;
-  order.createdAt = new Date().getTime();
   let currentUserID;
   const usersRef = collection(db, "users");
 
