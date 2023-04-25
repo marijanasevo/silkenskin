@@ -22,6 +22,7 @@ import {
   getDocs,
   addDoc,
   updateDoc,
+  where,
 } from "firebase/firestore";
 import { Category } from "../../store/category/category.types";
 import { Review } from "../../store/review/review.types";
@@ -153,7 +154,6 @@ export type Product = {
 
 export const createReview = async (product: Product) => {
   const { userDisplayName, userEmail, stars, body, productId } = product;
-  console.log(userEmail);
   const createdAt = new Date();
   const newReview = {
     userDisplayName,
@@ -167,9 +167,9 @@ export const createReview = async (product: Product) => {
   const reviewCollectionRef = collection(db, "reviews");
 
   try {
-    const newDoc = await addDoc(reviewCollectionRef, newReview);
-    const reviewUpdatedWithId = { ...newReview, id: newDoc.id };
-    await updateDoc(newDoc, reviewUpdatedWithId);
+    const newReviewDoc = await addDoc(reviewCollectionRef, newReview);
+    const reviewUpdatedWithId = { ...newReview, id: newReviewDoc.id };
+    await updateDoc(newReviewDoc, reviewUpdatedWithId);
   } catch (err) {
     console.log("Error setting new doc", err);
   }
@@ -181,4 +181,31 @@ export const getReviewsAndDocuments = async () => {
 
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+};
+
+export const addUserOrder = async (order) => {
+  if (!order.userEmail) return;
+  const { userEmail } = order;
+  order.createdAt = new Date().getTime();
+  let currentUserID;
+  const usersRef = collection(db, "users");
+
+  const q = query(usersRef, where("email", "==", userEmail));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    currentUserID = doc.id;
+  });
+
+  if (currentUserID) {
+    const currentUserRef = doc(db, "users", currentUserID);
+    const purchasesRef = collection(currentUserRef, "purchases");
+
+    try {
+      const newPurchaseDoc = await addDoc(purchasesRef, order);
+      const purchaseUpdatedWithId = { ...order, id: newPurchaseDoc.id };
+      await updateDoc(newPurchaseDoc, purchaseUpdatedWithId);
+    } catch (err) {
+      console.log("err", err);
+    }
+  }
 };

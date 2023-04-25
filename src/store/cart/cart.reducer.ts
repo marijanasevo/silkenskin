@@ -35,7 +35,6 @@ const addCartItem = (
   cartItems: CartItem[],
   productToAdd: CategoryItem
 ): CartItem[] => {
-  // console.log(cartItems, productToAdd);
   const existingProduct = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id
   );

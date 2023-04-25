@@ -27,7 +27,6 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
   const productAverageStars = useSelector(selectProductAverageStars(productID));
 
   const addProductToCartHandler = () => dispatch(addItemToCart(product));
-  console.log(productAverageStars, reviews);
 
   return (
     <div className={css["item-description"]}>
