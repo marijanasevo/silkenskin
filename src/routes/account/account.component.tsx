@@ -92,7 +92,10 @@ const Account = () => {
                             alt="item"
                             className={css["order-item-thumbnail"]}
                           />
-                          <div className={css["order-item-details"]}>
+                          <div
+                            onClick={() => navigate(`/product/${product.id}`)}
+                            className={css["order-item-details"]}
+                          >
                             <h3 className={css["order-item-title"]}>
                               {product.name} <br />
                               <span className={css["order-item-brand"]}>

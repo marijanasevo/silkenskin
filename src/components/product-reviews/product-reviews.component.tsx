@@ -7,6 +7,7 @@ import {
   selectReviewsLoading,
 } from "../../store/review/review.selector";
 import { useParams } from "react-router-dom";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
 import Spinner from "../spinner/spinner.component";
 
 const ProductReviews = () => {
@@ -23,7 +24,10 @@ const ProductReviews = () => {
           <div className={css["review"]} key={review.id}>
             <div className={css["review-header"]}>
               <h3 className={css["review-title"] + " " + css["item-subtitle"]}>
-                {review.userDisplayName}
+                {review.userDisplayName}{" "}
+                {review.verifiedPurchase && (
+                  <LocalMallIcon className={css["verified-purchase-bag"]} />
+                )}
               </h3>
               <span className="review-date">
                 {review.createdAt

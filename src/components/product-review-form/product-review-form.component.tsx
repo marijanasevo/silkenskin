@@ -44,6 +44,18 @@ const ProductReviewForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
+  const userPurchasedTheProduct = () => {
+    const userPurchasedProducts = currentUser?.purchases.flatMap(
+      (order) => order.products
+    );
+
+    if (!userPurchasedProducts) return false;
+
+    return userPurchasedProducts.some(
+      (product) => product.id === Number(productID)
+    );
+  };
+
   const submitReviewHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -76,6 +88,7 @@ const ProductReviewForm = () => {
       body: feedback,
       productId: productID,
       userEmail: currentUser?.email || null,
+      verifiedPurchase: userPurchasedTheProduct(),
     };
 
     await createReview(product);

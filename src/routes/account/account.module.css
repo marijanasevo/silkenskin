@@ -82,7 +82,7 @@
   max-height: 0;
   overflow: hidden;
   padding-inline: 1rem;
-  transition: max-height 0.3s ease, padding 0.3s ease-in;
+  transition: max-height 0.2s ease, padding 0.2s ease-in;
 }
 
 .show-details.order-details {
@@ -116,4 +116,8 @@
 
 .show-details {
   max-height: 1000px;
+}
+
+.order-item-details {
+  cursor: pointer;
 }

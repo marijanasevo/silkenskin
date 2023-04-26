@@ -10,6 +10,7 @@ export type Review = {
   stars: number;
   createdAt: Date;
   id: string;
+  verifiedPurchase: boolean;
 };
 
 export type ReviewState = {
