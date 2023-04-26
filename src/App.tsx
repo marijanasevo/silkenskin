@@ -47,6 +47,7 @@ const App = () => {
         accessToken: await user.getIdToken(),
         email: user.email,
         displayName: displayName,
+        uid: user.uid,
       };
 
       dispatch(setCurrentUser(pickedUser));

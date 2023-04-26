@@ -33,23 +33,27 @@ const PaymentForm = () => {
   const elements = useElements();
   const dispatch = useDispatch();
 
-  console.log(cartItems);
-  if (currentUser) {
-    const order = {
-      userEmail: currentUser.email,
-      total: amount,
-      products: cartItems.map((product) => ({
-        id: product.id,
-        name: product.name,
-        brand: product.brand,
-        price: product.price,
-        quantity: product.quantity,
-        thumbnail: product.thumbnailUrl,
-      })),
-    };
+  const storeUsersOrderInfo = async () => {
+    if (currentUser) {
+      const order = {
+        userEmail: currentUser.email,
+        total: amount,
+        uid: currentUser.uid,
+        createdAt: new Date().getTime(),
+        products: cartItems.map((product) => ({
+          id: product.id,
+          brand: product.brand,
+          name: product.name,
+          price: product.price,
+          quantity: product.quantity,
+          thumbnail: product.thumbnailUrl,
+        })),
+      };
 
-    console.log("order", order);
-  }
+      await addUserOrder(order);
+      console.log("order saved");
+    }
+  };
 
   const paymentHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -90,27 +94,8 @@ const PaymentForm = () => {
       console.log("Error:", paymentResult.error.message);
     } else {
       console.log("Success:", paymentResult.paymentIntent.status);
-      // TODO: here i can create object with info and send a request to firebase
 
-      if (currentUser) {
-        const order = {
-          userEmail: currentUser.email,
-          total: amount,
-          createdAt: new Date().getTime(),
-          products: cartItems.map((product) => ({
-            id: product.id,
-            brand: product.brand,
-            name: product.name,
-            price: product.price,
-            quantity: product.quantity,
-            thumbnail: product.thumbnailUrl,
-          })),
-        };
-
-        await addUserOrder(order);
-        console.log("order completed");
-      }
-
+      storeUsersOrderInfo();
       dispatch(setClearCart());
       // TODO: Thank you for your purchase page
     }

@@ -185,6 +185,7 @@ export const getReviewsAndDocuments = async () => {
 
 export type Order = {
   userEmail: string;
+  uid: string;
   total: number;
   createdAt: number;
   products: {
@@ -198,27 +199,15 @@ export type Order = {
 };
 
 export const addUserOrder = async (order: Order) => {
-  if (!order.userEmail) return;
-  const { userEmail } = order;
-  let currentUserID;
-  const usersRef = collection(db, "users");
+  const { uid } = order;
+  const currentUserRef = doc(db, "users", uid);
+  const purchasesRef = collection(currentUserRef, "purchases");
 
-  const q = query(usersRef, where("email", "==", userEmail));
-  const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    currentUserID = doc.id;
-  });
-
-  if (currentUserID) {
-    const currentUserRef = doc(db, "users", currentUserID);
-    const purchasesRef = collection(currentUserRef, "purchases");
-
-    try {
-      const newPurchaseDoc = await addDoc(purchasesRef, order);
-      const purchaseUpdatedWithId = { ...order, id: newPurchaseDoc.id };
-      await updateDoc(newPurchaseDoc, purchaseUpdatedWithId);
-    } catch (err) {
-      console.log("err", err);
-    }
+  try {
+    const newPurchaseDoc = await addDoc(purchasesRef, order);
+    const purchaseUpdatedWithId = { ...order, id: newPurchaseDoc.id };
+    await updateDoc(newPurchaseDoc, purchaseUpdatedWithId);
+  } catch (err) {
+    console.log("err", err);
   }
 };
