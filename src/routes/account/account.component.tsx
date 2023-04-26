@@ -1,10 +1,34 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Fragment, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
+import { selectCurrentUser } from "../../store/user/user.selector";
 
 import css from "./account.module.css";
+import { useEffect } from "react";
+import { Order } from "../../store/user/user.types";
 
 const Account = () => {
   const navigate = useNavigate();
+  const currentUser = useSelector(selectCurrentUser);
+  const [purchases, setPurchases] = useState<Order[]>([]);
+  const [selectedOrderIndex, setSelectedOrderIndex] = useState(-1);
+
+  function toggleDescription(index: number) {
+    if (selectedOrderIndex === index) {
+      setSelectedOrderIndex(-1); // Deselect the order if it's already selected
+    } else {
+      setSelectedOrderIndex(index);
+    }
+  }
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login");
+    } else {
+      setPurchases(currentUser.purchases);
+    }
+  }, [currentUser]);
 
   const signOutHandler = async () => {
     await signOutUser();
@@ -33,25 +57,59 @@ const Account = () => {
               <span>Order #</span>
               <span>Total</span>
               <span>Order Date</span>
-              <span>Status</span>
-              <span></span>
+              <span>Items</span>
+              <span>Details</span>
             </div>
 
-            <div className={css["order-table-row"]}>
-              <span>#000001</span>
-              <span>$500</span>
-              <span>Apr 04, 2023</span>
-              <span>Processing</span>
-              <span>↓</span>
-            </div>
+            {purchases &&
+              purchases.map((order, index) => {
+                const isSelected = selectedOrderIndex == index;
 
-            <div className={css["order-table-row"]}>
-              <span>#000002</span>
-              <span>$700</span>
-              <span>May 18, 2023</span>
-              <span>Processing</span>
-              <span>↓</span>
-            </div>
+                return (
+                  <Fragment key={index}>
+                    <div
+                      onClick={() => toggleDescription(index)}
+                      className={css["order-table-info"]}
+                    >
+                      <span># {order.id.slice(14).toUpperCase()}</span>
+                      <span>${order.total}</span>
+                      <span>
+                        {new Date(order.createdAt).toLocaleDateString()}
+                      </span>
+                      <span>{order.products.length} items</span>
+                      <span>{isSelected ? "↑" : "↓"}</span>
+                    </div>
+
+                    <div
+                      className={`${css["order-details"]} ${
+                        isSelected ? css["show-details"] : ""
+                      }`}
+                    >
+                      {order.products.map((product, index) => (
+                        <div key={index} className={css["order-item"]}>
+                          <img
+                            src={product.thumbnail}
+                            alt="item"
+                            className={css["order-item-thumbnail"]}
+                          />
+                          <div className={css["order-item-details"]}>
+                            <h3 className={css["order-item-title"]}>
+                              {product.name} <br />
+                              <span className={css["order-item-brand"]}>
+                                {product.brand}
+                              </span>
+                            </h3>
+                            <p>Quantity: {product.quantity}</p>
+                          </div>
+                          <div className={css["order-item-price"]}>
+                            <span>${product.price}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </Fragment>
+                );
+              })}
           </div>
 
           {/* We're starting to think you're secretly a skincare expert - you haven't ordered anything from us yet! */}

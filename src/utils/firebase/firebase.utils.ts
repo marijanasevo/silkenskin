@@ -22,10 +22,9 @@ import {
   getDocs,
   addDoc,
   updateDoc,
-  where,
 } from "firebase/firestore";
 import { Category } from "../../store/category/category.types";
-import { Review } from "../../store/review/review.types";
+import { Order } from "../../store/user/user.types";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCIH2mpmnV7UhLhOhX0JvwyzQeySGj3grw",
@@ -183,25 +182,9 @@ export const getReviewsAndDocuments = async () => {
   return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
 
-export type Order = {
-  userEmail: string;
-  uid: string;
-  total: number;
-  createdAt: number;
-  products: {
-    id: number;
-    brand: string;
-    name: string;
-    price: number;
-    quantity: number;
-    thumbnail: string;
-  }[];
-};
-
 export const addUserOrder = async (order: Order) => {
   const { uid } = order;
-  const currentUserRef = doc(db, "users", uid);
-  const purchasesRef = collection(currentUserRef, "purchases");
+  const purchasesRef = collection(db, "users", uid, "purchases");
 
   try {
     const newPurchaseDoc = await addDoc(purchasesRef, order);
@@ -210,4 +193,11 @@ export const addUserOrder = async (order: Order) => {
   } catch (err) {
     console.log("err", err);
   }
+};
+
+export const getUserOrderHistory = async (uid: string) => {
+  const purchasesRef = collection(db, "users", uid, "purchases");
+  const q = query(purchasesRef);
+  const querySnapshot = await getDocs(q);
+  return await querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };

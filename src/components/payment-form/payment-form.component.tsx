@@ -2,25 +2,30 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 
+import { setClearCart } from "../../store/cart/cart.reducer";
 import {
   selectIsCartEmpty,
   selectCartTotal,
   selectCartItems,
 } from "../../store/cart/cart.selector";
-import { setClearCart } from "../../store/cart/cart.reducer";
+import { setPurchases } from "../../store/user/user.reducer";
 import {
   selectCurrentUser,
   selectIsUserLoggedIn,
 } from "../../store/user/user.selector";
 
-import Snackbar, { SnackbarOrigin } from "@mui/material/Snackbar";
+import Snackbar from "@mui/material/Snackbar";
 import { CardElement } from "@stripe/react-stripe-js";
 import Button from "../button/button.component";
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import css from "./payment-form.module.css";
-import { addUserOrder } from "../../utils/firebase/firebase.utils";
+import {
+  addUserOrder,
+  getUserOrderHistory,
+} from "../../utils/firebase/firebase.utils";
 
 const PaymentForm = () => {
+  const dispatch = useDispatch();
   const isCartEmpty = useSelector(selectIsCartEmpty);
   const currentUser = useSelector(selectCurrentUser);
   const isUserLoggedIn = useSelector(selectIsUserLoggedIn);
@@ -31,14 +36,14 @@ const PaymentForm = () => {
 
   const stripe = useStripe();
   const elements = useElements();
-  const dispatch = useDispatch();
 
   const storeUsersOrderInfo = async () => {
     if (currentUser) {
       const order = {
         userEmail: currentUser.email,
-        total: amount,
+        total: +Math.trunc(amount),
         uid: currentUser.uid,
+        id: "placeholder",
         createdAt: new Date().getTime(),
         products: cartItems.map((product) => ({
           id: product.id,
@@ -51,6 +56,11 @@ const PaymentForm = () => {
       };
 
       await addUserOrder(order);
+      const purchases = await getUserOrderHistory(currentUser.uid);
+      const purchasesSorted = purchases.sort(
+        (orderA, orderB) => orderB.createdAt - orderA.createdAt
+      );
+      dispatch(setPurchases(purchasesSorted));
       console.log("order saved");
     }
   };

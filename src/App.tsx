@@ -9,6 +9,7 @@ import {
   createUserDocumentFromAuth,
   onAuthStateChangedListener,
   getUserDisplayName,
+  getUserOrderHistory,
 } from "./utils/firebase/firebase.utils";
 
 import Spinner from "./components/spinner/spinner.component";
@@ -35,11 +36,15 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(async (user) => {
-      let displayName;
+      let displayName, purchases;
 
       if (user) {
         await createUserDocumentFromAuth(user);
         displayName = await getUserDisplayName(user.uid);
+        purchases = await getUserOrderHistory(user.uid);
+        purchases = purchases.sort(
+          (orderA, orderB) => orderB.createdAt - orderA.createdAt
+        );
       }
 
       // Fix for non-serializable value in payload (not string, number or standard js object)
@@ -48,6 +53,7 @@ const App = () => {
         email: user.email,
         displayName: displayName,
         uid: user.uid,
+        purchases,
       };
 
       dispatch(setCurrentUser(pickedUser));

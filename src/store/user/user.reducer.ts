@@ -12,8 +12,11 @@ export const userSlice = createSlice({
     setCurrentUser: (state, action) => {
       state.currentUser = action.payload;
     },
+    setPurchases: (state, action) => {
+      if (state.currentUser) state.currentUser.purchases = action.payload;
+    },
   },
 });
 
-export const { setCurrentUser } = userSlice.actions;
+export const { setCurrentUser, setPurchases } = userSlice.actions;
 export const userReducer = userSlice.reducer;
