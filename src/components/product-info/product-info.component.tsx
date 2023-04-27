@@ -2,10 +2,15 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
+  addToWishlist,
+  removeFromWishlist,
+} from "../../store/wishlist/wishlist.reducer";
+import { addItemToCart } from "../../store/cart/cart.reducer";
+import {
   selectProductAverageStars,
   selectProductReviews,
 } from "../../store/review/review.selector";
-import { addItemToCart } from "../../store/cart/cart.reducer";
+import { selectIsProductInWishlist } from "../../store/wishlist/wishlist.selector";
 
 import { Rating } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
@@ -25,8 +30,19 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
   const { id: productID } = useParams() as { id: string };
   const reviews = useSelector(selectProductReviews(productID));
   const productAverageStars = useSelector(selectProductAverageStars(productID));
+  const isProductInWishlist = useSelector(
+    selectIsProductInWishlist(+productID)
+  );
 
   const addProductToCartHandler = () => dispatch(addItemToCart(product));
+
+  const addProductToWishlistHandler = () => {
+    dispatch(addToWishlist(+productID));
+  };
+
+  const removeProductToWishlistHandler = () => {
+    dispatch(removeFromWishlist(+productID));
+  };
 
   return (
     <div className={css["item-description"]}>
@@ -55,12 +71,29 @@ const ProductInfo = ({ product }: ProductInfoProps) => {
           <div className={css["item-volume"]}>{product?.volume}</div>
         </div>
         <p className={css["item-desc-text"]}>{product?.description}</p>
-        <Button
-          buttonType={BUTTON_TYPE_CLASSES.inverted}
-          onClick={addProductToCartHandler}
-        >
-          ADD TO BAG
-        </Button>
+        <div className={css["item-grouped-buttons"]}>
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.basic}
+            onClick={addProductToCartHandler}
+          >
+            ADD TO BAG
+          </Button>
+          {isProductInWishlist ? (
+            <Button
+              buttonType={BUTTON_TYPE_CLASSES.basic}
+              onClick={removeProductToWishlistHandler}
+            >
+              REMOVE FROM YOUR WISH LIST
+            </Button>
+          ) : (
+            <Button
+              buttonType={BUTTON_TYPE_CLASSES.basic}
+              onClick={addProductToWishlistHandler}
+            >
+              ADD TO YOUR WISH LIST
+            </Button>
+          )}
+        </div>
 
         <div
           className={css["item-ingredients"] + " " + css["item-desc-section"]}

@@ -6,6 +6,7 @@ export enum BUTTON_TYPE_CLASSES {
   inverted = "inverted-button",
   transparentBg = "transparent-bg-button",
   spinner = "spinner-container",
+  underlined = "underlined-button",
 }
 
 export type ButtonProps = {

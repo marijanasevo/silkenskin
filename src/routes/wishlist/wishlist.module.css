@@ -1,0 +1,10 @@
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, min(25rem, 100%));
+  justify-content: center;
+  column-gap: 20px;
+  row-gap: 50px;
+  margin-top: min(6rem, 10vmin);
+  margin-inline: auto;
+  width: min(130rem, 100%);
+}

@@ -65,6 +65,13 @@
   font-size: min(8vmin, calc(0.5rem + 1.8vmin), 2.2rem);
 }
 
+.item-grouped-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .item-suited-to {
   display: flex;
   gap: 1rem;

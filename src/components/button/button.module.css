@@ -66,3 +66,12 @@
   }
 }
 }
+
+.underlined-button {
+  border: none;
+  background: none;
+  color: black;
+  text-align: left;
+  padding: 0;
+  text-decoration: underline;
+}

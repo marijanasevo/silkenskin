@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import {
   selectCategoriesIsLoading,
@@ -18,19 +18,11 @@ import { CategoryItem } from "../../store/category/category.types";
 import { AppDispatch } from "../../store/store";
 
 const Shop = () => {
-  const dispatch = useDispatch<AppDispatch>();
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
-  const isCategoriesEmpty = useSelector(selectIsCategoriesEmpty);
 
   let { category } = useParams();
   const [productsToShow, setProductsToShow] = useState<CategoryItem[]>([]);
-
-  useEffect(() => {
-    if (isCategoriesEmpty) {
-      dispatch(fetchCategoriesAsync());
-    }
-  }, []);
 
   useEffect(() => {
     const filteredProducts =

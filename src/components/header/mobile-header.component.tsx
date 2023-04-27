@@ -104,7 +104,7 @@ const MobileHeader = () => {
               <Link to="/about">ABOUT</Link>
             </li>
             <li>
-              <Link to="#">YOUR FAVORITES</Link>
+              <Link to="/wishlist">YOUR WISHLIST</Link>
             </li>
           </ul>
         </aside>

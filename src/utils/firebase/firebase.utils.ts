@@ -153,23 +153,10 @@ export type Product = {
 };
 
 export const createReview = async (product: Product) => {
-  const {
-    userDisplayName,
-    userEmail,
-    stars,
-    body,
-    productId,
-    verifiedPurchase,
-  } = product;
   const createdAt = new Date();
   const newReview = {
-    userDisplayName,
-    stars,
-    body,
+    ...product,
     createdAt,
-    productId,
-    userEmail,
-    verifiedPurchase,
   };
 
   const reviewCollectionRef = collection(db, "reviews");

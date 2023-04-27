@@ -8,8 +8,8 @@ import { selectCurrentUser } from "./store/user/user.selector";
 import {
   createUserDocumentFromAuth,
   onAuthStateChangedListener,
-  getUserDisplayName,
   getUserOrderHistory,
+  getUserDisplayName,
 } from "./utils/firebase/firebase.utils";
 
 import Spinner from "./components/spinner/spinner.component";
@@ -26,13 +26,17 @@ const Checkout = lazy(() => import("./routes/checkout/checkout.component"));
 
 const Home = lazy(() => import("./routes/home/home.component"));
 const Shop = lazy(() => import("./routes/shop/shop.component"));
-// const Product = lazy(() => import("./routes/product/product.component"));
-import Product from "./routes/product/product.component";
+const Product = lazy(() => import("./routes/product/product.component"));
 import css from "./App.module.css";
+import WishList from "./routes/wishlist/wishlist.component";
+import { fetchCategoriesAsync } from "./store/category/category.reducer";
+import { selectIsCategoriesEmpty } from "./store/category/category.selector";
+import { AppDispatch } from "./store/store";
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const currentUser = useSelector(selectCurrentUser);
+  const isCategoriesEmpty = useSelector(selectIsCategoriesEmpty);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(async (user) => {
@@ -48,7 +52,7 @@ const App = () => {
       }
 
       // Fix for non-serializable value in payload (not string, number or standard js object)
-      const pickedUser = user && {
+      const newUser = user && {
         accessToken: await user.getIdToken(),
         email: user.email,
         displayName: displayName,
@@ -56,10 +60,16 @@ const App = () => {
         purchases,
       };
 
-      dispatch(setCurrentUser(pickedUser));
+      dispatch(setCurrentUser(newUser));
     });
 
     return unsubscribe;
+  }, []);
+
+  useEffect(() => {
+    if (isCategoriesEmpty) {
+      dispatch(fetchCategoriesAsync());
+    }
   }, []);
 
   return (
@@ -70,6 +80,7 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="/shop/:category?" element={<Shop />} />
             <Route path="/product/:id" element={<Product />} />
+            <Route path="/wishlist" element={<WishList />} />
             <Route path="/account" element={<Account />} />
             <Route path="/account-created" element={<AccountCreated />} />
             <Route path="/checkout" element={<Checkout />} />

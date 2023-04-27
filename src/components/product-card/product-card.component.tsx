@@ -12,30 +12,53 @@ import css from "./product-card.module.css";
 
 type ProductCardProps = {
   product: CategoryItem;
+  isInWishList?: boolean;
+  onRemoveFromWishlist?: () => void;
 };
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({
+  product,
+  isInWishList = false,
+  onRemoveFromWishlist,
+}: ProductCardProps) => {
   const dispatch = useDispatch();
 
   const { name, price, thumbnailUrl } = product;
 
   const addProductToCartHandler = () => dispatch(addItemToCart(product));
 
+  const removeFromWishlistHandler = () => {
+    if (onRemoveFromWishlist) {
+      onRemoveFromWishlist();
+    }
+  };
+
   return (
     <div className={css["product"]}>
-      <img className={css["product__image"]} src={thumbnailUrl} alt={name} />
+      <Link to={`/product/${product.id}`}>
+        <img className={css["product__image"]} src={thumbnailUrl} alt={name} />
+      </Link>
       <div className={css["product__details"]}>
         <h3 className={css["product__details__title"]}>
           <Link to={`/product/${product.id}`}>{name}</Link>
         </h3>
         <span className={css["product__details__price"]}>${price}</span>
         <p className={css["product__details__desc"]}>For dry skin</p>
-        <Button
-          buttonType={BUTTON_TYPE_CLASSES.inverted}
-          onClick={addProductToCartHandler}
-        >
-          ADD TO BAG
-        </Button>
+        {isInWishList ? (
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.underlined}
+            onClick={removeFromWishlistHandler}
+          >
+            Remove from wishlist
+          </Button>
+        ) : (
+          <Button
+            buttonType={BUTTON_TYPE_CLASSES.inverted}
+            onClick={addProductToCartHandler}
+          >
+            ADD TO BAG
+          </Button>
+        )}
       </div>
     </div>
   );
