@@ -1,0 +1,27 @@
+.categories {
+  list-style: none;
+  margin: 0;
+  border-inline: 0;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 1rem;
+  justify-content: center;
+  font-size: min(8vmin, calc(1rem + 1vmin), 2.2rem);
+  color: rgb(134, 134, 134);
+  padding-bottom: 3rem;
+}
+
+.category-item a {
+  color: rgb(134, 134, 134);
+  font-family: var(--serif-font);
+  padding: 1rem 1rem;
+  transition: 0.1s all linear;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.category-item:not(:last-child)::after {
+  content: "/";
+}
