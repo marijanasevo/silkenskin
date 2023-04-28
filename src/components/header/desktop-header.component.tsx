@@ -28,7 +28,7 @@ const DesktopHeader = () => {
           <Link to="/login">
             <AvatarIcon />
           </Link>
-          <Link to="">
+          <Link to="/wishlist">
             <HeartIcon />
           </Link>
           <div>

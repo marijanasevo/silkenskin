@@ -1,8 +1,13 @@
+.filters {
+  border-top: 1px solid rgb(212, 212, 212);
+  border-bottom: 1px solid rgb(212, 212, 212);
+  padding: 3rem 2vw;
+  font-size: min(8vmin, calc(1rem + 1vmin), 2.2rem);
+}
+
 .categories {
   list-style: none;
   margin: 0;
-  padding: 3rem 2vw;
-  border: 1px solid rgb(212, 212, 212);
   border-inline: 0;
   display: flex;
   flex-wrap: wrap;
@@ -10,6 +15,7 @@
   justify-content: center;
   font-size: min(8vmin, calc(1rem + 1vmin), 2.2rem);
   color: rgb(134, 134, 134);
+  padding-bottom: 3rem;
 }
 
 .category-item a {
@@ -26,3 +32,44 @@
 .category-item:not(:last-child)::after {
   content: "/";
 }
+
+.filters-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.filters-filters, .filters-sort {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: rgb(134, 134, 134);
+  transition: 0.1s all linear;
+  cursor: pointer;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.filter-icons {
+  font-size: 2.5rem;
+}
+
+.filters-body {
+  margin-top: 3rem;
+}
+
+.filters-form {
+  display: flex;
+}
+
+.filters-group {
+  border: none;
+  padding-inline: 0;
+}
+
+
+
+
