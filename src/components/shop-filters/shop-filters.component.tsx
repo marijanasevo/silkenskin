@@ -15,13 +15,17 @@ export type ShopFiltersProps = {
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
 };
 
+export type SortByPriceState = "" | "lowest" | "highest";
+
 const ShopFilters = ({ filters, setFilters }: ShopFiltersProps) => {
   const categoriesMap = useSelector(selectCategoriesMap);
   const [suitedOptions, setSuitedOptions] = useState<string[]>([]);
   const [propertiesOptions, setPropertiesOptions] = useState<string[]>([]);
   const [targetsOptions, setTargetsOptions] = useState<string[]>([]);
+  const [brandOptions, setBrandOptions] = useState<string[]>([]);
   const [filtersExpanded, setFiltersExpanded] = useState(false);
-  const [sortExpanded, setSortExpanded] = useState(false);
+  const [sortByPrice, setSortByPrice] = useState<SortByPriceState>("");
+  const [isFiltersEmpty, setIsFiltersEmpty] = useState<boolean>(true);
 
   useEffect(() => {
     const suitedOptions = [
@@ -64,14 +68,40 @@ const ShopFilters = ({ filters, setFilters }: ShopFiltersProps) => {
     setTargetsOptions(targetOptions);
   }, [categoriesMap]);
 
+  useEffect(() => {
+    const brandOptions = [
+      ...Object.values(categoriesMap).reduce((acc, category) => {
+        category.forEach((product) => {
+          acc.add(product.brand);
+        });
+        return acc;
+      }, new Set<string>()),
+    ];
+
+    setBrandOptions(brandOptions);
+  }, [categoriesMap]);
+
+  useEffect(() => {
+    setFilters({ ...filters, sort: sortByPrice });
+  }, [sortByPrice]);
+
+  useEffect(() => {
+    const newIsFiltersEmpty = () => {
+      const { productProperties, targets, suited, brand } = filters;
+      return !productProperties.length && !targets.length && !suited && !brand;
+    };
+
+    setIsFiltersEmpty(newIsFiltersEmpty);
+  }, [filters]);
+
   const toggleFiltersExpanded = () => {
     setFiltersExpanded(!filtersExpanded);
-    setSortExpanded(false);
   };
 
-  const toggleSortExpanded = () => {
-    setSortExpanded(!sortExpanded);
-    setFiltersExpanded(false);
+  const toggleSort = () => {
+    const sortNextState: SortByPriceState =
+      sortByPrice === "" ? "lowest" : sortByPrice === "lowest" ? "highest" : "";
+    setSortByPrice(sortNextState);
   };
 
   return (
@@ -81,21 +111,32 @@ const ShopFilters = ({ filters, setFilters }: ShopFiltersProps) => {
       <div className={css["filters-menu"]}>
         <span
           onClick={toggleFiltersExpanded}
-          className={css["filters-filters"]}
+          className={`${css["filters-filters"]} ${css["filter-icons"]} ${
+            isFiltersEmpty ? "" : css["filters-active"]
+          }`}
         >
-          <TuneIcon className={css["filter-icons"]} />
+          <TuneIcon className={`${css["filter-icons"]}`} />
           Filters
         </span>
 
-        <span onClick={toggleSortExpanded} className={css["filters-sort"]}>
-          Sort
+        <span
+          onClick={toggleSort}
+          className={`${css["filters-sort"]} ${
+            sortByPrice === ""
+              ? ""
+              : sortByPrice === "lowest"
+              ? css["price-lowest"]
+              : css["price-highest"]
+          }`}
+        >
+          Sort by price
           <SortIcon className={css["filter-icons"]} />
         </span>
       </div>
 
       <div
         className={`${css["filters-body"]} ${
-          filtersExpanded || sortExpanded ? css["expanded"] : ""
+          filtersExpanded ? css["expanded"] : ""
         }`}
       >
         <form className={css["filters-form"]}>
@@ -122,13 +163,12 @@ const ShopFilters = ({ filters, setFilters }: ShopFiltersProps) => {
               options={suitedOptions}
               filterGroup="suited"
             />
-          </div>
-          <div
-            className={`${css["sort-container"]} ${
-              sortExpanded ? css["displayed-filters"] : ""
-            }`}
-          >
-            kkk
+            <FilterGroup
+              filters={filters}
+              setFilters={setFilters}
+              options={brandOptions}
+              filterGroup="brand"
+            />
           </div>
         </form>
       </div>

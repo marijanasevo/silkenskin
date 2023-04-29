@@ -8,59 +8,40 @@ import {
 } from "../../store/category/category.selector";
 import Spinner from "../../components/spinner/spinner.component";
 
-import ShopFilters from "../../components/shop-categories/shop-filters.component";
+import ShopFilters, {
+  SortByPriceState,
+} from "../../components/shop-filters/shop-filters.component";
 import ProductCard from "../../components/product-card/product-card.component";
 
 import css from "./shop.module.css";
 
 import { CategoryItem } from "../../store/category/category.types";
+import { applyFilters } from "./apply-filters";
 
 export type Filters = {
   productProperties: string[];
   targets: string[];
   suited: string;
+  brand: string;
+  sort: SortByPriceState;
 };
 
 const Shop = () => {
+  let { category } = useParams();
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
+  const [productsToShow, setProductsToShow] = useState<CategoryItem[]>([]);
   const [filters, setFilters] = useState<Filters>({
     productProperties: [],
     targets: [],
     suited: "",
+    brand: "",
+    sort: "",
   });
 
-  let { category } = useParams();
-  const [productsToShow, setProductsToShow] = useState<CategoryItem[]>([]);
-
   useEffect(() => {
-    let categoryProductsToShoW =
-      category === undefined
-        ? Object.values(categoriesMap).flat()
-        : Array.from(categoriesMap[category?.replace(/-/g, " ")] || []);
-
-    if (filters.productProperties) {
-      categoryProductsToShoW = categoryProductsToShoW.filter((product) =>
-        filters.productProperties.every((prop) =>
-          product.productProperties.includes(prop)
-        )
-      );
-    }
-
-    if (filters.targets) {
-      categoryProductsToShoW = categoryProductsToShoW.filter((product) =>
-        filters.targets?.every((prop) => product.targets?.includes(prop))
-      );
-    }
-
-    if (filters.suited) {
-      categoryProductsToShoW = categoryProductsToShoW.filter(
-        (product) => filters.suited === product.suited
-      );
-    }
-
-    console.log("productsToShow", categoryProductsToShoW, "filters", filters);
-    setProductsToShow(categoryProductsToShoW);
+    let newProductsToShoW = applyFilters(categoriesMap, filters, category);
+    setProductsToShow(newProductsToShoW);
   }, [category, categoriesMap, filters]);
 
   return (

@@ -19,14 +19,34 @@
   color: rgb(134, 134, 134);
   transition: 0.1s all linear;
   cursor: pointer;
+  font-family: var(--serif-font);
 
   &:hover {
-    color: black;
+    color: #1f1f1f;
   }
 }
 
-.filter-icons {
-  font-size: 2.5rem;
+.price-highest, .price-lowest, .filters-active {
+  color: #252525;
+  font-weight: bold;
+}
+
+.filters-sort > svg {
+  transition: 0.3s all linear;
+}
+
+.price-lowest > svg {
+  transform: rotate(180deg);
+  //font-size: 2.3rem;
+}
+
+.price-highest > svg {
+  transform: rotateX(0);
+  //font-size: 2.3rem;
+}
+
+.filter-icons > svg {
+  //font-size: 2.5rem;
 }
 
 .filters-body {
@@ -44,7 +64,7 @@
   display: flex;
 }
 
-.filters-container, .sort-container {
+.filters-container {
   opacity: 0;
   max-height: 0;
   transition: 0.2s max-height ease-in-out, 0.1s opacity ease-in;
@@ -52,7 +72,7 @@
 
 .displayed-filters {
   opacity: 1;
-  max-height: 100rem;
+  max-height: 150rem;
 }
 
 .filters-group {

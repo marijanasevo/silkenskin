@@ -22,6 +22,11 @@
   }
 }
 
+.category-item .active-item {
+  color: #252525;
+  font-weight: bold;
+}
+
 .category-item:not(:last-child)::after {
   content: "/";
 }
