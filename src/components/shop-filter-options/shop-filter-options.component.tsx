@@ -2,83 +2,45 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectCategoriesMap } from "../../store/category/category.selector";
 
+import { getFilterOptions } from "./getFilterOptions";
+
 import CategoryFilters from "../category-filters/category-filters.component";
 import FilterGroup from "../filter-group/filter-group.component";
 import TuneIcon from "@mui/icons-material/Tune";
 import SortIcon from "@mui/icons-material/Sort";
 
 import { Filters } from "../../routes/shop/shop.component";
-import css from "./shop-filters.module.css";
+import css from "./shop-filter-options.module.css";
 
 export type ShopFiltersProps = {
   filters: Filters;
   setFilters: React.Dispatch<React.SetStateAction<Filters>>;
 };
 
+export type FilterOptions = {
+  suited: string[];
+  productProperties: string[];
+  targets: string[];
+  brand: string[];
+};
+
 export type SortByPriceState = "" | "lowest" | "highest";
 
-const ShopFilters = ({ filters, setFilters }: ShopFiltersProps) => {
+const ShopFilterOptions = ({ filters, setFilters }: ShopFiltersProps) => {
   const categoriesMap = useSelector(selectCategoriesMap);
-  const [suitedOptions, setSuitedOptions] = useState<string[]>([]);
-  const [propertiesOptions, setPropertiesOptions] = useState<string[]>([]);
-  const [targetsOptions, setTargetsOptions] = useState<string[]>([]);
-  const [brandOptions, setBrandOptions] = useState<string[]>([]);
   const [filtersExpanded, setFiltersExpanded] = useState(false);
   const [sortByPrice, setSortByPrice] = useState<SortByPriceState>("");
   const [isFiltersEmpty, setIsFiltersEmpty] = useState<boolean>(true);
+  const [filterOptions, setFilterOptions] = useState<FilterOptions>({
+    suited: [],
+    productProperties: [],
+    targets: [],
+    brand: [],
+  });
 
   useEffect(() => {
-    const suitedOptions = [
-      ...Object.values(categoriesMap).reduce((acc, category) => {
-        category.forEach((item) => acc.add(item.suited));
-        return acc;
-      }, new Set<string>()),
-    ];
-
-    setSuitedOptions(suitedOptions);
-  }, [categoriesMap]);
-
-  useEffect(() => {
-    const propertiesOptions = [
-      ...Object.values(categoriesMap).reduce((acc, category) => {
-        category.forEach((product) => {
-          product.productProperties.forEach((property) => {
-            acc.add(property);
-          });
-        });
-        return acc;
-      }, new Set<string>()),
-    ];
-
-    setPropertiesOptions(propertiesOptions);
-  }, [categoriesMap]);
-
-  useEffect(() => {
-    const targetOptions = [
-      ...Object.values(categoriesMap).reduce((acc, category) => {
-        category.forEach((product) => {
-          product.targets?.forEach((target) => {
-            acc.add(target);
-          });
-        });
-        return acc;
-      }, new Set<string>()),
-    ];
-
-    setTargetsOptions(targetOptions);
-  }, [categoriesMap]);
-
-  useEffect(() => {
-    const brandOptions = [
-      ...Object.values(categoriesMap).reduce((acc, category) => {
-        category.forEach((product) => {
-          acc.add(product.brand);
-        });
-        return acc;
-      }, new Set<string>()),
-    ];
-
-    setBrandOptions(brandOptions);
+    const options = getFilterOptions(categoriesMap);
+    setFilterOptions(options);
   }, [categoriesMap]);
 
   useEffect(() => {
@@ -148,25 +110,25 @@ const ShopFilters = ({ filters, setFilters }: ShopFiltersProps) => {
             <FilterGroup
               filters={filters}
               setFilters={setFilters}
-              options={targetsOptions}
+              options={filterOptions.targets}
               filterGroup="targets"
             />
             <FilterGroup
               filters={filters}
               setFilters={setFilters}
-              options={propertiesOptions}
+              options={filterOptions.productProperties}
               filterGroup="productProperties"
             />
             <FilterGroup
               filters={filters}
               setFilters={setFilters}
-              options={suitedOptions}
+              options={filterOptions.suited}
               filterGroup="suited"
             />
             <FilterGroup
               filters={filters}
               setFilters={setFilters}
-              options={brandOptions}
+              options={filterOptions.brand}
               filterGroup="brand"
             />
           </div>
@@ -176,4 +138,4 @@ const ShopFilters = ({ filters, setFilters }: ShopFiltersProps) => {
   );
 };
 
-export default ShopFilters;
+export default ShopFilterOptions;

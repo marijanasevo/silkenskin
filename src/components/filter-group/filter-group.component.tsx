@@ -5,9 +5,9 @@ import { formatCamelCasedName } from "../../utils/helpers/helpers";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import css from "../shop-filters/shop-filters.module.css";
+import css from "../shop-filter-options/shop-filter-options.module.css";
 
-import { ShopFiltersProps } from "../shop-filters/shop-filters.component";
+import { ShopFiltersProps } from "../shop-filter-options/shop-filter-options.component";
 
 type FilterGroupProps = {
   options: string[];

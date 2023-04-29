@@ -8,9 +8,9 @@ import {
 } from "../../store/category/category.selector";
 import Spinner from "../../components/spinner/spinner.component";
 
-import ShopFilters, {
+import ShopFilterOptions, {
   SortByPriceState,
-} from "../../components/shop-filters/shop-filters.component";
+} from "../../components/shop-filter-options/shop-filter-options.component";
 import ProductCard from "../../components/product-card/product-card.component";
 
 import css from "./shop.module.css";
@@ -52,7 +52,7 @@ const Shop = () => {
         <Spinner />
       ) : (
         <>
-          <ShopFilters filters={filters} setFilters={setFilters} />
+          <ShopFilterOptions filters={filters} setFilters={setFilters} />
 
           <div className={css["products"]}>
             {productsToShow.map((product) => (
