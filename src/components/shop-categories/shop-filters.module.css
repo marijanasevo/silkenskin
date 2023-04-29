@@ -30,11 +30,29 @@
 }
 
 .filters-body {
-  margin-top: 3rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.2s all ease-in;
+
+  &.expanded {
+    padding-top: 3rem;
+    max-height: 150rem;
+  }
 }
 
 .filters-form {
   display: flex;
+}
+
+.filters-container, .sort-container {
+  opacity: 0;
+  max-height: 0;
+  transition: 0.2s max-height ease-in-out, 0.1s opacity ease-in;
+}
+
+.displayed-filters {
+  opacity: 1;
+  max-height: 100rem;
 }
 
 .filters-group {

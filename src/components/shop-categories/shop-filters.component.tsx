@@ -20,6 +20,8 @@ const ShopFilters = ({ filters, setFilters }: ShopFiltersProps) => {
   const [suitedOptions, setSuitedOptions] = useState<string[]>([]);
   const [propertiesOptions, setPropertiesOptions] = useState<string[]>([]);
   const [targetsOptions, setTargetsOptions] = useState<string[]>([]);
+  const [filtersExpanded, setFiltersExpanded] = useState(false);
+  const [sortExpanded, setSortExpanded] = useState(false);
 
   useEffect(() => {
     const suitedOptions = [
@@ -62,42 +64,72 @@ const ShopFilters = ({ filters, setFilters }: ShopFiltersProps) => {
     setTargetsOptions(targetOptions);
   }, [categoriesMap]);
 
+  const toggleFiltersExpanded = () => {
+    setFiltersExpanded(!filtersExpanded);
+    setSortExpanded(false);
+  };
+
+  const toggleSortExpanded = () => {
+    setSortExpanded(!sortExpanded);
+    setFiltersExpanded(false);
+  };
+
   return (
     <div className={css["filters"]}>
       <CategoryFilters />
 
       <div className={css["filters-menu"]}>
-        <span className={css["filters-filters"]}>
+        <span
+          onClick={toggleFiltersExpanded}
+          className={css["filters-filters"]}
+        >
           <TuneIcon className={css["filter-icons"]} />
           Filters
         </span>
 
-        <span className={css["filters-sort"]}>
+        <span onClick={toggleSortExpanded} className={css["filters-sort"]}>
           Sort
           <SortIcon className={css["filter-icons"]} />
         </span>
       </div>
 
-      <div className={css["filters-body"]}>
+      <div
+        className={`${css["filters-body"]} ${
+          filtersExpanded || sortExpanded ? css["expanded"] : ""
+        }`}
+      >
         <form className={css["filters-form"]}>
-          <FilterGroup
-            filters={filters}
-            setFilters={setFilters}
-            options={targetsOptions}
-            filterGroup="targets"
-          />
-          <FilterGroup
-            filters={filters}
-            setFilters={setFilters}
-            options={propertiesOptions}
-            filterGroup="productProperties"
-          />
-          <FilterGroup
-            filters={filters}
-            setFilters={setFilters}
-            options={suitedOptions}
-            filterGroup="suited"
-          />
+          <div
+            className={`${css["filters-container"]} ${
+              filtersExpanded ? css["displayed-filters"] : ""
+            }`}
+          >
+            <FilterGroup
+              filters={filters}
+              setFilters={setFilters}
+              options={targetsOptions}
+              filterGroup="targets"
+            />
+            <FilterGroup
+              filters={filters}
+              setFilters={setFilters}
+              options={propertiesOptions}
+              filterGroup="productProperties"
+            />
+            <FilterGroup
+              filters={filters}
+              setFilters={setFilters}
+              options={suitedOptions}
+              filterGroup="suited"
+            />
+          </div>
+          <div
+            className={`${css["sort-container"]} ${
+              sortExpanded ? css["displayed-filters"] : ""
+            }`}
+          >
+            kkk
+          </div>
         </form>
       </div>
     </div>
