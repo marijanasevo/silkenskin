@@ -1,0 +1,36 @@
+.post-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.date {
+  font-size: min(6.2vmin, calc(.8rem + 0.6vmax));
+  text-align: right;
+  color: #b9b9b9;
+  text-transform: lowercase;
+  font-family: var(--serif-font);
+  letter-spacing: 2px;
+}
+
+.post-thumbnail {
+  cursor: pointer;
+}
+
+.post-card-tags {
+  font-size: min(6vmin, calc(.7rem + 0.5vmax));
+  text-transform: uppercase;
+  color: #6f6f6f;
+}
+
+.post-card-title {
+  text-transform: capitalize;
+  font-size: min(6vmin, calc(1rem + 1vmax));
+  font-family: var(--serif-font);
+  cursor: pointer;
+}
+
+.post-excerpt {
+  font-size: min(6vmin, calc(.7rem + 0.5vmax));
+  line-height: 150%;
+}

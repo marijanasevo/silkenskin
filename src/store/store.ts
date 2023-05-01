@@ -14,7 +14,7 @@ type ExtendedPersistConfig = PersistConfig<RootState> & {
 const persistConfig: ExtendedPersistConfig = {
   key: "root",
   storage,
-  blacklist: ["user", "categories", "reviews"],
+  blacklist: ["user", "categories", "reviews", "posts"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -31,8 +31,9 @@ export const store = configureStore({
         ignoredActions: [
           "persist/PERSIST",
           "reviews/fetchReviewsAsync/fulfilled",
+          "posts/fetchPostsAsync/fulfilled",
         ],
-        ignoredPaths: ["reviews"],
+        ignoredPaths: ["reviews", "posts"],
       },
     }).concat(middleWares),
 });

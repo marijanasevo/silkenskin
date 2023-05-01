@@ -197,3 +197,11 @@ export const getUserOrderHistory = async (uid: string) => {
   const querySnapshot = await getDocs(q);
   return await querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
+
+export const getPostsAndDocuments = async () => {
+  const collectionRef = collection(db, "posts");
+  const q = query(collectionRef);
+
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
+};

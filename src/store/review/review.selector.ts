@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 import { RootState } from "../store";
-import { ReviewState, ReviewMap } from "./review.types";
+import { ReviewState } from "./review.types";
 
 const selectReviewReducer = (state: RootState): ReviewState => state.reviews;
 

@@ -1,0 +1,26 @@
+.header {
+  text-align: center;
+  margin: min(4rem, 10vmin) 0 min(6rem, 10vmin)
+}
+
+.heading {
+  margin-bottom: min(9vmin, 1.4rem);
+}
+
+.subheading {
+  font-size: min(6vmin, calc(.7rem + 0.5vmax));
+  line-height: 140%;
+  max-width: 67ch;
+  display: inline-block;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, min(25rem, 100%));
+  justify-content: center;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  margin-top: min(6rem, 10vmin);
+  margin-inline: auto;
+  width: min(90rem, 100%);
+}

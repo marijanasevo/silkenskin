@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCategoriesMap } from "../../store/category/category.selector";
 import css from "./category-filters.module.css";
-import { replaceSpaceWithHyphen } from "../../utils/helpers/helpers";
+import { formatStrForSlug } from "../../utils/helpers/helpers";
 
 const CategoryFilters = () => {
   let { category } = useParams<string>();
@@ -22,11 +22,11 @@ const CategoryFilters = () => {
         <div key={categoryTitle} className={`${css["category-item"]}`}>
           <Link
             className={
-              replaceSpaceWithHyphen(categoryTitle) === category
+              formatStrForSlug(categoryTitle) === category
                 ? css["active-item"]
                 : ""
             }
-            to={`/shop/${replaceSpaceWithHyphen(categoryTitle)}`}
+            to={`/shop/${formatStrForSlug(categoryTitle)}`}
           >
             {categoryTitle}
           </Link>

@@ -5,6 +5,7 @@ import { cartReducer } from "./cart/cart.reducer";
 import { menuReducer } from "./menu/menu.reducer";
 import { reviewsReducer } from "./review/review.reducer";
 import { wishlistReducer } from "./wishlist/wishlist.reducer";
+import { postsReducer } from "./posts/posts.reducer";
 
 export const rootReducer = combineReducers({
   user: userReducer,
@@ -13,4 +14,5 @@ export const rootReducer = combineReducers({
   menu: menuReducer,
   reviews: reviewsReducer,
   wishlist: wishlistReducer,
+  posts: postsReducer,
 });

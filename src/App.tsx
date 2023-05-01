@@ -16,6 +16,10 @@ import Spinner from "./components/spinner/spinner.component";
 const Navigation = lazy(
   () => import("./routes/navigation/navigation.component")
 );
+
+const Home = lazy(() => import("./routes/home/home.component"));
+const Shop = lazy(() => import("./routes/shop/shop.component"));
+const Product = lazy(() => import("./routes/product/product.component"));
 const Login = lazy(() => import("./routes/authentication/login.component"));
 const SignUp = lazy(() => import("./routes/authentication/sign-up.component"));
 const Account = lazy(() => import("./routes/account/account.component"));
@@ -23,10 +27,9 @@ const AccountCreated = lazy(
   () => import("./routes/account-created/account-created.component")
 );
 const Checkout = lazy(() => import("./routes/checkout/checkout.component"));
+const Blog = lazy(() => import("./routes/blog/blog.component"));
+const Post = lazy(() => import("./routes/post/post.component"));
 
-const Home = lazy(() => import("./routes/home/home.component"));
-const Shop = lazy(() => import("./routes/shop/shop.component"));
-const Product = lazy(() => import("./routes/product/product.component"));
 import css from "./App.module.css";
 import WishList from "./routes/wishlist/wishlist.component";
 import { fetchCategoriesAsync } from "./store/category/category.reducer";
@@ -81,6 +84,8 @@ const App = () => {
             <Route path="/shop/:category?" element={<Shop />} />
             <Route path="/product/:id" element={<Product />} />
             <Route path="/wishlist" element={<WishList />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/post/:articleSlug" element={<Post />} />
             <Route path="/account" element={<Account />} />
             <Route path="/account-created" element={<AccountCreated />} />
             <Route path="/checkout" element={<Checkout />} />
@@ -101,6 +106,7 @@ const App = () => {
               }
             />
           </Route>
+          {/*<Route path="*" element={<PageNotFound />} />*/}
         </Routes>
       </div>
     </Suspense>

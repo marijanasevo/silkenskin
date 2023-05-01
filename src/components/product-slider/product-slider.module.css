@@ -12,4 +12,5 @@
 
 .item-image {
   object-fit: cover;
+  view-transition-name: product-image;
 }
