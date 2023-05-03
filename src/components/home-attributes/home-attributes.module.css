@@ -1,0 +1,29 @@
+.home-attributes-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  gap: 6em;
+
+  @media (min-width: 650px) {
+    flex-direction: row;
+    gap: unset;
+  }
+}
+
+.attribute {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+
+.attribute-title {
+  font-size: min(4vmin, calc(1.4rem + .3vmax));
+  margin: 2rem 0 0;
+  font-weight: normal;
+}
+
+.attribute-desc {
+  color: gray;
+  font-size: min(3vmin, calc(1rem + 0.3vmax));
+}

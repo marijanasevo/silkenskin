@@ -32,7 +32,7 @@
   display: block;
   max-width: 40rem;
   max-height: 70vh;
-  margin: auto;
+  margin: 1rem auto auto;
   position: relative;
 }
 

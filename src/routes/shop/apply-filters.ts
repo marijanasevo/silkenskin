@@ -12,15 +12,15 @@ export const applyFilters = (
       ? Object.values(categoriesMap).flat()
       : Array.from(categoriesMap[replaceHyphenWithSpace(category)] || []);
 
-  if (filters.productProperties.length) {
+  if (filters?.productProperties?.length) {
     newProductsToShow = newProductsToShow.filter((product) =>
-      filters.productProperties.every((prop) =>
+      filters?.productProperties?.every((prop) =>
         product.productProperties.includes(prop)
       )
     );
   }
 
-  if (filters.targets.length) {
+  if (filters?.targets?.length) {
     newProductsToShow = newProductsToShow.filter((product) =>
       filters.targets?.every((prop) => product.targets?.includes(prop))
     );
@@ -47,6 +47,12 @@ export const applyFilters = (
   if (filters.sort === "highest") {
     newProductsToShow = newProductsToShow.sort(
       (productA, productB) => productB.price - productA.price
+    );
+  }
+
+  if (filters.newArrival) {
+    newProductsToShow = newProductsToShow.filter(
+      (product) => product.newArrival
     );
   }
 

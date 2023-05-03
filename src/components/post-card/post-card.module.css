@@ -21,6 +21,7 @@
   font-size: min(6vmin, calc(.7rem + 0.5vmax));
   text-transform: uppercase;
   color: #6f6f6f;
+  margin-top: .5rem;
 }
 
 .post-card-title {
@@ -28,9 +29,11 @@
   font-size: min(6vmin, calc(1rem + 1vmax));
   font-family: var(--serif-font);
   cursor: pointer;
+  margin: 0;
 }
 
-.post-excerpt {
+.post-card-excerpt {
   font-size: min(6vmin, calc(.7rem + 0.5vmax));
   line-height: 150%;
+  margin: 0;
 }

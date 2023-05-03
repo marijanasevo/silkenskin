@@ -12,13 +12,7 @@ import css from "./blog.module.css";
 import { AppDispatch } from "../../store/store";
 
 const Blog = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const isPostsEmpty = useSelector(selectIsPostsEmpty);
   const posts = useSelector(selectPosts);
-
-  useEffect(() => {
-    if (isPostsEmpty) dispatch(fetchPostsAsync());
-  }, []);
 
   return (
     <>

@@ -1,0 +1,12 @@
+.categories-container {
+  display: grid;
+  gap: 1rem;
+
+  @media (min-width: 650px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 1fr 1fr 1fr
+  }
+}

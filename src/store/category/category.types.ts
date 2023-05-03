@@ -25,6 +25,7 @@ export type CategoryItem = {
   averageStars: number;
   numberOfReviews: number;
   reviews: Review[];
+  newArrival: boolean;
 };
 
 export type Category = {

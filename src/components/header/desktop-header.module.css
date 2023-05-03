@@ -14,6 +14,7 @@
   width: 100%;
   top: 0;
   z-index: 2;
+
 }
 
 /* Free shippinig worldwide */
@@ -35,6 +36,16 @@
   background: white;
   height: 6.6rem;
   border-bottom: 1px solid var(--soft-accent-color);
+  width: min(100%, 130rem);
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+
+  @media (min-width: 900px) {
+    padding-inline: 2.9rem;
+    width: min(100%, 130rem);
+  }
+
 }
 
 .left-side-nav,

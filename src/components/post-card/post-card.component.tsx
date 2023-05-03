@@ -1,29 +1,20 @@
-import css from "./post-card.module.css";
+import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { formatStrForSlug } from "../../utils/helpers/helpers";
+import { navigateTo } from "../../utils/helpers/navigate";
+
 import { Post } from "../../store/posts/posts.types";
-import { useRef } from "react";
+import css from "./post-card.module.css";
 
 export type PostCardProps = {
   post: Post;
+  isOnHomePage?: boolean;
 };
 
-const PostCard = ({ post }: PostCardProps) => {
+const PostCard = ({ post, isOnHomePage = false }: PostCardProps) => {
   const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
   const postThumbnail = useRef<HTMLImageElement>(null);
-
-  const navigateToPost = (route: string) => {
-    //@ts-ignore
-    if (!document.startViewTransition) {
-      return navigate(route);
-    } else {
-      //@ts-ignore
-      document.startViewTransition(() => {
-        navigate(route);
-        window.scrollTo({ top: 0 });
-      });
-    }
-  };
 
   return (
     <div className={css["post-card"]}>
@@ -33,27 +24,29 @@ const PostCard = ({ post }: PostCardProps) => {
           day: "numeric",
         })}
       </div>
+
       <img
         ref={postThumbnail}
-        onClick={() => navigateToPost(`/post/${formatStrForSlug(post.title)}`)}
+        onClick={() => handleNavigate(`/post/${formatStrForSlug(post.title)}`)}
         src={post.thumbnail}
         alt="something"
         className={css["post-thumbnail"]}
       />
-      <div className={css["post-card-info"]}>
-        <span className={css["post-card-tags"]}>
-          {post.tags.map((tag) => tag)}
-        </span>
-        <h2
-          onClick={() =>
-            navigateToPost(`/post/${formatStrForSlug(post.title)}`)
-          }
-          className={css["post-card-title"]}
-        >
-          {post.title}
-        </h2>
-        <p className={css["post-excerpt"]}>{post.excerpt}...</p>
-      </div>
+
+      <span className={css["post-card-tags"]}>
+        {post.tags.map((tag) => tag)}
+      </span>
+
+      <h2
+        onClick={() => handleNavigate(`/post/${formatStrForSlug(post.title)}`)}
+        className={css["post-card-title"]}
+      >
+        {post.title}
+      </h2>
+
+      {!isOnHomePage && (
+        <p className={css["post-card-excerpt"]}>{post.excerpt}...</p>
+      )}
     </div>
   );
 };

@@ -3,17 +3,21 @@
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  min-height: 30vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-    url("https://images.unsplash.com/photo-1522108098940-de49801b5b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=869&q=80")
+  min-height: 40vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
+    url("https://images.unsplash.com/photo-1603533627544-4b256401b1ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
       no-repeat center;
   background-size: cover;
   color: white;
   padding: min(8.5vmin, 2.5rem);
-  margin-inline: min(-10vmin, -3rem);
+  background-attachment: fixed;
 
-  @media (min-width: 350px) {
-    min-height: 50vh;
+  @media (min-width: 550px) {
+    min-height: 60vh;
+  }
+
+  @media (max-width: 800px) {
+    margin-inline: -30rem;
   }
 
   &__details {
@@ -36,6 +40,7 @@
 
 .accented-link {
   background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 3px 0px var(--moderate-accent-color);
   color: var(--moderate-accent-color);
   border: 1px solid var(--moderate-accent-color);
   padding: min(7vmin, 1rem) min(7vmin, 2rem);

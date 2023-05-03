@@ -1,0 +1,13 @@
+.featured-description {
+  max-width: 38ch;
+  line-height: 150%;
+  text-align: center;
+  font-size: min(7vmin, calc(0.5rem + 1.5vmin), 2.2rem);
+  margin: min(6rem, 8vmin) auto min(5rem, 7vmin) auto
+}
+
+.featured-image {
+  margin: min(8rem, 10vmin) auto;
+  display: block;
+  width: 70%;
+}

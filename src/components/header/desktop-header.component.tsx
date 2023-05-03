@@ -8,7 +8,7 @@ import css from "./desktop-header.module.css";
 
 const DesktopHeader = () => {
   return (
-    <header className={css["header"]}>
+    <header className={`${css["header"]}`}>
       <div className={css["notice"]}>Free shipping worldwide</div>
 
       <nav className={css["navigation"] + " side-space"}>

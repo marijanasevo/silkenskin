@@ -35,9 +35,7 @@ const ProductCard = ({
 
   return (
     <div className={css["product"]}>
-      <Link to={`/product/${product.id}`}>
-        <img className={css["product__image"]} src={thumbnailUrl} alt={name} />
-      </Link>
+      <img className={css["product__image"]} src={thumbnailUrl} alt={name} />
       <div className={css["product__details"]}>
         <h3 className={css["product__details__title"]}>
           <Link to={`/product/${product.id}`}>{name}</Link>
@@ -46,7 +44,7 @@ const ProductCard = ({
         <p className={css["product__details__desc"]}>For dry skin</p>
         {isInWishList ? (
           <Button
-            buttonType={BUTTON_TYPE_CLASSES.underlined}
+            buttonType={BUTTON_TYPE_CLASSES.underlinedWishlist}
             onClick={removeFromWishlistHandler}
           >
             Remove from wishlist

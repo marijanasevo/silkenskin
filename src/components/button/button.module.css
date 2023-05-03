@@ -67,11 +67,46 @@
 }
 }
 
-.underlined-button {
+.underlined-wishlist-button {
   border: none;
   background: none;
   color: black;
   text-align: left;
   padding: 0;
   text-decoration: underline;
+  font-weight: normal;
+}
+
+.underlined-wishlist-button:hover {
+  background: transparent;
+ }
+
+.underlined-over-image-button {
+  border: none;
+  background: none;
+  color: white;
+  text-align: left;
+  padding: 0;
+  text-decoration: underline;
+  font-size: min(4vmin, calc(1.3rem + 1vmax));
+}
+
+.underlined-over-image-button:hover {
+  background: transparent;
+  color: var(--moderate-accent-color);
+}
+
+.underlined-home-button {
+  border: none;
+  background: none;
+  color: black;
+  padding: 0;
+  text-decoration: underline;
+  font-weight: normal;
+  text-align: center;
+  font-size: min(4vmin, calc(1.3rem + 1vmax))
+}
+
+.underlined-home-button:hover {
+  color: var(--strong-accent-color);
 }

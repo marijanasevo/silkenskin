@@ -1,0 +1,14 @@
+.home-instagram-heading {
+  margin: min(8rem, 10vmin) 0;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+}
+
+.subheading {
+  font-size: min(4vmin, calc(1.4rem + .6vmax), 1.6rem);
+  margin-top: 1rem;
+  display: block;
+}

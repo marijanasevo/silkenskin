@@ -35,11 +35,14 @@ import WishList from "./routes/wishlist/wishlist.component";
 import { fetchCategoriesAsync } from "./store/category/category.reducer";
 import { selectIsCategoriesEmpty } from "./store/category/category.selector";
 import { AppDispatch } from "./store/store";
+import { fetchPostsAsync } from "./store/posts/posts.reducer";
+import { selectIsPostsEmpty } from "./store/posts/posts.selector";
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   const currentUser = useSelector(selectCurrentUser);
   const isCategoriesEmpty = useSelector(selectIsCategoriesEmpty);
+  const isPostsEmpty = useSelector(selectIsPostsEmpty);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(async (user) => {
@@ -73,6 +76,10 @@ const App = () => {
     if (isCategoriesEmpty) {
       dispatch(fetchCategoriesAsync());
     }
+  }, []);
+
+  useEffect(() => {
+    if (isPostsEmpty) dispatch(fetchPostsAsync());
   }, []);
 
   return (

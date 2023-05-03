@@ -1,0 +1,24 @@
+.home-blog-heading {
+  margin: min(8rem, 10vmin) 0;
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+}
+
+.subheading {
+  font-size: min(4vmin, calc(1.4rem + .6vmax), 1.6rem);
+  display: block;
+  margin-top: 0.7rem;
+}
+
+.home-posts-container {
+  display: flex;
+  gap: 1rem;
+  margin: min(6rem, 8vmin) auto min(5rem, 7vmin) auto;
+}
+
+.home-blog-container {
+  margin: min(8rem, 10vmin) auto;
+}

@@ -19,11 +19,12 @@ import { CategoryItem } from "../../store/category/category.types";
 import { applyFilters } from "./apply-filters";
 
 export type Filters = {
-  productProperties: string[];
-  targets: string[];
-  suited: string;
-  brand: string;
-  sort: SortByPriceState;
+  productProperties?: string[];
+  targets?: string[];
+  suited?: string;
+  brand?: string;
+  sort?: SortByPriceState;
+  newArrival?: boolean;
 };
 
 const Shop = () => {
