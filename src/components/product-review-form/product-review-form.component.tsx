@@ -9,10 +9,10 @@ import {
 import { fetchReviewsAsync } from "../../store/review/review.reducer";
 
 import TextField from "@mui/material/TextField";
-import FormControlUnstyled from "@mui/base/FormControlUnstyled";
+import FormControl from "@mui/base/FormControl";
 import { Rating, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import Snackbar, { SnackbarOrigin } from "@mui/material/Snackbar";
+import Snackbar from "@mui/material/Snackbar";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import { AppDispatch } from "../../store/store";
 import css from "./product-review-form.module.css";
@@ -104,7 +104,7 @@ const ProductReviewForm = () => {
 
   return (
     <>
-      <FormControlUnstyled required>
+      <FormControl required>
         <Box
           component="form"
           autoComplete="off"
@@ -250,7 +250,7 @@ const ProductReviewForm = () => {
             </Typography>
           )}
         </Box>
-      </FormControlUnstyled>
+      </FormControl>
 
       <Snackbar
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}

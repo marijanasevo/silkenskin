@@ -118,8 +118,8 @@ const NewArrivalsContainer = () => {
       <div className={css["new-arrivals-container"]}>
         <Slider {...carouselSettings}>
           {productsToShow.map((product) => (
-            <div className={css["slider-product"]}>
-              <ProductCard key={product.id} product={product} />
+            <div key={product.id} className={css["slider-product"]}>
+              <ProductCard product={product} />
             </div>
           ))}
         </Slider>

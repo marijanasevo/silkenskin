@@ -1,14 +1,30 @@
+.home-instagram-container {
+  margin: min(8rem, 10vmin) 0;
+}
+
 .home-instagram-heading {
   margin: min(8rem, 10vmin) 0;
   text-align: center;
 }
 
 .title {
-  margin: 0;
+  margin: 0!important;
 }
 
 .subheading {
   font-size: min(4vmin, calc(1.4rem + .6vmax), 1.6rem);
   margin-top: 1rem;
   display: block;
+}
+
+.instagram-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.instagram-grid > * {
+  flex: 1 0 auto;
+  max-width: 32.8rem;
 }
