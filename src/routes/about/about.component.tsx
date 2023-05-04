@@ -1,4 +1,4 @@
-import css from "./about.component";
+import css from "./about.module.css";
 
 const About = () => {
   return (
