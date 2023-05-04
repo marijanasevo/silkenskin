@@ -50,7 +50,9 @@ const ShopFilterOptions = ({ filters, setFilters }: ShopFiltersProps) => {
   useEffect(() => {
     const newIsFiltersEmpty = () => {
       const { productProperties, targets, suited, brand } = filters;
-      return !productProperties.length && !targets.length && !suited && !brand;
+      return (
+        !productProperties?.length && !targets?.length && !suited && !brand
+      );
     };
 
     setIsFiltersEmpty(newIsFiltersEmpty);

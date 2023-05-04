@@ -33,12 +33,14 @@ const FilterGroup = ({
       if (checked) {
         setFilters({
           ...filters,
-          [filterGroup]: [...filters[filterGroup], name],
+          [filterGroup]: [...(filters?.[filterGroup] ?? []), name],
         });
       } else {
         setFilters({
           ...filters,
-          [filterGroup]: filters[filterGroup].filter((prop) => prop !== name),
+          [filterGroup]: filters?.[filterGroup]?.filter(
+            (prop) => prop !== name
+          ),
         });
       }
     } else if (filterGroup === "suited" || filterGroup === "brand") {

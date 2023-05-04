@@ -5,7 +5,7 @@ import { ReactComponent as Bag } from "../../assets/cart-bag.svg";
 
 type IconProps = {
   icon: string;
-  iconSize: number;
+  iconSize: string;
 };
 
 const Icon = ({ icon, iconSize }: IconProps) => {
