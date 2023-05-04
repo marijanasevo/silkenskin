@@ -112,10 +112,10 @@ const NewArrivalsContainer = () => {
   };
 
   return (
-    <div className={css["new-arriwals-container"]}>
-      <h2 className="section-title">New Arrivals</h2>
+    <div className={css["new-arrivals-container"]}>
+      <h2 className={`${"section-title"} ${css["title"]}`}>New Arrivals</h2>
 
-      <div className={css["new-arrivals-container"]}>
+      <div className={css["new-arrivals-products"]}>
         <Slider {...carouselSettings}>
           {productsToShow.map((product) => (
             <div key={product.id} className={css["slider-product"]}>

@@ -1,4 +1,9 @@
 .home-attributes-container {
+  display: flow-root;
+  padding: min(8rem, 10vmin) 0;
+}
+
+.attributes {
   display: flex;
   flex-direction: column;
   justify-content: space-between;

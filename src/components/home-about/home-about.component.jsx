@@ -2,7 +2,7 @@ import css from "./home-about.module.css";
 
 const HomeAbout = () => {
   return (
-    <div className={css["home-about-container"]}>
+    <div className={css["home-about-container"] + " home-section"}>
       <h1 className="section-title">About Silken Skin</h1>
 
       <blockquote className={css["home-about-quote"]}>

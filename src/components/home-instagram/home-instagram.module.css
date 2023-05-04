@@ -1,9 +1,10 @@
 .home-instagram-container {
-  margin: min(8rem, 10vmin) 0;
+  padding: min(8rem, 10vmin) 0;
+  display: grid;
+  gap:min(8rem, 10vmin);
 }
 
 .home-instagram-heading {
-  margin: min(8rem, 10vmin) 0;
   text-align: center;
 }
 

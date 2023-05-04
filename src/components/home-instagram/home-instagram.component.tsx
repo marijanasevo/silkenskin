@@ -1,7 +1,7 @@
-import css from "./home-instagram.module.css";
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
 import { InstagramEmbed } from "react-social-media-embed";
+
+import css from "./home-instagram.module.css";
 
 interface InstagramPost {
   id: string;

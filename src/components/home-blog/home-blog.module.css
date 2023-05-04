@@ -1,5 +1,10 @@
+.home-blog-container {
+  padding: min(8rem, 10vmin) 0;
+  display: grid;
+  gap: min(8rem, 10vmin);
+}
+
 .home-blog-heading {
-  margin: min(8rem, 10vmin) 0;
   text-align: center;
 }
 
@@ -16,9 +21,4 @@
 .home-posts-container {
   display: flex;
   gap: 1rem;
-  margin: min(6rem, 8vmin) auto min(5rem, 7vmin) auto;
-}
-
-.home-blog-container {
-  margin: min(8rem, 10vmin) auto;
 }

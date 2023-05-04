@@ -1,8 +1,8 @@
 .home-about-container {
   background: rgb(255,255,255);
   background: linear-gradient(0deg, rgba(255,255,255,1) 15%, rgba(255,251,245,1) 100%);
-  display: flow-root;
-  margin-bottom: min(8rem, 10vmin);
+
+  padding: min(8rem, 10vmin) 0;
 }
 
 .home-about-quote {
@@ -19,7 +19,7 @@
     display: inline;
     font-size: 8rem;
     height: 0;
-    left: .5rem;
+    left: 0;
     opacity: .4;
     position: absolute;
     top: 1.5rem;
@@ -28,5 +28,5 @@
 }
 
 .home-about-quote p {
-  margin-left: 3rem;
+  margin: 0 0 0 3rem;
 }

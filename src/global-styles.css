@@ -71,10 +71,16 @@ img {
   margin: min(4rem, 10vmin) 0 min(3rem, 10vmin) 0;
 }
 
+.home-section {
+  padding: min(8rem, 10vmin) 0;
+  display: grid;
+  gap: min(8rem, 10vmin);
+  justify-items: center;
+}
+
 .section-title {
   @extend .title;
   text-align: center;
-  margin: min(8rem, 10vmin) 0;
 }
 
 .icon {

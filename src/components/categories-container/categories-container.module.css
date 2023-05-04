@@ -1,3 +1,7 @@
+.categories-section-container {
+  justify-items: unset;
+}
+
 .categories-container {
   display: grid;
   gap: 1rem;
