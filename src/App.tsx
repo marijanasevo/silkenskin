@@ -29,6 +29,7 @@ const AccountCreated = lazy(
 const Checkout = lazy(() => import("./routes/checkout/checkout.component"));
 const Blog = lazy(() => import("./routes/blog/blog.component"));
 const Post = lazy(() => import("./routes/post/post.component"));
+const About = lazy(() => import("./routes/about/about.component"));
 
 import css from "./App.module.css";
 import WishList from "./routes/wishlist/wishlist.component";
@@ -96,6 +97,7 @@ const App = () => {
             <Route path="/account" element={<Account />} />
             <Route path="/account-created" element={<AccountCreated />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/about" element={<About />} />
             <Route
               path="/login"
               element={

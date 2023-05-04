@@ -21,7 +21,7 @@ const Footer = () => {
       </div>
       <div className={css["footer-navigation"]}>
         <div className={css["footer-navigation-info"]}>
-          <h5 className={css["subtitles"]}>LOVE STARTS AT HOME</h5>
+          <h5 className={css["subtitles"]}>& LOVE STARTS AT HOME</h5>
           <span
             className={css["nav-item"]}
             onClick={() => handleNavigate("/shop")}
@@ -48,7 +48,7 @@ const Footer = () => {
           </span>
           <span
             className={css["nav-item"]}
-            onClick={() => handleNavigate("/account")}
+            onClick={() => handleNavigate("/about")}
           >
             ABOUT SILKEN SKIN
           </span>
