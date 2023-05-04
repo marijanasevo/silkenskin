@@ -9,6 +9,7 @@ export enum BUTTON_TYPE_CLASSES {
   underlinedWishlist = "underlined-wishlist-button",
   underlinedOverImage = "underlined-over-image-button",
   underlinedHome = "underlined-home-button",
+  underlinedAuth = "underlined-auth",
 }
 
 export type ButtonProps = {

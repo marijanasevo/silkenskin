@@ -12,6 +12,9 @@
   font-weight: normal;
   margin: 0;
   font-size: min(4vmin, calc(1.6rem + .5vmax));
+  background: linear-gradient(to right, mistyrose, var(--strong-accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   @media (min-width: 560px) {
     align-self: start;

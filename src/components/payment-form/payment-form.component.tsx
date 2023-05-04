@@ -2,6 +2,11 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 
+import {
+  addUserOrder,
+  getUserOrderHistory,
+} from "../../utils/firebase/firebase.utils";
+
 import { setClearCart } from "../../store/cart/cart.reducer";
 import {
   selectIsCartEmpty,
@@ -18,11 +23,8 @@ import Snackbar from "@mui/material/Snackbar";
 import { CardElement } from "@stripe/react-stripe-js";
 import Button from "../button/button.component";
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
+
 import css from "./payment-form.module.css";
-import {
-  addUserOrder,
-  getUserOrderHistory,
-} from "../../utils/firebase/firebase.utils";
 
 const PaymentForm = () => {
   const dispatch = useDispatch();

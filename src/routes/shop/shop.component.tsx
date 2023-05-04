@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import {
   selectCategoriesIsLoading,
   selectCategoriesMap,
 } from "../../store/category/category.selector";
-import Spinner from "../../components/spinner/spinner.component";
 
+import { applyFilters } from "./apply-filters";
+
+import Spinner from "../../components/spinner/spinner.component";
+import ProductCard from "../../components/product-card/product-card.component";
 import ShopFilterOptions, {
   SortByPriceState,
 } from "../../components/shop-filter-options/shop-filter-options.component";
-import ProductCard from "../../components/product-card/product-card.component";
+import { CategoryItem } from "../../store/category/category.types";
 
 import css from "./shop.module.css";
-
-import { CategoryItem } from "../../store/category/category.types";
-import { applyFilters } from "./apply-filters";
 
 export type Filters = {
   productProperties?: string[];
@@ -46,7 +46,7 @@ const Shop = () => {
   }, [category, categoriesMap, filters]);
 
   return (
-    <>
+    <div className={`${"page-container"}`}>
       <h1 className={"page-heading"}>Shop</h1>
 
       {isLoading ? (
@@ -62,7 +62,7 @@ const Shop = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

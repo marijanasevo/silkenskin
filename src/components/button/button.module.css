@@ -110,3 +110,8 @@
 .underlined-home-button:hover {
   color: var(--strong-accent-color);
 }
+
+.underlined-auth {
+  @extend .underlined-wishlist-button;
+  text-align: center;
+}

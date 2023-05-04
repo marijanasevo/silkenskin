@@ -22,7 +22,7 @@ const Account = () => {
   };
 
   return (
-    <>
+    <div className={`page-container`}>
       <h1 className="page-heading">Hi, {currentUser?.displayName}</h1>
       <div className={css["account-container"]}>
         <ul className={css["account-menu"]}>
@@ -42,7 +42,7 @@ const Account = () => {
           <OrderHistory />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -33,7 +33,7 @@ const Post = () => {
   }, [postsArray, articleSlug]);
 
   return (
-    <>
+    <div className={`page-container`}>
       <div className={css["post-image-container"]}>
         <img
           className={css["post-image"]}
@@ -48,7 +48,7 @@ const Post = () => {
           <ReactMarkdown children={post.content.replace(/\\n/g, "\n")} />
         )}
       </div>
-    </>
+    </div>
   );
 };
 

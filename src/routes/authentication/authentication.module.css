@@ -2,7 +2,7 @@
   display: block;
   font-size: min(4vmin, calc(0.7rem + 0.7vmax));
   text-align: center;
-  margin: min(4rem, 10vmin) 0 min(3rem, 10vmin) 0;
+  margin-bottom: min(3rem, 10vmin);
 }
 
 .form button {

@@ -1,6 +1,5 @@
 .header {
   text-align: center;
-  margin: min(4rem, 10vmin) 0 min(6rem, 10vmin)
 }
 
 .heading {
@@ -14,13 +13,16 @@
   display: inline-block;
 }
 
-.container {
+.posts-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, min(25rem, 100%));
   justify-content: center;
   column-gap: 2rem;
   row-gap: 2rem;
-  margin-top: min(6rem, 10vmin);
   margin-inline: auto;
   width: min(90rem, 100%);
+  grid-template-columns: repeat(auto-fill, min(30rem, 100%));
+
+  @media (min-width: 648px) {
+    grid-template-columns: repeat(auto-fill, min(25rem, 100%));
+  }
 }

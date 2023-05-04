@@ -1,12 +1,11 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
-
 import { addItemToCart } from "../../store/cart/cart.reducer";
-import { CategoryItem } from "../../store/category/category.types";
 
 import Button from "../button/button.component";
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
+import { CategoryItem } from "../../store/category/category.types";
 
 import css from "./product-card.module.css";
 

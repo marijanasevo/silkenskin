@@ -1,16 +1,18 @@
 import { useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  signInWithGooglePopup,
   signInAuthUserWithEmailAndPass,
-} from "./../../utils/firebase/firebase.utils";
+  signInWithGooglePopup,
+} from "../../utils/firebase/firebase.utils";
 
-import { AuthErrorCodes, AuthError } from "firebase/auth";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 
 import FormInputField from "../../components/form-input-field/form-input-field.component";
-import Button from "../../components/button/button.component";
-import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component";
+import Button, {
+  BUTTON_TYPE_CLASSES,
+} from "../../components/button/button.component";
 import css from "./authentication.module.css";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 const defaultFormFields = {
   email: "",
@@ -23,6 +25,7 @@ export const logGoogleUser = async () => {
 
 const Login = () => {
   const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -31,7 +34,7 @@ const Login = () => {
       const { name, value } = event.target;
       setFormFields({ ...formFields, [name]: value });
     },
-    [email, password]
+    [formFields]
   );
 
   const handleSubmit = useCallback(
@@ -53,49 +56,63 @@ const Login = () => {
         }
       }
     },
-    [email, password]
+    [formFields]
   );
 
   return (
-    <div className="auth-form-container">
+    <div className={`auth-form-container page-container`}>
       <h1 className="page-heading">Login</h1>
 
-      <span className={css["subheading"]}>Login with Google</span>
+      <div>
+        <span className={css["subheading"]}>Login with Google</span>
 
-      <Button buttonType={BUTTON_TYPE_CLASSES.inverted} onClick={logGoogleUser}>
-        Log In with Google
-      </Button>
-
-      <span className={css["subheading"]}>Or your e-mail and password</span>
-
-      <form className={css["form"]} onSubmit={handleSubmit}>
-        <FormInputField
-          label="Email"
-          onChange={handleChange}
-          type="email"
-          required
-          name="email"
-          value={email}
-        />
-
-        <FormInputField
-          label="Password"
-          onChange={handleChange}
-          type="password"
-          required
-          name="password"
-          value={password}
-        />
-
-        <Button buttonType={BUTTON_TYPE_CLASSES.basic} type="submit">
-          Log In
+        <Button
+          buttonType={BUTTON_TYPE_CLASSES.inverted}
+          onClick={logGoogleUser}
+        >
+          Log In with Google
         </Button>
-      </form>
+      </div>
 
-      <span className={css["subheading"]}>New Customer?</span>
-      <Link className="underlined-link" to="/sign-up">
-        CREATE AN ACCOUNT
-      </Link>
+      <div>
+        <span className={`${css["subheading"]}`} style={{ marginBottom: 0 }}>
+          Or your e-mail and password
+        </span>
+
+        <form className={css["form"]} onSubmit={handleSubmit}>
+          <FormInputField
+            label="Email"
+            onChange={handleChange}
+            type="email"
+            required
+            name="email"
+            value={email}
+          />
+
+          <FormInputField
+            label="Password"
+            onChange={handleChange}
+            type="password"
+            required
+            name="password"
+            value={password}
+          />
+
+          <Button buttonType={BUTTON_TYPE_CLASSES.basic} type="submit">
+            Log In
+          </Button>
+        </form>
+      </div>
+
+      <div>
+        <span className={css["subheading"]}>New Customer?</span>
+        <Button
+          onClick={() => handleNavigate("/sign-up")}
+          buttonType={BUTTON_TYPE_CLASSES.underlinedAuth}
+        >
+          CREATE AN ACCOUNT
+        </Button>
+      </div>
     </div>
   );
 };

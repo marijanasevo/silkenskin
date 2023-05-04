@@ -60,8 +60,8 @@ img {
 .page-heading {
   font-family: var(--serif-font);
   font-size: min(7.5vmin, calc(2.7rem + 1.2vmax));
-  margin: min(4rem, 10vmin) 0 min(6rem, 10vmin);
   text-align: center;
+  margin: 0;
 }
 
 .subheading {
@@ -69,6 +69,12 @@ img {
   font-size: min(4vmin, calc(0.7rem + 0.7vmax));
   text-align: center;
   margin: min(4rem, 10vmin) 0 min(3rem, 10vmin) 0;
+}
+
+.page-container {
+    padding: min(8rem, 10vmin, 4rem) 0 min(8rem, 10vmin) 0;
+    display: grid;
+    gap: min(8rem, 10vmin);
 }
 
 .section {
@@ -90,8 +96,8 @@ img {
 
 .auth-form-container {
   max-width: 40rem;
-  margin: auto;
-  padding: min(1rem, 3vmin);
+  margin-inline: auto;
+  padding-inline: min(1rem, 3vmin);
 }
 
 form {

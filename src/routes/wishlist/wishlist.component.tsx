@@ -1,12 +1,14 @@
-import css from "./wishlist.module.css";
-import ProductCard from "../../components/product-card/product-card.component";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCategories } from "../../store/category/category.selector";
-import { useEffect, useState } from "react";
-import { CategoryItem } from "../../store/category/category.types";
-import { AppDispatch } from "../../store/store";
 import { selectWishlistProductsIDs } from "../../store/wishlist/wishlist.selector";
 import { removeFromWishlist } from "../../store/wishlist/wishlist.reducer";
+
+import ProductCard from "../../components/product-card/product-card.component";
+
+import { CategoryItem } from "../../store/category/category.types";
+import { AppDispatch } from "../../store/store";
+import css from "./wishlist.module.css";
 
 const Wishlist = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,7 +29,7 @@ const Wishlist = () => {
   }, [categoriesArray, wishlistProductsIDs]);
 
   return (
-    <>
+    <div className={`page-container`}>
       <h1 className="page-heading">Your Wishlist</h1>
       <div className={css["products"]}>
         {wishListProducts.map((product) => (
@@ -41,7 +43,7 @@ const Wishlist = () => {
           ></ProductCard>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

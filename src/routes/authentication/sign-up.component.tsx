@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 
 import {
@@ -7,14 +7,16 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils.js";
 
-import { AuthErrorCodes, AuthError } from "firebase/auth";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 
 import { logGoogleUser } from "./login.component";
 
 import FormInputField from "../../components/form-input-field/form-input-field.component.js";
-import Button from "../../components/button/button.component.js";
-import { BUTTON_TYPE_CLASSES } from "../../components/button/button.component.js";
+import Button, {
+  BUTTON_TYPE_CLASSES,
+} from "../../components/button/button.component.js";
 import css from "./authentication.module.css";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 const defaultFormFields = {
   displayName: "",
@@ -25,6 +27,7 @@ const defaultFormFields = {
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
 
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
@@ -71,63 +74,73 @@ const SignUp = () => {
   );
 
   return (
-    <div className="auth-form-container">
+    <div className="auth-form-container page-container">
       <h1 className="page-heading">Sign Up</h1>
 
-      <span className={css["subheading"]}>Sign Up with Google</span>
-      <Button buttonType={BUTTON_TYPE_CLASSES.inverted} onClick={logGoogleUser}>
-        Sign Up with Google
-      </Button>
-
-      <span className={css["subheading"]}>
-        Or with your e-mail and password
-      </span>
-
-      <form onSubmit={handleSubmit} className={css["form"]}>
-        <FormInputField
-          label="Display Name"
-          onChange={handleChange}
-          type="text"
-          required
-          name="displayName"
-          value={displayName}
-        />
-
-        <FormInputField
-          label="Email"
-          onChange={handleChange}
-          type="email"
-          required
-          name="email"
-          value={email}
-        />
-
-        <FormInputField
-          label="Password"
-          onChange={handleChange}
-          type="password"
-          required
-          name="password"
-          value={password}
-        />
-
-        <FormInputField
-          label="Confirm Password"
-          onChange={handleChange}
-          type="password"
-          required
-          name="confirmPassword"
-          value={confirmPassword}
-        />
-
-        <Button buttonType={BUTTON_TYPE_CLASSES.basic} type="submit">
-          Sign Up
+      <div>
+        <span className={css["subheading"]}>Sign Up with Google</span>
+        <Button
+          buttonType={BUTTON_TYPE_CLASSES.inverted}
+          onClick={logGoogleUser}
+        >
+          Sign Up with Google
         </Button>
-      </form>
+      </div>
 
-      <Link className="underlined-link" to="/login">
+      <div>
+        <span className={css["subheading"]} style={{ marginBottom: 0 }}>
+          Or with your e-mail and password
+        </span>
+
+        <form onSubmit={handleSubmit} className={css["form"]}>
+          <FormInputField
+            label="Display Name"
+            onChange={handleChange}
+            type="text"
+            required
+            name="displayName"
+            value={displayName}
+          />
+
+          <FormInputField
+            label="Email"
+            onChange={handleChange}
+            type="email"
+            required
+            name="email"
+            value={email}
+          />
+
+          <FormInputField
+            label="Password"
+            onChange={handleChange}
+            type="password"
+            required
+            name="password"
+            value={password}
+          />
+
+          <FormInputField
+            label="Confirm Password"
+            onChange={handleChange}
+            type="password"
+            required
+            name="confirmPassword"
+            value={confirmPassword}
+          />
+
+          <Button buttonType={BUTTON_TYPE_CLASSES.basic} type="submit">
+            Sign Up
+          </Button>
+        </form>
+      </div>
+
+      <Button
+        buttonType={BUTTON_TYPE_CLASSES.underlinedAuth}
+        onClick={() => handleNavigate("/login")}
+      >
         Go back to Login
-      </Link>
+      </Button>
     </div>
   );
 };
