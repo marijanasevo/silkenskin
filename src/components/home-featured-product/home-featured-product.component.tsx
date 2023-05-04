@@ -4,7 +4,7 @@ import css from "./home-featured-product.module.css";
 
 const HomeFeaturedProduct = () => {
   return (
-    <div className={"home-section"}>
+    <div className={"section"}>
       <h2 className="section-title">Radiant & youthful glow</h2>
       <p className={css["featured-description"]}>
         Indulge your skin with a luxury moisturizer crafted from the finest

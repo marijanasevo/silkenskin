@@ -3,7 +3,7 @@
   --standard-font: "Inter", "Helvetica", "Calibri", sans-serif;
   --soft-accent-color: #FFFBF5;
   --moderate-accent-color: #f5ddba;
-  --strong-accent-color: #a89565;
+  --strong-accent-color: #E0C3B5;
 
 }
 
@@ -71,7 +71,7 @@ img {
   margin: min(4rem, 10vmin) 0 min(3rem, 10vmin) 0;
 }
 
-.home-section {
+.section {
   padding: min(8rem, 10vmin) 0;
   display: grid;
   gap: min(8rem, 10vmin);

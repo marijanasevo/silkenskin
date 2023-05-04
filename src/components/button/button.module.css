@@ -93,7 +93,7 @@
 
 .underlined-over-image-button:hover {
   background: transparent;
-  color: var(--moderate-accent-color);
+  color: var(--strong-accent-color);
 }
 
 .underlined-home-button {

@@ -51,7 +51,7 @@ const CategoriesContainer = () => {
   ];
 
   return (
-    <div className={`${"home-section"} ${css["categories-section-container"]}`}>
+    <div className={`${"section"} ${css["categories-section-container"]}`}>
       <h2 className="section-title">We Got You</h2>
 
       <div className={css["categories-container"]}>
