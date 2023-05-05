@@ -21,4 +21,12 @@
 .home-posts-container {
   display: flex;
   gap: 1rem;
+
+  @media (min-width: 500px) {
+    gap: 2rem;
+  }
+
+  @media (min-width: 1000px) {
+    gap: 3rem;
+  }
 }

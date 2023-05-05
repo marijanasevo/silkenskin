@@ -1,15 +1,17 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { navigateTo } from "../../utils/helpers/navigate";
 
 import {
   addItemToCart,
   removeItemFromCart,
   clearItemFromCart,
 } from "../../store/cart/cart.reducer";
-import { selectCartItems } from "../../store/cart/cart.selector";
 
-import css from "./checkout-item.module.css";
 import { CartItem } from "../../store/cart/cart.types";
+import css from "./checkout-item.module.css";
 
 type CheckoutItemProps = {
   cartItem: CartItem;
@@ -17,6 +19,8 @@ type CheckoutItemProps = {
 
 const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
 
   const increaseProductCountHandler = () => dispatch(addItemToCart(cartItem));
   const decreaseProductCountHandler = () =>
@@ -33,12 +37,17 @@ const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
 
   return (
     <div className={css["checkout-item-container"]}>
-      <img className={css["thumbnail"]} src={thumbnailUrl} alt={name} />
+      <img
+        onClick={() => handleNavigate(`/product/${cartItem.id}`)}
+        className={css["thumbnail"]}
+        src={thumbnailUrl}
+        alt={name}
+      />
 
       <div className={css["description"]}>
         <h2 className={css["title"]}>{name}</h2>
         <span className={css["suited"]}>{suited}</span>
-        <span className={css["price"]}>
+        <span className={`${css["price"]} ${css["individual-price"]}`}>
           <span className={css["currency"]}>$</span>
           {price}
         </span>
@@ -56,8 +65,8 @@ const CheckoutItem = ({ cartItem }: CheckoutItemProps) => {
         </span>
       </div>
 
-      <div className={css["total-price"]}>
-        <span className={css["price"]}>
+      <div className={`${css["total-price"]}`}>
+        <span className={`${css["price"]}`}>
           <span className={css["currency"]}>$</span>
           {(price * quantity).toLocaleString()}
         </span>

@@ -24,7 +24,7 @@
   padding: 3rem 0;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 5rem;
 }
 
 .empty-cart-note {
