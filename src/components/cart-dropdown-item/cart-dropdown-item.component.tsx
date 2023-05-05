@@ -1,4 +1,4 @@
-import css from "./cart-item.module.css";
+import css from "./cart-dropdown-item.module.css";
 import { CartItem } from "../../store/cart/cart.types";
 import { FC } from "react";
 
@@ -6,7 +6,7 @@ type CartItemProps = {
   cartItem: CartItem;
 };
 
-const CartItem: FC<CartItemProps> = ({ cartItem }) => {
+const CartDropdownItem: FC<CartItemProps> = ({ cartItem }) => {
   const { name, quantity, thumbnailUrl, price } = cartItem;
 
   return (
@@ -26,4 +26,4 @@ const CartItem: FC<CartItemProps> = ({ cartItem }) => {
   );
 };
 
-export default CartItem;
+export default CartDropdownItem;

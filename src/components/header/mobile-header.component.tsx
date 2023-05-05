@@ -22,7 +22,7 @@ const MobileHeader = () => {
   const closeMenuOnClickOutside = (event: MouseEvent) => {
     const target = event.target as Node;
     if (isMenuOpen && !target?.contains(checkboxRef.current)) {
-      setTimeout(() => dispatch(setIsMenuOpen(false)), 200);
+      setTimeout(() => dispatch(setIsMenuOpen(false)), 20);
     }
   };
 

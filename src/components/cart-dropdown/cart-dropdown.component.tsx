@@ -1,15 +1,19 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import { selectCartItems } from "../../store/cart/cart.selector";
+import {
+  selectCartItems,
+  selectIsCartEmpty,
+} from "../../store/cart/cart.selector";
 
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
-import CartItem from "../cart-item/cart-item.component";
+import CartDropdownItem from "../cart-dropdown-item/cart-dropdown-item.component";
 import css from "./cart-dropdown.module.css";
 
 const CartDropdown = () => {
   const cartItems = useSelector(selectCartItems);
   const navigate = useNavigate();
+  const IsCartEmpty = useSelector(selectIsCartEmpty);
 
   const goToCheckoutHandler = () => navigate("/checkout");
 
@@ -18,9 +22,20 @@ const CartDropdown = () => {
       <div className={css["triangle"]}></div>
       <div className={css["cart-dropdown-container"]}>
         <div className={css["cart-items"]}>
-          {cartItems.map((cartItem) => (
-            <CartItem key={cartItem.id} cartItem={cartItem} />
-          ))}
+          {!IsCartEmpty ? (
+            cartItems.map((cartItem) => (
+              <CartDropdownItem key={cartItem.id} cartItem={cartItem} />
+            ))
+          ) : (
+            <div className={css["empty-cart-message"]}>
+              <img
+                src="https://cdn.dribbble.com/users/860366/screenshots/6364054/desolazione_empty_1.gif"
+                alt="Empty cart gif"
+              />
+              There is nothing to see.
+              <br /> Your cart is empty.
+            </div>
+          )}
         </div>
         <Button
           onClick={goToCheckoutHandler}

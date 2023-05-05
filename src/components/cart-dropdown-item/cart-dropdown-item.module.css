@@ -1,17 +1,11 @@
 .cart-item-container {
   display: flex;
-  gap: 0.7rem;
-  margin-bottom: 1rem;
-
-  &:last-child {
-    margin-bottom: 0;
-  }
+  gap: 1rem;
 }
 
 .cart-item-thumbnail {
-  width: 5rem;
-  min-width: 5rem;
-  height: 6rem;
+  max-width: min(10rem, 30vw);
+  height: min(12rem, 40vw);
   object-fit: cover;
 }
 
@@ -25,9 +19,10 @@
 .cart-item-title {
   font-family: var(--serif-font);
   margin: 0;
-  font-size: 1.4rem;
+  font-size: min(1.7rem, 5vw);
+  line-height: 150%;
 }
 
 .cart-item-price-quantity {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
