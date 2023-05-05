@@ -104,7 +104,7 @@ const ProductReviewForm = () => {
 
   return (
     <>
-      <FormControl required>
+      <FormControl required className={css["review-form-container"]}>
         <Box
           component="form"
           autoComplete="off"
@@ -224,7 +224,7 @@ const ProductReviewForm = () => {
           <Rating
             sx={{
               "& .MuiRating-icon": {
-                color: "#a89565",
+                color: "var(--strong-accent-color)",
               },
             }}
             name="rating"

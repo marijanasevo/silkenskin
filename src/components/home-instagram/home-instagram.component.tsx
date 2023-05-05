@@ -1,16 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InstagramEmbed } from "react-social-media-embed";
 
 import css from "./home-instagram.module.css";
 
-interface InstagramPost {
-  id: string;
-  imageUrl: string;
-}
-
 const HomeInstagram = () => {
-  const [instagramPosts, setInstagramPosts] = useState<InstagramPost[]>([]);
-
   return (
     <div className={css["home-instagram-container"]}>
       <div className={css["home-instagram-heading"]}>

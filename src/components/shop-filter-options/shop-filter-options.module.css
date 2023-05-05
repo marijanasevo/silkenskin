@@ -41,11 +41,9 @@
 
 .price-highest > svg {
   transform: rotateX(0);
-  //font-size: 2.3rem;
 }
 
 .filter-icons > svg {
-  //font-size: 2.5rem;
 }
 
 .filters-body {

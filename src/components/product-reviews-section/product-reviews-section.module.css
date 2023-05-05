@@ -2,11 +2,24 @@
   display: flex;
   flex-direction: column;
   gap: 7rem;
+  grid-area: reviews;
 }
-
 
 .reviews-heading {
   font-size: min(10vmin, calc(2rem + 1vmax));
   font-family: var(--serif-font);
   margin: 0;
+  grid-area: title;
+  background: linear-gradient(to right, mistyrose, var(--strong-accent-color));
+  grid-area: title;
+}
+
+.reviews-bigger-screen {
+  margin-top: min(8rem, 10vmin);
+  display: grid;
+  gap: min(8rem, 10vmin);
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "title title"
+    "review-form reviews";
 }

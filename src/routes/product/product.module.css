@@ -1,0 +1,12 @@
+.product-container {
+  padding: min(8rem, 10vmin) 0;
+
+  &.smaller-screen {
+    padding: 0 0 min(8rem, 10vmin) 0;
+  }
+}
+
+.about-product {
+  display: flex;
+  gap: 3rem;
+}

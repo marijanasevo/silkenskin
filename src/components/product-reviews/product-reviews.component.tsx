@@ -1,14 +1,14 @@
 import { Rating } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
-import css from "./product-reviews.module.css";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import {
   selectProductReviews,
   selectReviewsLoading,
 } from "../../store/review/review.selector";
-import { useParams } from "react-router-dom";
-import LocalMallIcon from "@mui/icons-material/LocalMall";
 import Spinner from "../spinner/spinner.component";
+import LocalMallIcon from "@mui/icons-material/LocalMall";
+import StarIcon from "@mui/icons-material/Star";
+import css from "./product-reviews.module.css";
 
 const ProductReviews = () => {
   const { id: productID } = useParams() as { id: string };

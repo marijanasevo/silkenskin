@@ -1,3 +1,7 @@
+.review-form-container {
+grid-area: review-form;
+}
+
 .form-review {
   display: flex;
   gap: 1.5rem;

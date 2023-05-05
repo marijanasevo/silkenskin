@@ -167,3 +167,7 @@ form {
 .submit-review-button {
   margin-top: min(4rem, 10vmin);
 }
+
+.instagram-media {
+  position: relative!important;
+}
