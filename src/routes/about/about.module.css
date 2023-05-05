@@ -1,0 +1,93 @@
+.about-intro {
+  max-width: 64ch;
+  margin-inline: auto;
+  font-size: 1.7rem;
+  line-height: 150%;
+  text-align: center;
+}
+
+.main-about {
+  position: relative;
+  font-size: 1.7rem;
+  line-height: 150%;
+}
+
+.about-image {
+  margin: 0 1rem 1rem 0;
+
+  @media (min-width: 566px) {
+    float: left;
+    max-width: 50%;
+  }
+}
+
+.secondary-header {
+  position: absolute;
+  top: 3rem;
+  background: white;
+  padding: 1rem;
+  text-align: center;
+  left: -1rem;
+  z-index: 1;
+  background: var(--strong-accent-color);
+
+  @media (min-width: 566px) {
+    transform: translate(-50%);
+    left: 50%;
+    width: auto;
+  }
+}
+
+.secondary-header-desc {
+  position: relative;
+  transform: translate(0);
+  left: 0;
+  top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem 0;
+  padding: 0;
+
+
+  @media (min-width: 370px) {
+    left: 4rem;
+    padding: 1rem;
+  }
+}
+
+.about-description {
+  z-index: -1;
+  top: -4rem;
+  border: 2px double #333;
+  margin-top: min(8rem, 10vmin, 4rem);
+  padding: 3rem;
+  text-align: justify;
+
+  &::before {
+    content: url("../../assets/logo.svg");
+    display: inline-block;
+    width: 6rem;
+    font-size: 3rem;
+    font-weight: bold;
+    position: absolute;
+    bottom: -1.5rem;
+    right: 2rem;
+    background: white;
+    padding: 0 1rem;
+
+    @media (min-width: 566px) {
+      bottom: -2rem;
+    }
+  }
+
+  @media (min-width: 566px) {
+    margin-top: 10rem;
+    position: relative;
+    padding: 2rem 2rem 4rem 2rem;
+    max-width: 92%;
+    top: 0;
+    left: 2rem;
+    text-align: left;
+  }
+}
