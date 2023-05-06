@@ -4,6 +4,7 @@ import React, { ButtonHTMLAttributes, FC } from "react";
 export enum BUTTON_TYPE_CLASSES {
   basic = "basic-button",
   inverted = "inverted-button",
+  accented = "accented-button",
   transparentBg = "transparent-bg-button",
   spinner = "spinner-container",
   underlinedWishlist = "underlined-wishlist-button",

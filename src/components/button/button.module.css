@@ -115,3 +115,23 @@
   @extend .underlined-wishlist-button;
   text-align: center;
 }
+
+.accented-button {
+  width: auto;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 3px 0px var(--moderate-accent-color);
+  color: var(--moderate-accent-color);
+  border: 1px solid var(--moderate-accent-color);
+  padding: min(7vmin, 1rem) min(7vmin, 2rem);
+  font-size: min(6vmin, calc(0.8rem + 0.5vmax));
+  cursor: pointer;
+  justify-self: end;
+  transition: all 0.1s linear;
+
+  &:hover {
+    background: var(--moderate-accent-color);
+    color: black;
+    transform: scale(1.05);
+    font-weight: 500;
+  }
+}

@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { navigateTo } from "../../utils/helpers/navigate";
+
 import css from "./home-hero.module.css";
 
 const HomeHero = () => {
@@ -12,9 +15,13 @@ const HomeHero = () => {
         </h1>
       </div>
 
-      <Link to="shop" className={css["accented-link"]}>
+      <Button
+        buttonType={BUTTON_TYPE_CLASSES.accented}
+        className={css["accented-link"]}
+        onClick={() => handleNavigate("/shop")}
+      >
         SHOP NOW
-      </Link>
+      </Button>
     </div>
   );
 };
