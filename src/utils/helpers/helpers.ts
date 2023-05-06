@@ -4,6 +4,6 @@ export function formatCamelCasedName(name: string): string {
 }
 
 export const formatStrForSlug = (str: string) =>
-  str.replace(/[\s:]+/g, "-").toLowerCase();
+  str.replace(/[\s:,]+/g, "-").toLowerCase();
 
 export const replaceHyphenWithSpace = (str: string) => str.replace(/-/g, " ");

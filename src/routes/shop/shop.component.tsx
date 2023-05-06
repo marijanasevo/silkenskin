@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import {
   selectCategoriesIsLoading,
@@ -17,6 +17,7 @@ import ShopFilterOptions, {
 import { CategoryItem } from "../../store/category/category.types";
 
 import css from "./shop.module.css";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 export type Filters = {
   productProperties?: string[];
@@ -28,6 +29,8 @@ export type Filters = {
 };
 
 const Shop = () => {
+  const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
   let { category } = useParams();
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
@@ -41,6 +44,18 @@ const Shop = () => {
   });
 
   useEffect(() => {
+    const categories = [
+      "body-care",
+      "masks",
+      "mens",
+      "moisturizers",
+      "serums",
+      "tools-&-accessories",
+      undefined,
+    ];
+
+    if (!categories.includes(category)) handleNavigate("/404");
+
     let newProductsToShoW = applyFilters(categoriesMap, filters, category);
     setProductsToShow(newProductsToShoW);
   }, [category, categoriesMap, filters]);

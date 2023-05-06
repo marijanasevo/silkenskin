@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -19,10 +19,13 @@ import ProductReviewsSection from "../../components/product-reviews-section/prod
 import { CategoryItem } from "../../store/category/category.types";
 import { AppDispatch } from "../../store/store";
 import css from "./product.module.css";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 const Product = () => {
   const { id } = useParams() as { id: string };
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
   const categoriesMap = useSelector(selectCategoriesMap);
   const isCategoriesEmpty = useSelector(selectIsCategoriesEmpty);
   const isReviewsEmpty = useSelector(selectIsReviewsEmpty);
@@ -46,6 +49,7 @@ const Product = () => {
       .flat()
       .find((product) => product.id === Number(id));
 
+    if (!currentProduct) handleNavigate("/404");
     setProduct(currentProduct);
   }, [id, categoriesMap]);
 

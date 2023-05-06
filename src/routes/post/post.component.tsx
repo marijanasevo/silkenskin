@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import { fetchPostsAsync } from "../../store/posts/posts.reducer";
 import {
@@ -11,15 +11,17 @@ import { Post } from "../../store/posts/posts.types";
 import { formatStrForSlug } from "../../utils/helpers/helpers";
 import ReactMarkdown from "react-markdown";
 import css from "./post.module.css";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 const Post = () => {
+  const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
   const dispatch = useDispatch<AppDispatch>();
   const isPostsEmpty = useSelector(selectIsPostsEmpty);
   const postsArray = useSelector(selectPosts);
   const [post, setPost] = useState<Post>();
 
   const { articleSlug } = useParams();
-  console.log(articleSlug);
 
   useEffect(() => {
     if (isPostsEmpty) dispatch(fetchPostsAsync());
@@ -29,6 +31,8 @@ const Post = () => {
     const post = postsArray.find(
       (post) => formatStrForSlug(post.title) === articleSlug
     );
+
+    if (!post) handleNavigate("/404");
     setPost(post);
   }, [postsArray, articleSlug]);
 

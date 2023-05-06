@@ -38,6 +38,7 @@ import { selectIsCategoriesEmpty } from "./store/category/category.selector";
 import { AppDispatch } from "./store/store";
 import { fetchPostsAsync } from "./store/posts/posts.reducer";
 import { selectIsPostsEmpty } from "./store/posts/posts.selector";
+import PageNotFound from "./routes/page-not-found/page-not-found.component";
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -114,8 +115,8 @@ const App = () => {
                 currentUser ? <Navigate to="/account" replace /> : <SignUp />
               }
             />
+            <Route path="/*" element={<PageNotFound />} />
           </Route>
-          {/*<Route path="*" element={<PageNotFound />} />*/}
         </Routes>
       </div>
     </Suspense>

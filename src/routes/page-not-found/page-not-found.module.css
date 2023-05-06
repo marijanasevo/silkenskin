@@ -1,0 +1,9 @@
+.page-not-found-container {
+  margin-top: min(8rem, 10vmin);
+}
+
+.subheading {
+  font-size: min(4vmin, calc(1.4rem + .6vmax), 1.6rem);
+  display: block;
+  margin-top: 0.7rem;
+}
