@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 import CartIcon from "../cart-icon/cart-icon.component";
-import HeartIcon from "../heart-icon/heart-icon.component";
-import AvatarIcon from "../avatar-icon/avatar-icon.component";
-import { ReactComponent as Logo } from "../../assets/logo.svg";
+import Icon from "../icon/icon.component";
+
 import css from "./desktop-header.module.css";
 
 const DesktopHeader = () => {
+  const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
   return (
     <header className={`${css["header"]}`}>
       <div className={css["notice"]}>Free shipping worldwide</div>
@@ -20,17 +22,23 @@ const DesktopHeader = () => {
 
         <div className={css["logo-container"]}>
           <Link className={css["logo-link"] + " logo"} to="/">
-            <Logo className={css["logo"]} />
+            <Icon icon={"logo"} iconSize={5} className={css["logo"]} />
           </Link>
         </div>
 
         <div className={css["right-side-nav"]}>
-          <Link to="/login">
-            <AvatarIcon />
-          </Link>
-          <Link to="/wishlist">
-            <HeartIcon />
-          </Link>
+          <div
+            className={css["menu-icon"]}
+            onClick={() => handleNavigate("/login")}
+          >
+            <Icon icon="avatar" iconSize={3} />
+          </div>
+          <div
+            className={css["menu-icon"]}
+            onClick={() => handleNavigate("/wishlist")}
+          >
+            <Icon icon="heart" iconSize={3} />
+          </div>
           <div>
             <CartIcon />
           </div>

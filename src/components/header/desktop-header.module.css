@@ -50,7 +50,7 @@
 
 .left-side-nav,
 .right-side-nav {
-  font-size: min(1.5rem, calc(2.7rem + 1vmax));
+  font-size: var(--standard-text-font-size);
   font-weight: 300;
 
   & a,
@@ -75,4 +75,8 @@
 
 .logo {
   height: 5rem;
+}
+
+.menu-icon {
+  cursor: pointer;
 }
