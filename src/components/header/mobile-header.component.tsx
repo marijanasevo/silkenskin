@@ -22,7 +22,7 @@ const MobileHeader = () => {
   const closeMenuOnClickOutside = (event: MouseEvent) => {
     const target = event.target as Node;
     if (isMenuOpen && !target?.contains(checkboxRef.current)) {
-      setTimeout(() => dispatch(setIsMenuOpen(false)), 20);
+      dispatch(setIsMenuOpen(false));
     }
   };
 
@@ -34,13 +34,13 @@ const MobileHeader = () => {
 
   useEffect(() => {
     if (isMenuOpen) {
-      document.addEventListener("mousedown", closeMenuOnClickOutside);
+      document.addEventListener("mouseup", closeMenuOnClickOutside);
     } else {
-      document.removeEventListener("mousedown", closeMenuOnClickOutside);
+      document.removeEventListener("mouseup", closeMenuOnClickOutside);
     }
 
     return () =>
-      document.removeEventListener("mousedown", closeMenuOnClickOutside);
+      document.removeEventListener("mouseup", closeMenuOnClickOutside);
   }, [isMenuOpen]);
 
   const handleMenuChange = () => {
