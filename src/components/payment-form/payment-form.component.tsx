@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 
@@ -33,7 +33,7 @@ const PaymentForm = () => {
   const isUserLoggedIn = useSelector(selectIsUserLoggedIn);
   const cartItems = useSelector(selectCartItems);
   const amount = useSelector(selectCartTotal);
-  const [logInNote, setLogInNote] = useState(!isUserLoggedIn);
+  const [logInNote, setLogInNote] = useState(false);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   const stripe = useStripe();
@@ -113,6 +113,12 @@ const PaymentForm = () => {
     }
   };
 
+  useEffect(() => {
+    const timer = setTimeout(() => setLogInNote(!isUserLoggedIn), 1000);
+
+    return () => clearTimeout(timer);
+  }, [isUserLoggedIn]);
+
   const handleClose = () => setLogInNote(false);
 
   return (
@@ -139,13 +145,14 @@ const PaymentForm = () => {
         open={logInNote}
         onClose={handleClose}
         anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-        message="Log in before purchasing to view this order in your history later!"
+        message="Log in before purchasing to view this order in your order history later"
         sx={{
           "& .MuiPaper-root": {
             fontSize: "1.6rem",
-            background: "white",
-            color: "var(--strong-accent-color)",
-            justifyContent: "center",
+            background: "var(--strong-accent-color)",
+            color: "black",
+            textAlign: "center",
+            textTransform: "uppercase",
           },
         }}
       />
