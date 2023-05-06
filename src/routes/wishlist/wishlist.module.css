@@ -1,9 +1,19 @@
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fill, min(28rem, 100%));
+  grid-template-areas: "message message";
   justify-content: center;
   column-gap: 3rem;
   row-gap: 50px;
   margin-inline: auto;
   width: min(130rem, 100%);
+}
+
+.empty-wishlist-message {
+  font-size: 1.7rem;
+  font-family: var(--serif-font);
+  text-align: center;
+  line-height: 150%;
+  flex-basis: 100%;
+  grid-area: message;
 }

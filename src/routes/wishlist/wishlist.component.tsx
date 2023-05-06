@@ -15,33 +15,39 @@ const Wishlist = () => {
   const categoriesArray = useSelector(selectCategories);
   const wishlistProductsIDs = useSelector(selectWishlistProductsIDs);
   const [wishListProducts, setWishListProducts] = useState<CategoryItem[]>([]);
-
-  // const removeItemFromWishlistHandler = (productId: string) => {
-  //   dispatch(removeItemFromWishlist(productId));
-  // };
+  const [isWishlistEmpty, setIsWishlistEmpty] = useState(true);
 
   useEffect(() => {
     const allProducts = categoriesArray.flatMap((category) => category.items);
     const wishlistProd = allProducts.filter((product) =>
       wishlistProductsIDs.includes(product.id)
     );
+    const isWishlistEmpty = Boolean(!wishlistProd.length);
+
     setWishListProducts(wishlistProd);
+    setIsWishlistEmpty(isWishlistEmpty);
   }, [categoriesArray, wishlistProductsIDs]);
 
   return (
     <div className={`page-container`}>
       <h1 className="page-heading">Your Wishlist</h1>
       <div className={css["products"]}>
-        {wishListProducts.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            isInWishList
-            onRemoveFromWishlist={() =>
-              dispatch(removeFromWishlist(product.id))
-            }
-          ></ProductCard>
-        ))}
+        {!isWishlistEmpty ? (
+          wishListProducts.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              isInWishList
+              onRemoveFromWishlist={() =>
+                dispatch(removeFromWishlist(product.id))
+              }
+            ></ProductCard>
+          ))
+        ) : (
+          <div className={css["empty-wishlist-message"]}>
+            Go on, dare to add something to the wishlist!
+          </div>
+        )}
       </div>
     </div>
   );
