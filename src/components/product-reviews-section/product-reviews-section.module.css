@@ -11,7 +11,7 @@
   margin: 0;
   grid-area: title;
   background: linear-gradient(to right, mistyrose, var(--strong-accent-color));
-  grid-area: title;
+  padding: 1rem;
 }
 
 .reviews-bigger-screen {
