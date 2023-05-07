@@ -7,7 +7,7 @@
 }
 
 .subheading {
-  font-size: min(6vmin, calc(.7rem + 0.5vmax));
+  font-size: var(--small-text-font-size);
   line-height: 140%;
   max-width: 67ch;
   display: inline-block;

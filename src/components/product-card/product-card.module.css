@@ -14,7 +14,6 @@
     gap: min(1rem, 2vw);
     justify-content: space-between;
     height: 100%;
-    //flex-basis: 100%;
 
     &-title-price-group {
       display: flex;
@@ -44,7 +43,6 @@
     &-button {
       font-size: var(--standard-text-font-size);
       margin: 0;
-    //flex: 1 0 100%;
     }
 
     &-desc {

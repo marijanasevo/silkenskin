@@ -1,9 +1,9 @@
 import ActionTile from "../../components/action-tile/action-tile.component";
 import css from "./account-created.module.css";
 
-const AccoutCreated = () => {
+const AccountCreated = () => {
   return (
-    <>
+    <div className={"page-container"}>
       <h1 className="page-heading">Your Account is all set</h1>
       <span className={css["note"]}>
         Thank you for creating an account with us! We are thrilled to have you
@@ -35,8 +35,8 @@ const AccoutCreated = () => {
           iconSize="4"
         />
       </div>
-    </>
+    </div>
   );
 };
 
-export default AccoutCreated;
+export default AccountCreated;
