@@ -88,7 +88,7 @@
   text-align: left;
   padding: 0;
   text-decoration: underline;
-  font-size: min(4vmin, calc(1.3rem + 1vmax));
+  font-size: var(--medium-responsive-font-size);
 }
 
 .underlined-over-image-button:hover {
@@ -104,7 +104,7 @@
   text-decoration: underline;
   font-weight: normal;
   text-align: center;
-  font-size: min(4vmin, calc(1.3rem + 1vmax))
+  font-size: var(--medium-responsive-font-size);
 }
 
 .underlined-home-button:hover {
@@ -119,11 +119,11 @@
 .accented-button {
   width: auto;
   background: rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 3px 0px var(--moderate-accent-color);
+  box-shadow: 0 0 3px 0 var(--moderate-accent-color);
   color: var(--moderate-accent-color);
   border: 1px solid var(--moderate-accent-color);
   padding: min(7vmin, 1rem) min(7vmin, 2rem);
-  font-size: min(6vmin, calc(0.8rem + 0.5vmax));
+  font-size: var(--standard-text-font-size);
   cursor: pointer;
   justify-self: end;
   transition: all 0.1s linear;

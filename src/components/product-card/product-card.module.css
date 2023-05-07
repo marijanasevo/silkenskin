@@ -3,39 +3,55 @@
   flex-direction: column;
   gap: min(1rem, 2vw);
 
-  &__image {
+  &-image {
     height: 30rem;
     object-fit: cover;
   }
 
-  &__details {
+  &-details {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: min(1rem, 2vw);
     justify-content: space-between;
+    height: 100%;
+    //flex-basis: 100%;
 
-    &__title,
-    &__price,
-    &__desc,
-    &__button {
+    &-title-price-group {
+      display: flex;
+      gap: min(1rem, 2vw);
+      justify-content: space-between;
+    }
+
+    &-title-price-group, &-desc {
+      flex-grow: 1;
+    }
+
+    &-title, &-desc {
+      line-height: 145%;
+    }
+
+    &-title,
+    &-price,
+    &-desc,
+    &-button {
       font-family: var(--serif-font);
-      font-size: min(7vmin, calc(1rem + 0.6vmin), 2.2rem);
+      font-size: var(--standard-text-font-size);
       margin: 0;
       font-weight: 500;
     }
 
-    &__desc,
-    &__button {
-      font-size: min(8vmin, calc(0.9rem + 1vmin), 1.5rem);
-      flex: 1 0 100%;
+    &-desc,
+    &-button {
+      font-size: var(--standard-text-font-size);
       margin: 0;
+    //flex: 1 0 100%;
     }
 
-    &__desc {
+    &-desc {
       color: rgb(148, 148, 148);
     }
 
-    &__button {
+    &-button {
       width: 100%;
       background: white;
       padding: 1rem;

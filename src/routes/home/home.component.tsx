@@ -1,6 +1,6 @@
 import HomeHero from "../../components/home-hero/home-hero.component";
 import HomeIntro from "../../components/home-intro/home-intro.component";
-import HomeCategories from "../../components/categories-container/categories-container.component";
+import HomeCategories from "../../components/home-categories/categories-container.component";
 import HomeNewArrivals from "../../components/home-new-arrivals/home-new-arrivals.component";
 import HomeFeaturedProduct from "../../components/home-featured-product/home-featured-product.component";
 import HomeBlog from "../../components/home-blog/home-blog.component";

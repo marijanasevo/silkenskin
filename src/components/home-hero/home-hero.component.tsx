@@ -1,16 +1,19 @@
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { navigateTo } from "../../utils/helpers/navigate";
 
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import css from "./home-hero.module.css";
 
 const HomeHero = () => {
-  return (
-    <div className={css["home-hero"]}>
-      <div className={css["home-hero__details"]}>
-        <span className={css["home-hero__subtitle"]}>nourish your skin</span>
+  const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
 
-        <h1 className={css["home-hero__title"]}>
+  return (
+    <div className={css["home-hero-container"]}>
+      <div className={css["home-hero-details"]}>
+        <span className={css["home-hero-subtitle"]}>nourish your skin &</span>
+
+        <h1 className={css["home-hero-title"]}>
           Experience the power of natural ingredients
         </h1>
       </div>

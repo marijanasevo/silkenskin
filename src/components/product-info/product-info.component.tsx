@@ -51,7 +51,7 @@ const ProductInfo = ({ product, isMobile }: ProductInfoProps) => {
         isMobile ? css["smaller-screen"] : ""
       }`}
     >
-      <h1 className={css["item-name"]}>
+      <h1 className={css["item-title"]}>
         <span className={css["item-brand"]}>{product?.brand}</span>
         {product?.name}
       </h1>
@@ -60,9 +60,9 @@ const ProductInfo = ({ product, isMobile }: ProductInfoProps) => {
           name="text-feedback"
           value={productAverageStars}
           readOnly
+          className={css["full-stars"]}
           precision={0.1}
-          emptyIcon={<StarIcon sx={{ opacity: 0.55 }} fontSize="inherit" />}
-          sx={{ color: "#333" }}
+          emptyIcon={<StarIcon className={css["empty-stars"]} />}
         />
 
         <span>

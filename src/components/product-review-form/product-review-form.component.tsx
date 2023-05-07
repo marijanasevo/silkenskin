@@ -39,7 +39,9 @@ const ProductReviewForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [thankYouNoteOpen, setThankYouNotOpen] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
   };
@@ -120,120 +122,30 @@ const ProductReviewForm = () => {
               label="Your name"
               variant="standard"
               onChange={handleChange}
+              className={"input-field"}
               name="name"
               value={name}
-              sx={{
-                "&.MuiTextField-root": {
-                  margin: "0",
-                },
-                "& .Mui-focused.MuiInputLabel-root": {
-                  color: "var(--strong-accent-color)",
-                  fontSize: "1.9rem",
-                  top: "-0.5rem",
-                },
-                "& .MuiInputLabel-shrink": {
-                  top: "-0.5rem",
-                  fontSize: "1.9rem",
-                  color: "var(--strong-accent-color)",
-                },
-                "& .MuiInputLabel-root": {
-                  fontSize: "1.5rem",
-                  color: "var(--strong-accent-color)",
-                },
-                "& .MuiInputBase-root::before": {
-                  borderBottom: "0 !important",
-                },
-                "& .MuiInputBase-input": {
-                  fontSize: "1.4rem",
-                  padding: "1rem",
-                  borderBottom:
-                    "2px dashed var(--strong-accent-color) !important",
-                  lineHeight: "130%",
-                },
-                "& .MuiInputBase-input.Mui-focused::before": {
-                  fontSize: "1.4rem",
-                  padding: "1rem",
-                  borderBottom: "0",
-                },
-                "& .MuiInputBase-root.Mui-focused::after": {
-                  fontSize: "1.4rem",
-                  padding: "1rem",
-                  borderBottom: "0",
-                },
-                "& .MuiInputBase-root-MuiInput-root:after": {
-                  borderBottom: "0 !important",
-                },
-              }}
             />
           )}
           <TextField
             id="standard-textarea"
             label="Your experience"
             multiline
+            className={"input-field"}
             variant="standard"
             onChange={handleChange}
             name="feedback"
             value={feedback}
-            sx={{
-              "&.MuiTextField-root": {
-                margin: "0",
-              },
-              "& .Mui-focused.MuiInputLabel-root": {
-                color: "var(--strong-accent-color)",
-                fontSize: "1.9rem",
-                top: "-0.5rem",
-              },
-              "& .MuiInputLabel-shrink": {
-                top: "-0.5rem",
-                fontSize: "1.9rem",
-                color: "var(--strong-accent-color)",
-              },
-              "& .MuiInputLabel-root": {
-                fontSize: "1.5rem",
-                color: "var(--strong-accent-color)",
-              },
-              "& .MuiInputBase-root::before": {
-                borderBottom: "0 !important",
-              },
-              "& .MuiInputBase-inputMultiline": {
-                fontSize: "1.4rem",
-                padding: "1rem",
-                borderBottom:
-                  "2px dashed var(--strong-accent-color) !important",
-                lineHeight: "130%",
-              },
-              "& .MuiInputBase-multiline.Mui-focused::before": {
-                fontSize: "1.4rem",
-                padding: "1rem",
-                borderBottom: "0",
-              },
-              "& .MuiInputBase-multiline.Mui-focused::after": {
-                fontSize: "1.4rem",
-                padding: "1rem",
-                borderBottom: "0",
-              },
-              "& .MuiInputBase-multiline:hover": {
-                borderBottom: "0 !important",
-              },
-              "& .MuiInputBase-root::after": {
-                borderBottom: "0!important",
-              },
-            }}
           />
 
           <Rating
-            sx={{
-              "& .MuiRating-icon": {
-                color: "var(--strong-accent-color)",
-              },
-            }}
+            className="input-rating"
             name="rating"
             value={rating}
             onChange={(event, newValue) => {
               setFormFields({ ...formFields, rating: newValue });
             }}
             precision={0.5}
-            size="large"
           />
 
           <Button buttonType={BUTTON_TYPE_CLASSES.basic}>Leave Feedback</Button>
@@ -241,10 +153,7 @@ const ProductReviewForm = () => {
             <Typography
               variant="caption"
               color="error"
-              sx={{
-                color: "var(--strong-accent-color)",
-                fontSize: "1.1rem",
-              }}
+              className={css["form-warning"]}
             >
               {errorMessage}
             </Typography>
@@ -257,14 +166,7 @@ const ProductReviewForm = () => {
         open={thankYouNoteOpen}
         onClose={handleNoteClose}
         message="We appreciate your feedback!"
-        sx={{
-          "& .MuiPaper-root": {
-            fontSize: "1.6rem",
-            background: "white",
-            color: "var(--strong-accent-color)",
-            justifyContent: "center",
-          },
-        }}
+        className={"ty-review-note"}
       />
     </>
   );

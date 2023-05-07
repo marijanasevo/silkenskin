@@ -4,7 +4,14 @@
   --soft-accent-color: #fdf8f6;
   --moderate-accent-color: #f5ddba;
   --strong-accent-color: #E0C3B5;
-
+  --linear-accent-color: linear-gradient(to right, mistyrose, var(--strong-accent-color));
+  --title-responsive-font-size: min(7.5vmin, calc(2.7rem + 1.2vmax));
+  --medium-responsive-font-size: min(4vmin, calc(1.3rem + 1vmax));
+  --standard-text-font-size: 1.7rem;
+  --small-text-font-size: 1.5rem;
+  --standard-spacing: min(8rem, 10vmin);
+  --standard-line-height: 150%;
+  --wrapper-width:  min(100%, 130rem);
 }
 
 html {
@@ -43,40 +50,7 @@ img {
   color: var(--strong-accent-color);
 }
 
-.serif {
-  font-family: var(--serif-font);
-}
-
-.side-space {
-  padding-inline: min(5vw, 3rem);
-}
-
-.title {
-  margin: 0;
-  font-family: var(--serif-font);
-  font-size: min(7.5vmin, calc(2.7rem + 1.2vmax), 4.7rem);
-}
-
-.page-heading {
-  font-family: var(--serif-font);
-  font-size: min(7.5vmin, calc(2.7rem + 1.2vmax));
-  text-align: center;
-  margin: 0;
-}
-
-.subheading {
-  display: block;
-  font-size: min(4vmin, calc(0.7rem + 0.7vmax));
-  text-align: center;
-  margin: min(4rem, 10vmin) 0 min(3rem, 10vmin) 0;
-}
-
-.page-container {
-    padding: min(8rem, 10vmin, 4rem) 0 min(8rem, 10vmin) 0;
-    display: grid;
-    gap: min(8rem, 10vmin);
-}
-
+/* Home sections */
 .section {
   padding: min(8rem, 10vmin) 0;
   display: grid;
@@ -84,14 +58,27 @@ img {
   justify-items: center;
 }
 
+/* Home sections heading */
 .section-title {
-  @extend .title;
+  margin: 0;
+  font-family: var(--serif-font);
+  font-size: var(--title-responsive-font-size);
   text-align: center;
 }
 
-.icon {
-  width: min(6.5vmin, calc(1.3rem + 1.2vmax));
-  height: min(6.5vmin, calc(1.3rem + 1.2vmax));
+/* Individual page container */
+.page-container {
+  padding: min(8rem, 10vmin, 4rem) 0 min(8rem, 10vmin) 0;
+  display: grid;
+  gap: min(8rem, 10vmin);
+}
+
+/* Individual page heading */
+.page-heading {
+  font-family: var(--serif-font);
+  font-size: var(--title-responsive-font-size);
+  text-align: center;
+  margin: 0;
 }
 
 .auth-form-container {
@@ -170,4 +157,55 @@ form {
 
 .instagram-media {
   position: relative!important;
+}
+
+/* Review form - material input components */
+.input-field {
+  margin: 0;
+
+  /* Removed underline effects */
+  & .MuiInputBase-root::before, & .MuiInputBase-root::after {
+    border-bottom: 0!important;
+  }
+
+  /* Input text */
+  & .MuiInputBase-input {
+    font-size: var(--standard-text-font-size);
+    padding: .8rem;
+    border-bottom: 2px dashed var(--strong-accent-color) !important;
+    line-height: 130%;
+  }
+
+  /* Input label */
+  & .MuiInputLabel-root {
+    font-size: var(--standard-line-height);
+    color: var(--strong-accent-color);
+    top: .7rem;
+  }
+
+  & .MuiInputLabel-root.Mui-focused {
+    color: var(--strong-accent-color);
+    font-size: 1.9rem;
+  }
+
+  & .MuiInputLabel-shrink {
+    top: -0.5rem;
+    font-size: 1.9rem;
+  }
+}
+
+/* Review form - material rating component */
+.input-rating {
+  & .MuiRating-icon {
+    color: var(--strong-accent-color);
+    font-size: 2rem;
+  }
+}
+
+/* Thank you note after user leaves a review */
+.ty-review-note .MuiPaper-root {
+  font-size: 1.6rem;
+  background: white;
+  color: var(--strong-accent-color);
+  justify-content: center;
 }

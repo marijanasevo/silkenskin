@@ -59,14 +59,21 @@ const FilterGroup = ({
   };
 
   return (
-    <fieldset className={css["filters-group"]}>
-      <legend>{formatCamelCasedName(filterGroup)}</legend>
+    <fieldset className={css["filter-group"]}>
+      <legend className={css["legend"]}>
+        {formatCamelCasedName(filterGroup)}
+      </legend>
 
       <FormGroup sx={{ display: "flex", flexDirection: "row" }}>
         {options.map((option) => (
           <FormControlLabel
             key={option}
             label={option}
+            sx={{
+              "& .MuiFormControlLabel-label": {
+                fontSize: "var(--small-text-font-size)",
+              },
+            }}
             control={
               filterGroup === "suited" || filterGroup === "brand" ? (
                 <Checkbox

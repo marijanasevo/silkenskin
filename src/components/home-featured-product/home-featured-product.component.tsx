@@ -7,10 +7,11 @@ const HomeFeaturedProduct = () => {
     <div className={"section"}>
       <h2 className="section-title">Radiant & youthful glow</h2>
       <p className={css["featured-description"]}>
-        Indulge your skin with a luxury moisturizer crafted from the finest
-        natural ingredients. This magical cream boasts a rich, creamy texture
-        that melts effortlessly into your skin, leaving it{" "}
-        <span className="em">silky soft</span> and deeply hydrated.
+        Indulge your skin with a luxury moisturizer crafted from the{" "}
+        <span className="em">finest natural ingredients</span>. This magical
+        cream boasts a rich, creamy texture that melts effortlessly into your
+        skin, leaving it <span className="em">silky soft</span> and{" "}
+        <span className="em">deeply hydrated</span>.
       </p>
 
       <img

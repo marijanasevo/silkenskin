@@ -7,18 +7,20 @@ import { selectReviews } from "../../store/review/review.selector";
 import css from "./account.module.css";
 import { useEffect } from "react";
 import OrderHistory from "../../components/order-history/order-history.component";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 const Account = () => {
   const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
   const currentUser = useSelector(selectCurrentUser);
 
   useEffect(() => {
-    if (!currentUser) navigate("/login");
+    if (!currentUser) handleNavigate("/login");
   }, [currentUser]);
 
   const signOutHandler = async () => {
     await signOutUser();
-    navigate("/login");
+    handleNavigate("/login");
   };
 
   return (

@@ -5,7 +5,7 @@ import css from "./home-instagram.module.css";
 
 const HomeInstagram = () => {
   return (
-    <div className={css["home-instagram-container"]}>
+    <div className={"page-container"}>
       <div className={css["home-instagram-heading"]}>
         <h2 className={`${css["title"]} section-title`}>We create for You</h2>
         <span className={css["subheading"]}>find us at @silkenskinco_</span>

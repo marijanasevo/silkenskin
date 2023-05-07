@@ -10,7 +10,7 @@
 }
 
 .empty-wishlist-message {
-  font-size: 1.7rem;
+  font-size: var(--standard-text-font-size);
   font-family: var(--serif-font);
   text-align: center;
   line-height: 150%;

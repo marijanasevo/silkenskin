@@ -10,9 +10,10 @@ type IconProps = {
   icon: string;
   iconSize: number;
   className?: string;
+  onClick?: (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => void;
 };
 
-const Icon = ({ icon, iconSize, className = "" }: IconProps) => {
+const Icon = ({ icon, iconSize, ...otherProps }: IconProps) => {
   const size = {
     width: iconSize + "rem",
     height: iconSize + "rem",
@@ -20,21 +21,21 @@ const Icon = ({ icon, iconSize, className = "" }: IconProps) => {
 
   switch (icon) {
     case "box":
-      return <Box className={className} style={size} />;
+      return <Box {...otherProps} style={size} />;
     case "phone":
-      return <Phone className={className} style={size} />;
+      return <Phone {...otherProps} style={size} />;
     case "question":
-      return <Question className={className} style={size} />;
+      return <Question {...otherProps} style={size} />;
     case "bag":
-      return <Bag className={className} style={size} />;
+      return <Bag {...otherProps} style={size} />;
     case "avatar":
-      return <Avatar className={className} style={size} />;
+      return <Avatar {...otherProps} style={size} />;
     case "heart":
-      return <Heart className={className} style={size} />;
+      return <Heart {...otherProps} style={size} />;
     case "logo":
-      return <Logo className={className} style={size} />;
+      return <Logo {...otherProps} style={size} />;
     default:
-      return <Question className={className} style={size} />;
+      return <Question {...otherProps} style={size} />;
   }
 };
 

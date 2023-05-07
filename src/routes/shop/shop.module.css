@@ -4,6 +4,6 @@
   column-gap: 3rem;
   row-gap: 3rem;
   margin-inline: auto;
-  width: min(130rem, 100%);
-  grid-template-columns: repeat(auto-fill, min(29rem, 100%));
+  width: var(--wrapper-width);
+  grid-template-columns: repeat(auto-fill, min(31rem, 100%));
 }

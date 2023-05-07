@@ -19,10 +19,10 @@
 .cart-item-title {
   font-family: var(--serif-font);
   margin: 0;
-  font-size: min(1.7rem, 5vw);
+  font-size: var(--standard-text-font-size);
   line-height: 150%;
 }
 
 .cart-item-price-quantity {
-  font-size: 1.5rem;
+  font-size: var(--small-text-font-size);
 }

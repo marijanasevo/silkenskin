@@ -1,14 +1,14 @@
 .about-intro {
   max-width: 64ch;
   margin-inline: auto;
-  font-size: 1.7rem;
+  font-size: var(--standard-text-font-size);
   line-height: 150%;
   text-align: center;
 }
 
 .main-about {
   position: relative;
-  font-size: 1.7rem;
+  font-size: var(--standard-text-font-size);
   line-height: 150%;
 }
 

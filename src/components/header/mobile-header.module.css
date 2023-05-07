@@ -16,8 +16,6 @@
   z-index: 2;
 }
 
-/* Free shippinig worldwide */
-
 .notice {
   background-color: var(--soft-accent-color);
   padding: 1rem;
@@ -121,7 +119,7 @@
   translate: -300%;
   padding: 1rem 1rem 2rem var(--hamburger-margin);
   max-width: 100%;
-  font-size: min(1.5rem, calc(2.7rem + 1vmax));
+  font-size: var(--standard-text-font-size);
   background-color: var(--background);
   border-bottom: 1px solid var(--soft-accent-color);
   z-index: -1;

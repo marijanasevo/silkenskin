@@ -1,6 +1,6 @@
 .subheading {
   display: block;
-  font-size: min(4vmin, calc(0.7rem + 0.7vmax));
+  font-size: var(--small-text-font-size);
   text-align: center;
   margin-bottom: min(3rem, 10vmin);
 }
@@ -25,7 +25,7 @@
     border: 1px solid #e5e5e5;
     box-sizing: border-box;
     font-family: var(--standard-font);
-    font-size: 14px;
+    font-size: var(--standard-text-font-size);
     line-height: 1;
     padding: 12px 20px 12px 12px;
     width: 100%;

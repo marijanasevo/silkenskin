@@ -1,9 +1,9 @@
 .footer {
   max-width: 100rem;
   margin-inline: auto;
-  padding-inline: min(8rem, 10vmin);
+  padding-inline: var(--standard-spacing);
   display: flex;
-  gap: min(8rem, 10vmin);
+  gap: var(--standard-spacing);
   flex-direction: column;
   align-items: center;
 }
@@ -11,8 +11,8 @@
 .footer-title {
   font-weight: normal;
   margin: 0;
-  font-size: min(4vmin, calc(1.6rem + .5vmax));
-  background: linear-gradient(to right, mistyrose, var(--strong-accent-color));
+  font-size: var(--medium-responsive-font-size);
+  background: var(--linear-accent-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
@@ -26,7 +26,7 @@
   justify-content: space-between;
   flex-direction: column;
   gap: 2rem;
-  font-size: min(4vmin, calc(1.4rem + .3vmax));
+  font-size: var(--standard-text-font-size);
   width: 100%;
   text-align: center;
 
@@ -42,7 +42,7 @@
 }
 
 .subtitles {
-  font-size: min(4vmin, calc(1.4rem + .3vmax));
+  font-size: var(--standard-text-font-size);
   margin: 0 0 2rem;
 }
 

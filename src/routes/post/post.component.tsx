@@ -1,17 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchPostsAsync } from "../../store/posts/posts.reducer";
 import {
   selectIsPostsEmpty,
   selectPosts,
 } from "../../store/posts/posts.selector";
-import { AppDispatch } from "../../store/store";
-import { Post } from "../../store/posts/posts.types";
+import { navigateTo } from "../../utils/helpers/navigate";
 import { formatStrForSlug } from "../../utils/helpers/helpers";
 import ReactMarkdown from "react-markdown";
+import { AppDispatch } from "../../store/store";
+import { Post } from "../../store/posts/posts.types";
 import css from "./post.module.css";
-import { navigateTo } from "../../utils/helpers/navigate";
 
 const Post = () => {
   const navigate = useNavigate();
@@ -45,7 +45,16 @@ const Post = () => {
           alt={post?.title}
         />
       </div>
-      <h1 className={`page-heading ${css["post-title"]}`}>{post?.title}</h1>
+      <div className={css["meta"]}>
+        <span className={css["date"]}>
+          {post?.createdAt.toLocaleDateString("en", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })}
+        </span>
+        <h1 className={`page-heading ${css["post-title"]}`}>{post?.title}</h1>
+      </div>
 
       <div className={css["post-container"]}>
         {post?.content && (

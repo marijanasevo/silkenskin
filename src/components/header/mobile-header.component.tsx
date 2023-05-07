@@ -10,12 +10,14 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 import CartIcon from "../cart-icon/cart-icon.component";
 import css from "./mobile-header.module.css";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 const MobileHeader = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const isMenuOpen = useSelector(selectIsMenuOpen);
   const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
   const checkboxRef = useRef(null);
   const dropdownMenuRef = useRef(null);
 
@@ -49,7 +51,7 @@ const MobileHeader = () => {
 
   const signOutHandler = async () => {
     await signOutUser();
-    navigate("/");
+    handleNavigate("/login");
   };
 
   return (

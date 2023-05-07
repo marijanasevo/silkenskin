@@ -38,9 +38,7 @@ const ProductReviews = () => {
                   .replace(/(\w+)\s(\d+)/, "$1, $2")}
               </span>
             </div>
-            <div className="review-body">
-              <p>{review.body}</p>
-            </div>
+            <div className={css["review-body"]}>{review.body}</div>
             <div className={css["review-stars"]}>
               <Rating
                 name="text-feedback"

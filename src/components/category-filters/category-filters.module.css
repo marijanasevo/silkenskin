@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   row-gap: 1rem;
   justify-content: center;
-  font-size: min(8vmin, calc(1rem + 1vmin), 2.2rem);
+  font-size: var(--standard-text-font-size);
   color: rgb(134, 134, 134);
   padding-bottom: 3rem;
 }

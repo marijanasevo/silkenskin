@@ -24,12 +24,12 @@
 }
 
 .attribute-title {
-  font-size: min(4vmin, calc(1.4rem + .3vmax));
+  font-size: var(--standard-text-font-size);
   margin: 2rem 0 0;
   font-weight: normal;
 }
 
 .attribute-desc {
   color: gray;
-  font-size: min(3vmin, calc(1rem + 0.3vmax));
+  font-size: var(--small-text-font-size);
 }

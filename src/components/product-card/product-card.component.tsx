@@ -22,7 +22,7 @@ const ProductCard = ({
 }: ProductCardProps) => {
   const dispatch = useDispatch();
 
-  const { name, price, thumbnailUrl } = product;
+  const { name, price, thumbnailUrl, suited } = product;
 
   const addProductToCartHandler = () => dispatch(addItemToCart(product));
 
@@ -33,14 +33,16 @@ const ProductCard = ({
   };
 
   return (
-    <div className={css["product"]}>
-      <img className={css["product__image"]} src={thumbnailUrl} alt={name} />
-      <div className={css["product__details"]}>
-        <h3 className={css["product__details__title"]}>
-          <Link to={`/product/${product.id}`}>{name}</Link>
-        </h3>
-        <span className={css["product__details__price"]}>${price}</span>
-        <p className={css["product__details__desc"]}>For dry skin</p>
+    <div className={`${css["product"]} product`}>
+      <img className={css["product-image"]} src={thumbnailUrl} alt={name} />
+      <div className={css["product-details"]}>
+        <div className={css["product-details-title-price-group"]}>
+          <h3 className={css["product-details-title"]}>
+            <Link to={`/product/${product.id}`}>{name}</Link>
+          </h3>
+          <span className={css["product-details-price"]}>${price}</span>
+        </div>
+        <p className={css["product-details-desc"]}>{suited}</p>
         {isInWishList ? (
           <Button
             buttonType={BUTTON_TYPE_CLASSES.underlinedWishlist}

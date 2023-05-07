@@ -21,7 +21,7 @@ const ActionTile: FC<ActionTileProps> = ({
   const navigate = useNavigate();
   return (
     <div className={css["action-tile"]} onClick={() => navigate(link)}>
-      <Icon iconSize={iconSize} icon={icon} />
+      <Icon iconSize={Number(iconSize)} icon={icon} />
       <span className={css["action-tile__title"]}>{title}</span>
       <a href="#" className={css["action-tile__link"]}>
         {subtitle} →

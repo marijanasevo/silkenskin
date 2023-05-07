@@ -1,34 +1,29 @@
-import css from "./home-new-arrivals.module.css";
-import ProductCard from "../product-card/product-card.component";
-import { useEffect, useState } from "react";
-import { CategoryItem } from "../../store/category/category.types";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+
 import { selectCategoriesMap } from "../../store/category/category.selector";
 import { applyFilters } from "../../routes/shop/apply-filters";
+
 import Slider from "react-slick";
+import ProductCard from "../product-card/product-card.component";
+
+import { CategoryItem } from "../../store/category/category.types";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import css from "./home-new-arrivals.module.css";
+
 const NewArrivalsContainer = () => {
   const [productsToShow, setProductsToShow] = useState<CategoryItem[]>([]);
   const categoriesMap = useSelector(selectCategoriesMap);
-
-  useEffect(() => {
-    const productsToShow = applyFilters(
-      categoriesMap,
-      { newArrival: true },
-      undefined
-    );
-
-    setProductsToShow(productsToShow);
-  }, [categoriesMap]);
+  const sliderRef = useRef<Slider | null>(null);
 
   const carouselSettings = {
     className: "center",
     speed: 500,
     autoplaySpeed: 2500,
-    autoplay: true,
+    // autoplay: true,
     pauseOnHover: true,
     centerMode: true,
     centerPadding: "40px",
@@ -111,12 +106,39 @@ const NewArrivalsContainer = () => {
     ],
   };
 
+  useEffect(() => {
+    const productsToShow = applyFilters(
+      categoriesMap,
+      { newArrival: true },
+      undefined
+    );
+
+    setProductsToShow(productsToShow);
+  }, [categoriesMap]);
+
+  useEffect(() => {
+    // Get the maximum height of all product cards
+    const productCards = document.querySelectorAll<HTMLDivElement>(
+      ".slick-slide .product"
+    ) as NodeListOf<HTMLDivElement>;
+
+    let maxHeight = 0;
+    productCards?.forEach((card) => {
+      maxHeight = Math.max(maxHeight, card.offsetHeight);
+    });
+
+    // Set the height of each product card individually
+    productCards?.forEach((card) => {
+      card.style.height = `${maxHeight}px`;
+    });
+  }, [productsToShow]);
+
   return (
-    <div className={css["new-arrivals-container"]}>
-      <h2 className={`${"section-title"} ${css["title"]}`}>New Arrivals</h2>
+    <>
+      <h2 className={`${"section-title"}`}>New Arrivals</h2>
 
       <div className={css["new-arrivals-products"]}>
-        <Slider {...carouselSettings}>
+        <Slider {...carouselSettings} ref={sliderRef}>
           {productsToShow.map((product) => (
             <div key={product.id} className={css["slider-product"]}>
               <ProductCard product={product} />
@@ -124,9 +146,7 @@ const NewArrivalsContainer = () => {
           ))}
         </Slider>
       </div>
-
-      {/*<p style={{ textAlign: "center" }}>— — —</p>*/}
-    </div>
+    </>
   );
 };
 

@@ -1,8 +1,17 @@
+.filter-group {
+  border: none;
+  padding-inline: 0;
+}
+
+.legend {
+  padding: 2rem 0 1rem;
+}
+
 .filters {
   border-top: 1px solid rgb(212, 212, 212);
   border-bottom: 1px solid rgb(212, 212, 212);
   padding: 3rem 2vw;
-  font-size: min(8vmin, calc(1rem + 1vmin), 2.2rem);
+  font-size: var(--standard-text-font-size);
 }
 
 .filters-menu {
@@ -53,7 +62,7 @@
 
   &.expanded {
     padding-top: 3rem;
-    max-height: 150rem;
+    max-height: 250rem;
   }
 }
 
@@ -69,14 +78,5 @@
 
 .displayed-filters {
   opacity: 1;
-  max-height: 150rem;
+  max-height: 250rem;
 }
-
-.filters-group {
-  border: none;
-  padding-inline: 0;
-}
-
-
-
-

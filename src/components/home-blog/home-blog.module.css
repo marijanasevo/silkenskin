@@ -1,7 +1,7 @@
 .home-blog-container {
-  padding: min(8rem, 10vmin) 0;
+  padding: var(--standard-spacing) 0;
   display: grid;
-  gap: min(8rem, 10vmin);
+  gap: var(--standard-spacing);
 }
 
 .home-blog-heading {
@@ -13,7 +13,7 @@
 }
 
 .subheading {
-  font-size: min(4vmin, calc(1.4rem + .6vmax), 1.6rem);
+  font-size: var(--standard-text-font-size);
   display: block;
   margin-top: 0.7rem;
 }

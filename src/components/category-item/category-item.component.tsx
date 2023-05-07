@@ -3,15 +3,13 @@ import { formatStrForSlug } from "../../utils/helpers/helpers";
 import { navigateTo } from "../../utils/helpers/navigate";
 
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
-import {
-  BgContainerStyle,
-  Category,
-} from "../categories-container/categories-container.component";
+import { BgContainerStyle } from "../home-categories/categories-container.component";
+import { HomeCategory } from "../../categories-data";
 
 import css from "./category-item.module.css";
 
 type CategoryItemProps = {
-  category: Category;
+  category: HomeCategory;
   bgImage: BgContainerStyle;
 };
 
@@ -26,7 +24,7 @@ const CategoryItem = ({ category, bgImage }: CategoryItemProps) => {
       style={bgImage}
     >
       <div className={css.details}>
-        <h2 className="title">{category.title}</h2>
+        <h2 className={css["title"]}>{category.title}</h2>
 
         <Button
           onClick={() =>

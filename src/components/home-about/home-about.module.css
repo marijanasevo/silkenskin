@@ -6,27 +6,25 @@
 }
 
 .home-about-quote {
-  font-size: min(7vmin, calc(0.5rem + 1.5vmin), 2.2rem);
+  font-size: var(--medium-responsive-font-size);
   line-height: 150%;
   position: relative;
   font-style: italic;
   text-align: center;
   max-width: 50ch;
   margin-inline: auto;
+  margin-top: 0;
+  margin-bottom: 0;
 
   &:before {
     content: '"';
     display: inline;
-    font-size: 8rem;
+    font-size: 25rem;
     height: 0;
-    left: 0;
-    opacity: .4;
+    left: -5rem;
+    opacity: .15;
     position: absolute;
-    top: 1.5rem;
+    top: 8rem;
     color: var(--strong-accent-color);
   }
-}
-
-.home-about-quote p {
-  margin: 0 0 0 3rem;
 }

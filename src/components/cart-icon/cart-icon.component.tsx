@@ -1,21 +1,20 @@
 import { useRef, useEffect } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
+
 import {
   selectIsCartOpen,
   selectCartCount,
 } from "../../store/cart/cart.selector";
 import { setIsCartOpen } from "../../store/cart/cart.reducer";
 
+import Icon from "../icon/icon.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
-import { ReactComponent as ShoppingBagSvg } from "../../assets/cart-bag.svg";
 import css from "./cart-icon.module.css";
 
 const CartIcon = () => {
   const dispatch = useDispatch();
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartCount = useSelector(selectCartCount);
-
   const cartContainerRef = useRef<HTMLDivElement>(null);
 
   const closeCartDropdownOnOutsideClick = (event: MouseEvent) => {
@@ -50,10 +49,7 @@ const CartIcon = () => {
 
   return (
     <div ref={cartContainerRef} className={css["cart-icon-container"]}>
-      <ShoppingBagSvg
-        className={css["shopping-icon"] + " icon"}
-        onClick={toggleCartDropdown}
-      />
+      <Icon iconSize={3} icon={"bag"} onClick={toggleCartDropdown} />
       <span className={css["item-count"]}>{cartCount}</span>
       {isCartOpen && <CartDropdown />}
     </div>

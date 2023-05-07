@@ -5,9 +5,9 @@
 }
 
 .date {
-  font-size: min(6.2vmin, calc(.8rem + 0.6vmax));
+  font-size: var(--standard-text-font-size);
   text-align: right;
-  color: #b9b9b9;
+  color: var(--strong-accent-color);
   text-transform: lowercase;
   font-family: var(--serif-font);
   letter-spacing: 2px;
@@ -23,7 +23,7 @@
 }
 
 .post-card-tags {
-  font-size: min(6vmin, calc(.7rem + 0.5vmax));
+  font-size: var(--small-text-font-size);
   text-transform: uppercase;
   color: #6f6f6f;
   margin-top: .5rem;
@@ -31,7 +31,8 @@
 
 .post-card-title {
   text-transform: capitalize;
-  font-size: min(6vmin, calc(1rem + 1vmax));
+  font-size: var(--medium-responsive-font-size);
+  line-height: 135%;
   font-family: var(--serif-font);
   cursor: pointer;
   margin: 0;
@@ -43,7 +44,7 @@
 }
 
 .post-card-excerpt {
-  font-size: min(6vmin, calc(.7rem + 0.5vmax));
+  font-size: var(--small-text-font-size);
   line-height: 150%;
   margin: 0;
 }
