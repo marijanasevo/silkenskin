@@ -120,6 +120,15 @@ img {
          opacity effect
 ********************************* */
 
+/*
+differentiating active slide paging
+home new arrivals
+*/
+.slick-active > .paging {
+  color: rosybrown;
+}
+
+/* Non active slides opacity effect */
 .slick-slide {
   transition: all .3s;
   margin-bottom: 2rem;

@@ -31,7 +31,9 @@ const NewArrivalsContainer = () => {
     slidesToShow: 1,
     dots: true,
     customPaging: () => (
-      <div style={{ fontSize: "2rem", color: "gray" }}>—</div>
+      <div className={"paging"} style={{ fontSize: "2rem" }}>
+        —
+      </div>
     ),
     responsive: [
       {
