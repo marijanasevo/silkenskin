@@ -13,32 +13,43 @@ import {
 } from "./utils/firebase/firebase.utils";
 
 import Spinner from "./components/spinner/spinner.component";
-const Navigation = lazy(
-  () => import("./routes/navigation/navigation.component")
-);
-
-const Home = lazy(() => import("./routes/home/home.component"));
-const Shop = lazy(() => import("./routes/shop/shop.component"));
-const Product = lazy(() => import("./routes/product/product.component"));
-const Login = lazy(() => import("./routes/authentication/login.component"));
-const SignUp = lazy(() => import("./routes/authentication/sign-up.component"));
-const Account = lazy(() => import("./routes/account/account.component"));
-const AccountCreated = lazy(
-  () => import("./routes/account-created/account-created.component")
-);
-const Checkout = lazy(() => import("./routes/checkout/checkout.component"));
-const Blog = lazy(() => import("./routes/blog/blog.component"));
-const Post = lazy(() => import("./routes/post/post.component"));
-const About = lazy(() => import("./routes/about/about.component"));
-
 import css from "./App.module.css";
-import WishList from "./routes/wishlist/wishlist.component";
+
 import { fetchCategoriesAsync } from "./store/category/category.reducer";
 import { selectIsCategoriesEmpty } from "./store/category/category.selector";
 import { AppDispatch } from "./store/store";
 import { fetchPostsAsync } from "./store/posts/posts.reducer";
 import { selectIsPostsEmpty } from "./store/posts/posts.selector";
-import PageNotFound from "./routes/page-not-found/page-not-found.component";
+
+const PageNotFound = lazy(
+  () => import("./routes/page-not-found/page-not-found.component")
+);
+
+const TermsOfService = lazy(
+  () => import("./routes/terms-of-service/terms-of-service.somponent")
+);
+
+const PrivacyPolicy = lazy(
+  () => import("./routes/privacy-policy/privacy-policy.component")
+);
+
+const Account = lazy(() => import("./routes/account/account.component"));
+const AccountCreated = lazy(
+  () => import("./routes/account-created/account-created.component")
+);
+const Login = lazy(() => import("./routes/authentication/login.component"));
+const SignUp = lazy(() => import("./routes/authentication/sign-up.component"));
+const WishList = lazy(() => import("./routes/wishlist/wishlist.component"));
+const Post = lazy(() => import("./routes/post/post.component"));
+const Blog = lazy(() => import("./routes/blog/blog.component"));
+const About = lazy(() => import("./routes/about/about.component"));
+const Checkout = lazy(() => import("./routes/checkout/checkout.component"));
+const Product = lazy(() => import("./routes/product/product.component"));
+const Shop = lazy(() => import("./routes/shop/shop.component"));
+const Home = lazy(() => import("./routes/home/home.component"));
+const Navigation = lazy(
+  () => import("./routes/navigation/navigation.component")
+);
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -115,6 +126,8 @@ const App = () => {
                 currentUser ? <Navigate to="/account" replace /> : <SignUp />
               }
             />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/*" element={<PageNotFound />} />
           </Route>
         </Routes>

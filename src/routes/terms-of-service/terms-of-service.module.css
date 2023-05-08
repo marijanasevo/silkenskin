@@ -1,0 +1,6 @@
+.body-container {
+  font-size: var(--standard-text-font-size);
+  line-height: var(--standard-line-height);
+  max-width: 70rem;
+  margin: auto;
+}
