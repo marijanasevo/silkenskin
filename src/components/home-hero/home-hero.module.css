@@ -7,7 +7,7 @@
   padding: min(8.5vmin, 2.5rem);
   color: white;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
-    url("https://images.unsplash.com/photo-1603533627544-4b256401b1ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
+    url("src/assets/header.jpg")
       no-repeat center;
   background-size: cover;
   background-attachment: fixed;

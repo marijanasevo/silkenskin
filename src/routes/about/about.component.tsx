@@ -14,9 +14,7 @@ const About = () => {
       <div className={`${css["main-about"]}`}>
         <img
           className={css["about-image"]}
-          src={
-            "https://i.pinimg.com/564x/df/00/89/df0089bb5504c25dc24998ae5ca8f419.jpg"
-          }
+          src={"src/assets/about.jpg"}
           alt={"Aesthetic skincare products"}
         />
         <div className={`${css["secondary-header"]}`}>

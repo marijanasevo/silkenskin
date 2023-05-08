@@ -28,10 +28,7 @@ const CartDropdown = () => {
             ))
           ) : (
             <div className={css["empty-cart-message"]}>
-              <img
-                src="https://cdn.dribbble.com/users/860366/screenshots/6364054/desolazione_empty_1.gif"
-                alt="Empty cart gif"
-              />
+              <img src="src/assets/empty.gif" alt="Empty cart gif" />
               There is nothing to see.
               <br /> Your cart is empty.
             </div>
