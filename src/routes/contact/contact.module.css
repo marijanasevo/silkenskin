@@ -1,0 +1,17 @@
+.contact-body-container {
+  max-width: 70rem;
+  margin: auto;
+  font-size: 1.4rem;
+  line-height: var(--standard-line-height);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contact-section {
+  flex: 1 1 100%;
+
+  & h3 {
+    letter-spacing: .4rem;
+    font-size: var(--small-text-font-size);
+  }
+}

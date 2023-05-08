@@ -25,8 +25,12 @@ import Button from "../button/button.component";
 import { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import css from "./payment-form.module.css";
+import { useNavigate } from "react-router-dom";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 const PaymentForm = () => {
+  const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
   const dispatch = useDispatch();
   const isCartEmpty = useSelector(selectIsCartEmpty);
   const currentUser = useSelector(selectCurrentUser);
@@ -109,7 +113,7 @@ const PaymentForm = () => {
 
       storeUsersOrderInfo();
       dispatch(setClearCart());
-      // TODO: Thank you for your purchase page
+      handleNavigate("/order-made");
     }
   };
 

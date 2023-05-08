@@ -1,0 +1,16 @@
+.note {
+  max-width: min(80ch, 90vw);
+  line-height: var(--standard-line-height);
+  font-size: var(--standard-text-font-size);
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+.action-tiles-container {
+  width: var(--wrapper-width);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, min(40rem, 100%));
+  justify-content: center;
+  gap: 3rem;
+}

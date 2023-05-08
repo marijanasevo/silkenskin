@@ -1,0 +1,27 @@
+.shipping-returns-body {
+  max-width: 70rem;
+  margin: auto;
+  font-size: var(--small-text-font-size);
+  line-height: var(--standard-line-height);
+  font-weight: 350;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+
+  & h2 {
+    margin-bottom: 3rem;
+  }
+
+}
+
+.company-address {
+  text-align: center;
+  font-weight: 350;
+  flex-basis: 100%;
+}
+
+.return-instructions {
+  justify-self: start;
+  flex-basis: 100%;
+}

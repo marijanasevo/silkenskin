@@ -56,7 +56,12 @@ const Footer = () => {
 
         <div className={css["footer-navigation-support"]}>
           <h5 className={css["subtitles"]}>FINE PRINT</h5>
-          <span className={css["nav-item"]}>RETURNS + SHIPPING</span>
+          <span
+            onClick={() => handleNavigate("/shipping-returns")}
+            className={css["nav-item"]}
+          >
+            RETURNS + SHIPPING
+          </span>
           <span
             onClick={() => handleNavigate("/privacy-policy")}
             className={css["nav-item"]}
@@ -70,7 +75,12 @@ const Footer = () => {
             TERMS OF SERVICE
           </span>
           <span className={css["nav-item"]}>FAQ</span>
-          <span className={css["nav-item"]}>CONTACT US</span>
+          <span
+            onClick={() => handleNavigate("/contact-us")}
+            className={css["nav-item"]}
+          >
+            CONTACT US
+          </span>
         </div>
       </div>
     </div>
