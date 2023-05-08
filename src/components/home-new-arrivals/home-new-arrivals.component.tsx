@@ -14,6 +14,23 @@ import "slick-carousel/slick/slick-theme.css";
 
 import css from "./home-new-arrivals.module.css";
 
+const makeSlidersEqualHeight = () => {
+  // Get the maximum height of all product details
+  const productDetails = document.querySelectorAll<HTMLDivElement>(
+    ".slick-slide .product-details"
+  ) as NodeListOf<HTMLDivElement>;
+
+  let maxHeight = 0;
+  productDetails?.forEach((card) => {
+    maxHeight = Math.max(maxHeight, card.offsetHeight);
+  });
+
+  // Set the height of each product details individually
+  productDetails?.forEach((card) => {
+    card.style.height = `${maxHeight}px`;
+  });
+};
+
 const NewArrivalsContainer = () => {
   const [productsToShow, setProductsToShow] = useState<CategoryItem[]>([]);
   const categoriesMap = useSelector(selectCategoriesMap);
@@ -23,7 +40,7 @@ const NewArrivalsContainer = () => {
     className: "center",
     speed: 500,
     autoplaySpeed: 2500,
-    // autoplay: true,
+    autoplay: true,
     pauseOnHover: true,
     centerMode: true,
     centerPadding: "40px",
@@ -51,7 +68,7 @@ const NewArrivalsContainer = () => {
         },
       },
       {
-        breakpoint: 875,
+        breakpoint: 980,
         settings: {
           slidesToShow: 2,
           centerPadding: "80px",
@@ -72,7 +89,7 @@ const NewArrivalsContainer = () => {
         },
       },
       {
-        breakpoint: 650,
+        breakpoint: 680,
         settings: {
           slidesToShow: 2,
           centerPadding: "0px",
@@ -88,8 +105,8 @@ const NewArrivalsContainer = () => {
       {
         breakpoint: 570,
         settings: {
-          slidesToShow: 2,
-          centerPadding: "0px",
+          slidesToShow: 1,
+          centerPadding: "60px",
         },
       },
       {
@@ -119,20 +136,10 @@ const NewArrivalsContainer = () => {
   }, [categoriesMap]);
 
   useEffect(() => {
-    // Get the maximum height of all product cards
-    const productCards = document.querySelectorAll<HTMLDivElement>(
-      ".slick-slide .product"
-    ) as NodeListOf<HTMLDivElement>;
+    window.addEventListener("resize", makeSlidersEqualHeight);
+    makeSlidersEqualHeight();
 
-    let maxHeight = 0;
-    productCards?.forEach((card) => {
-      maxHeight = Math.max(maxHeight, card.offsetHeight);
-    });
-
-    // Set the height of each product card individually
-    productCards?.forEach((card) => {
-      card.style.height = `${maxHeight}px`;
-    });
+    return () => window.removeEventListener("resize", makeSlidersEqualHeight);
   }, [productsToShow]);
 
   return (

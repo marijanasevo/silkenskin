@@ -1,5 +1,7 @@
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import { navigateTo } from "../../utils/helpers/navigate";
 
 import { addItemToCart } from "../../store/cart/cart.reducer";
 
@@ -21,6 +23,8 @@ const ProductCard = ({
   onRemoveFromWishlist,
 }: ProductCardProps) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
 
   const { name, price, thumbnailUrl, suited } = product;
 
@@ -35,10 +39,13 @@ const ProductCard = ({
   return (
     <div className={`${css["product"]} product`}>
       <img className={css["product-image"]} src={thumbnailUrl} alt={name} />
-      <div className={css["product-details"]}>
+      <div className={css["product-details"] + " product-details"}>
         <div className={css["product-details-title-price-group"]}>
-          <h3 className={css["product-details-title"]}>
-            <Link to={`/product/${product.id}`}>{name}</Link>
+          <h3
+            onClick={() => handleNavigate(`/product/${product.id}`)}
+            className={css["product-details-title"]}
+          >
+            {name}
           </h3>
           <span className={css["product-details-price"]}>${price}</span>
         </div>
