@@ -1,3 +1,4 @@
+import AboutImage from "../../assets/about.jpg";
 import css from "./about.module.css";
 
 const About = () => {
@@ -14,7 +15,7 @@ const About = () => {
       <div className={`${css["main-about"]}`}>
         <img
           className={css["about-image"]}
-          src={"src/assets/about.jpg"}
+          src={AboutImage}
           alt={"Aesthetic skincare products"}
         />
         <div className={`${css["secondary-header"]}`}>

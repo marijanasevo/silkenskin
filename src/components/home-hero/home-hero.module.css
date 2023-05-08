@@ -7,7 +7,7 @@
   padding: min(8.5vmin, 2.5rem);
   color: white;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3)),
-    url("src/assets/header.jpg")
+    url("../../assets/header.jpg")
       no-repeat center;
   background-size: cover;
   background-attachment: fixed;

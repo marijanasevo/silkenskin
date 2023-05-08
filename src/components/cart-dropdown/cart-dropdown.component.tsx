@@ -8,6 +8,7 @@ import {
 
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import CartDropdownItem from "../cart-dropdown-item/cart-dropdown-item.component";
+import empty from "../../assets/empty.gif";
 import css from "./cart-dropdown.module.css";
 
 const CartDropdown = () => {
@@ -28,7 +29,7 @@ const CartDropdown = () => {
             ))
           ) : (
             <div className={css["empty-cart-message"]}>
-              <img src="src/assets/empty.gif" alt="Empty cart gif" />
+              <img src={empty} alt="Empty cart gif" />
               There is nothing to see.
               <br /> Your cart is empty.
             </div>
