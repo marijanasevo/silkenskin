@@ -28,10 +28,7 @@ const Account = () => {
       <h1 className="page-heading">Hi, {currentUser?.displayName}</h1>
       <div className={css["account-container"]}>
         <ul className={css["account-menu"]}>
-          <li className={css["account-menu-item"]}>Orders</li>
-          <li className={css["account-menu-item"] + " " + css["settings"]}>
-            My Reviews
-          </li>
+          <li className={css["account-menu-item"]}>My Orders</li>
           <li
             onClick={signOutHandler}
             className={css["account-menu-item"] + " " + css["sign-out"]}

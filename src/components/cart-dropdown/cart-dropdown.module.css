@@ -5,7 +5,7 @@
 .cart-dropdown-container {
   position: absolute;
   right: -1rem;
-  top: calc(var(--dropdown-top) + 1.99rem);
+  top: calc(var(--dropdown-top) + 1.9rem);
   width: min(90vw, 35rem);
   height: min(50rem, 80vh);
   padding: min(2rem, 6vw);

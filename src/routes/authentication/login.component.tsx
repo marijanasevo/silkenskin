@@ -1,18 +1,19 @@
 import { useCallback, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import {
   signInAuthUserWithEmailAndPass,
   signInWithGooglePopup,
 } from "../../utils/firebase/firebase.utils";
 
-import { AuthError, AuthErrorCodes } from "firebase/auth";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 import FormInputField from "../../components/form-input-field/form-input-field.component";
 import Button, {
   BUTTON_TYPE_CLASSES,
 } from "../../components/button/button.component";
+import { AuthError, AuthErrorCodes } from "firebase/auth";
 import css from "./authentication.module.css";
-import { navigateTo } from "../../utils/helpers/navigate";
 
 const defaultFormFields = {
   email: "",
@@ -60,7 +61,7 @@ const Login = () => {
   );
 
   return (
-    <div className={`auth-form-container page-container`}>
+    <div className={`${css["auth-form-container"]} page-container`}>
       <h1 className="page-heading">Login</h1>
 
       <div>

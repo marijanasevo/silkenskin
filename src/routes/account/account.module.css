@@ -61,6 +61,14 @@
   background: rgba(249, 249, 249, 0.98);
 }
 
+.no-orders-message {
+  font-size: var(--standard-text-font-size);
+  line-height: var(--standard-line-height);
+  margin: 2rem 0;
+  text-align: center;
+  font-weight: 300;
+}
+
 .order-table-info {
   border-radius: 0.5rem;
   cursor: pointer;

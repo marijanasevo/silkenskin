@@ -6,7 +6,7 @@
   --strong-accent-color: #E0C3B5;
   --linear-accent-color: linear-gradient(to right, mistyrose, var(--strong-accent-color));
   --title-responsive-font-size: min(7.5vmin, calc(2.7rem + 1.2vmax));
-  --medium-responsive-font-size: min(4vmin, calc(1.3rem + 1vmax));
+  --medium-responsive-font-size: min(5vmin, calc(1.3rem + 1vmax));
   --standard-text-font-size: 1.7rem;
   --small-text-font-size: 1.5rem;
   --standard-spacing: min(8rem, 10vmin);
@@ -46,6 +46,14 @@ img {
   width: 100%;
 }
 
+
+
+
+
+/* ****************************
+       Reusable classes
+**************************** */
+
 .em {
   color: var(--strong-accent-color);
 }
@@ -81,42 +89,18 @@ img {
   margin: 0;
 }
 
-.auth-form-container {
-  max-width: 40rem;
-  margin-inline: auto;
-  padding-inline: min(1rem, 3vmin);
-}
 
-form {
-  display: flex;
-  flex-direction: column;
-}
 
-.underlined-link {
-  display: block;
-  text-decoration: underline;
-  text-align: center;
-  font-size: min(7vmin, calc(0.6rem + 1vmin), 1.5rem);
-  margin-top: min(4rem, 10vmin);
-  text-transform: uppercase;
-}
 
-/* scrollbar thickness */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 15px;
-}
 
-/* Handle */
+/* ****************************
+   (Cart Dropdown) Scrollbar
+**************************** */
+
+/* Scrollbar Handle */
 ::-webkit-scrollbar-thumb {
   background: #6f6f6f;
-  transition: 0.5s;
   border-radius: 25px;
-  margin-left: 5px;
-}
-
-.article ::-webkit-scrollbar-thumb {
-  border-bottom: 7px solid #333;
 }
 
 /* Handle on hover */
@@ -124,42 +108,37 @@ form {
   background: #555;
 }
 
-/* Invinsible scroll buttons to shorten scroll track */
-.article ::-webkit-scrollbar-button {
-  border: 1px solid transparent;
-  height: 20px;
-  width: 15px;
-  border-radius: 100px;
-}
-
-/* For webkit-based browsers */
 ::-webkit-scrollbar-track {
-  background-color: var(--soft-accent-color); /* Set the background color of the track */
+  background-color: whitesmoke;
 }
 
-.slick-active > div {
-  color: black!important;
-  font-weight: bold;
-}
+
+
+
+
+/* *********************************
+ Slick slider component adjustments
+         opacity effect
+********************************* */
 
 .slick-slide {
   transition: all .3s;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .slick-slide:not(.slick-active) {
   filter: opacity(50%);
 }
 
-.submit-review-button {
-  margin-top: min(4rem, 10vmin);
-}
 
-.instagram-media {
-  position: relative!important;
-}
 
-/* Review form - material input components */
+
+
+/* *********************************
+        Product review form
+********************************* */
+
+/* Material input components */
 .input-field {
   margin: 0;
 
@@ -208,4 +187,17 @@ form {
   background: white;
   color: var(--strong-accent-color);
   justify-content: center;
+}
+
+
+
+
+
+/* *********************************
+       Instagram component
+********************************* */
+
+/* Without this will make small screens act out */
+.instagram-media {
+  position: relative!important;
 }

@@ -74,7 +74,7 @@ const SignUp = () => {
   );
 
   return (
-    <div className="auth-form-container page-container">
+    <div className={`${css["auth-form-container"]} page-container`}>
       <h1 className="page-heading">Sign Up</h1>
 
       <div>

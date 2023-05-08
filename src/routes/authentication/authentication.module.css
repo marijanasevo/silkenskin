@@ -9,8 +9,13 @@
   margin-top: min(4rem, 10vmin);
 }
 
+.auth-form-container {
+  max-width: 40rem;
+  margin-inline: auto;
+  padding-inline: min(1rem, 3vmin);
+}
+
 .form-input-field {
-  /* margin-bottom: 2rem; */
 
   &__label {
     display: block;
