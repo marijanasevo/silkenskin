@@ -16,6 +16,7 @@
   font-family: var(--serif-font);
   padding: 1rem 1rem;
   transition: 0.1s all linear;
+  text-decoration: none;
 
   &:hover {
     color: black;
