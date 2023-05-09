@@ -31,9 +31,9 @@ const Wishlist = () => {
   return (
     <div className={`page-container`}>
       <h1 className="page-heading">Your Wishlist</h1>
-      <div className={css["products"]}>
-        {!isWishlistEmpty ? (
-          wishListProducts.map((product) => (
+      {!isWishlistEmpty ? (
+        <div className={css["products"]}>
+          {wishListProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
@@ -42,13 +42,13 @@ const Wishlist = () => {
                 dispatch(removeFromWishlist(product.id))
               }
             ></ProductCard>
-          ))
-        ) : (
-          <div className={css["empty-wishlist-message"]}>
-            Go on, dare to add something to the wishlist!
-          </div>
-        )}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className={css["empty-wishlist-message"]}>
+          Go on, dare to add something to the wishlist!
+        </div>
+      )}
     </div>
   );
 };
