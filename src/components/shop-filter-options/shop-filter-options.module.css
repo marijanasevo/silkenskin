@@ -5,6 +5,7 @@
 
 .legend {
   padding: 2rem 0 1rem;
+  color: var(--strong-accent-color);
 }
 
 .filters {
@@ -74,6 +75,11 @@
   opacity: 0;
   max-height: 0;
   transition: 0.2s max-height ease-in-out, 0.1s opacity ease-in;
+
+  @media (min-width: 900px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .displayed-filters {
