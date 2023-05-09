@@ -32,7 +32,7 @@ const Post = () => {
       (post) => formatStrForSlug(post.title) === articleSlug
     );
 
-    if (!post) handleNavigate("/404");
+    if (!post && postsArray.length) handleNavigate("/404");
     setPost(post);
   }, [postsArray, articleSlug]);
 

@@ -49,7 +49,10 @@ const Product = () => {
       .flat()
       .find((product) => product.id === Number(id));
 
-    if (!currentProduct) handleNavigate("/404");
+    console.log(categoriesMap);
+
+    if (!currentProduct && Object.values(categoriesMap).length)
+      handleNavigate("/404");
     setProduct(currentProduct);
   }, [id, categoriesMap]);
 
