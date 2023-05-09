@@ -10,7 +10,7 @@
   font-family: var(--serif-font);
   margin: 0;
   grid-area: title;
-  background: linear-gradient(to right, mistyrose, var(--strong-accent-color));
+  background: var(--soft-accent-color);
   padding: 1rem;
 }
 
