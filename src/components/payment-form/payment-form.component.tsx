@@ -153,7 +153,7 @@ const PaymentForm = () => {
         sx={{
           "& .MuiPaper-root": {
             fontSize: "1.6rem",
-            background: "var(--strong-accent-color)",
+            background: "var(--soft-accent-color)",
             color: "black",
             textAlign: "center",
             textTransform: "uppercase",
