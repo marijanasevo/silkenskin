@@ -2,13 +2,6 @@ export type CategoryMap = {
   [key: string]: CategoryItem[];
 };
 
-// TODO: Remove when review feature is finished
-export type Review = {
-  title: string;
-  stars: number;
-  comment: string;
-};
-
 export type CategoryItem = {
   id: number;
   name: string;
@@ -22,9 +15,6 @@ export type CategoryItem = {
   targets: string[];
   suited: string;
   productProperties: string[];
-  averageStars: number;
-  numberOfReviews: number;
-  reviews: Review[];
   newArrival: boolean;
 };
 
