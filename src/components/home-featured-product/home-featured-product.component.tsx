@@ -1,8 +1,13 @@
 import featuredImage from "../../assets/featured-product.jpg";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import css from "./home-featured-product.module.css";
+import { useNavigate } from "react-router-dom";
+import { navigateTo } from "../../utils/helpers/navigate";
 
 const HomeFeaturedProduct = () => {
+  const navigate = useNavigate();
+  const handleNavigate = navigateTo(navigate);
+
   return (
     <div className={"section"}>
       <h2 className="section-title">Radiant & youthful glow</h2>
@@ -22,8 +27,7 @@ const HomeFeaturedProduct = () => {
 
       <Button
         buttonType={BUTTON_TYPE_CLASSES.underlinedHome}
-        // onClick={}
-        //TODO: lead to this cream
+        onClick={() => handleNavigate("/product/16")}
       >
         SHOP NOW
       </Button>
