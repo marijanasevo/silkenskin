@@ -9,14 +9,15 @@ Silken Skin Co Store is an ecommerce website that specializes in selling skincar
     - [Overview](#overview)
         - [Built with](#built-with)
         - [Features](#features)
-        - [Screenshot](#screenshot)
-        - [Link](#link)
+        - [Screenshots](#screenshots)
+        - [Live URL](#live-url)
     - [My process](#my-process)
-        - [Built with](#built-with)
         - [What I learned](#what-i-learned)
         - [Optimizations](#optimizations)
-    - [Install](#install)
-    - [Author](#author)
+    - [Installation](#installation)
+    - [Bugs or possible issues](#bugs-or-possible-issues)
+    - [Contributing](#contributing)
+    - [License](#license)
 
 ## Overview
 
@@ -77,13 +78,15 @@ skincare and related topics.
 stored in Cloud Firestore, while the wishlist is stored in local storage.
 States are handled with Redux.
 
-### Screenshot
+### Screenshots
 
 <img src="./silken-skin-ss.png" style="border-radius: 15px; max-width: 700px">
 
-### Link
+### Live URL
 
-- Live URL: [Live site](silken-skin.netlify.app)
+- [Live URL](silken-skin.netlify.app)
+
+## My process
 
 ### What I learned
 
@@ -109,7 +112,7 @@ which provided a great level of organization. But still I found that BEMs
 descriptive classes offer invaluable clarity.
 
 I played with my own components and also made use of various packages like 
-Material UI etc..
+Material UI and so on..
 
 
 Silken Skin has been a rewarding learning experience for me. From 
