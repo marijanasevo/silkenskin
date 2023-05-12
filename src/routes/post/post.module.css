@@ -24,14 +24,9 @@
   }
 }
 
-.post-image {
-  object-fit: cover;
-}
-
 .post-image-container {
   display: block;
   max-width: 40rem;
-  max-height: 70vh;
   margin: 1rem auto auto;
   position: relative;
 }
@@ -59,6 +54,11 @@
   left: 1rem;
   width: calc(100% - 1px);
   height: calc(100% - 1px);
+}
+
+.post-image {
+  object-fit: cover;
+  max-height: 60vh;
 }
 
 .meta {
