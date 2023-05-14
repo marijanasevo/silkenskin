@@ -31,13 +31,13 @@ const DesktopHeader = () => {
             className={css["menu-icon"]}
             onClick={() => handleNavigate("/login")}
           >
-            <Icon icon="avatar" iconSize={3} />
+            <Icon icon="avatar" iconSize={2.5} />
           </div>
           <div
             className={css["menu-icon"]}
             onClick={() => handleNavigate("/wishlist")}
           >
-            <Icon icon="heart" iconSize={3} />
+            <Icon icon="heart" iconSize={2.5} />
           </div>
           <div>
             <CartIcon />

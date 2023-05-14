@@ -49,7 +49,7 @@ const CartIcon = () => {
 
   return (
     <div ref={cartContainerRef} className={css["cart-icon-container"]}>
-      <Icon iconSize={3} icon={"bag"} onClick={toggleCartDropdown} />
+      <Icon iconSize={2.5} icon={"bag"} onClick={toggleCartDropdown} />
       <span className={css["item-count"]}>{cartCount}</span>
       {isCartOpen && <CartDropdown />}
     </div>

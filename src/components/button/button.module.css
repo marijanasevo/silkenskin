@@ -5,7 +5,7 @@
   width: 100%;
   background: black;
   color: white;
-  font-size: min(7vmin, calc(0.6rem + 1vmin), 1.5rem);
+  font-size: var(--small-text-font-size);
   font-weight: 500;
   text-transform: uppercase;
   text-align: center;
@@ -88,7 +88,7 @@
   text-align: left;
   padding: 0;
   text-decoration: underline;
-  font-size: var(--medium-responsive-font-size);
+  font-size: var(--title-medium-font-size);
 }
 
 .underlined-over-image-button:hover {
@@ -104,7 +104,7 @@
   text-decoration: underline;
   font-weight: normal;
   text-align: center;
-  font-size: var(--medium-responsive-font-size);
+  font-size: clamp(2.4rem, 3vw, 3rem);
 }
 
 .underlined-home-button:hover {

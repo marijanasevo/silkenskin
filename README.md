@@ -39,8 +39,6 @@ Silken Skin Co Store is an ecommerce website that specializes in selling skincar
 - Grid
 - Flexbox
 
-
-
 ### Features
 Here are some of the key features of Silken Skin Co Store:
 
