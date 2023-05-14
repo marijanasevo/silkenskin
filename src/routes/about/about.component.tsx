@@ -6,10 +6,10 @@ const About = () => {
     <div className={`page-container`}>
       <h1 className={`page-heading`}>About Silken Skin</h1>
       <p className={`${css["about-intro"]}`}>
-        Whether you have dry, oily, or sensitive skin, our products are designed
-        to meet your unique skincare needs and leave your skin feeling soft and
-        radiant. We offer a wide range of products that are formulated to work
-        together to create a healthy, glowing complexion.
+        We believe in the transformative power of self-love. Our mission is to
+        empower individuals to cultivate a deeper sense of gratitude and
+        appreciation for their bodies. The body is a sacred vessel that deserves
+        to be cherished and nurtured.
       </p>
 
       <div className={`${css["main-about"]}`}>
@@ -49,6 +49,11 @@ const About = () => {
           mission is to provide you with the tools and resources you need to
           cultivate a deeper sense of self-love and confidence in your own skin.
           <br />
+          <br />
+          Whether you have dry, oily, or sensitive skin, our products are
+          designed to meet your unique skincare needs and leave your skin
+          feeling soft and radiant. We offer a wide range of products that are
+          formulated to work together to create a healthy, glowing complexion.
         </div>
       </div>
     </div>
