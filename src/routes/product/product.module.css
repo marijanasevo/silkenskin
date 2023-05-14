@@ -1,5 +1,7 @@
 .product-container {
   padding: min(8rem, 10vmin) 0;
+  max-width: 100rem;
+  margin-inline: auto;
 
   &.smaller-screen {
     padding: 0 0 min(8rem, 10vmin) 0;
