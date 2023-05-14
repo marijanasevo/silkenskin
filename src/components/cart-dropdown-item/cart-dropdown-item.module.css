@@ -12,8 +12,8 @@
 .cart-item-details {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
-  justify-content: space-evenly;
+  gap: 1.2rem;
+  justify-content: center;
 }
 
 .cart-item-title {
