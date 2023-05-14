@@ -6,7 +6,7 @@
   max-width: 38ch;
   line-height: 150%;
   text-align: center;
-  font-size: var(--standard-text-font-size);
+  font-size: var(--title-medium-font-size);
   margin: 0;
 }
 

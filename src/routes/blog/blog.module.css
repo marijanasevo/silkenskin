@@ -23,6 +23,8 @@
   grid-template-columns: repeat(auto-fill, min(30rem, 100%));
 
   @media (min-width: 648px) {
-    grid-template-columns: repeat(auto-fill, min(25rem, 100%));
+    grid-template-columns: repeat(auto-fill, min(33rem, 100%));
+
+    column-gap: 4rem;
   }
 }

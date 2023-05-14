@@ -1,7 +1,7 @@
 .post-card {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: clamp(1rem, 1vw, 1.5rem);
 }
 
 .date {
@@ -31,7 +31,7 @@
 
 .post-card-title {
   text-transform: capitalize;
-  font-size: var(--medium-responsive-font-size);
+  font-size: max(var(--title-medium-font-size), 2rem);
   line-height: 135%;
   font-family: var(--serif-font);
   cursor: pointer;

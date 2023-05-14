@@ -37,7 +37,7 @@
 
 .category-shop-link {
   color: white;
-  font-size: var(--medium-responsive-font-size);
+  font-size: var(--title-medium-font-size);
   text-decoration: underline;
   transition: all 0.1s ease-in-out;
 }

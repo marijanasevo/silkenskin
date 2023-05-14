@@ -144,7 +144,9 @@ const NewArrivalsContainer = () => {
 
   return (
     <>
-      <h2 className={`${"section-title"}`}>New Arrivals</h2>
+      <h2 className={`section-title ${css["new-arrivals-title"]}`}>
+        New Arrivals
+      </h2>
 
       <div className={css["new-arrivals-products"]}>
         <Slider {...carouselSettings} ref={sliderRef}>

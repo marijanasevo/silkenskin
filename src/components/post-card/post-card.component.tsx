@@ -34,7 +34,9 @@ const PostCard = ({ post, isOnHomePage = false }: PostCardProps) => {
       />
 
       <span className={css["post-card-tags"]}>
-        {post.tags.map((tag) => tag)}
+        {post.tags.map((tag, i) => {
+          return i === post.tags.length - 1 ? tag : tag + " / ";
+        })}
       </span>
 
       <h2

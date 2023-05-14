@@ -6,7 +6,8 @@
   --strong-accent-color: #E0C3B5;
   --linear-accent-color: linear-gradient(to right, mistyrose, var(--strong-accent-color));
   --title-responsive-font-size: min(7.5vmin, calc(2.7rem + 1.2vmax));
-  --medium-responsive-font-size: min(5vmin, calc(1.3rem + 1vmax));
+  --title-medium-font-size: clamp(var(--standard-text-font-size), 2vw, 2.5rem);
+  --medium-responsive-text-font-size: clamp(var(--standard-text-font-size), 2vw, 2rem);
   --standard-text-font-size: 1.7rem;
   --small-text-font-size: 1.5rem;
   --standard-spacing: min(8rem, 10vmin);

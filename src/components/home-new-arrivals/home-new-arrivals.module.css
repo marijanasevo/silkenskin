@@ -1,3 +1,7 @@
+.new-arrivals-title {
+  padding-top: var(--standard-spacing);
+}
+
 .new-arrivals-products {
   padding: min(8rem, 10vmin) 0 min(8rem, 10vmin, 4rem);
 }

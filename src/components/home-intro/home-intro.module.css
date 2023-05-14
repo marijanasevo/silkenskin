@@ -1,9 +1,9 @@
 .home-intro {
   text-transform: uppercase;
   text-align: center;
-  font-size: var(--medium-responsive-font-size);
+  font-size: var(--title-medium-font-size);
   line-height: var(--standard-line-height);
-  padding: var(--standard-spacing) 0;
+  padding: var(--standard-spacing) 0 0;
   margin-inline: auto;
   max-width: 42ch;
 }

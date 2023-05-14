@@ -11,7 +11,7 @@
 .footer-title {
   font-weight: normal;
   margin: 0;
-  font-size: var(--medium-responsive-font-size);
+  font-size: var(--title-medium-font-size);
   background: var(--linear-accent-color);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

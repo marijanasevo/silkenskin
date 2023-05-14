@@ -6,7 +6,7 @@
 }
 
 .home-about-quote {
-  font-size: var(--medium-responsive-font-size);
+  font-size: var(--title-medium-font-size);
   line-height: 150%;
   position: relative;
   font-style: italic;
@@ -15,6 +15,7 @@
   margin-inline: auto;
   margin-top: 0;
   margin-bottom: 0;
+  padding-inline: 2rem;
 
   &:before {
     content: '"';
