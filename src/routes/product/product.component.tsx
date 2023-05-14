@@ -11,6 +11,8 @@ import { selectIsReviewsEmpty } from "../../store/review/review.selector";
 import { fetchReviewsAsync } from "../../store/review/review.reducer";
 import { fetchCategoriesAsync } from "../../store/category/category.reducer";
 
+import { navigateTo } from "../../utils/helpers/navigate";
+
 import ProductSideImages from "../../components/product-side-images/product-side-images.component";
 import ProductSlider from "../../components/product-slider/product-slider.component";
 import ProductInfo from "../../components/product-info/product-info.component";
@@ -19,7 +21,6 @@ import ProductReviewsSection from "../../components/product-reviews-section/prod
 import { CategoryItem } from "../../store/category/category.types";
 import { AppDispatch } from "../../store/store";
 import css from "./product.module.css";
-import { navigateTo } from "../../utils/helpers/navigate";
 
 const Product = () => {
   const { id } = useParams() as { id: string };

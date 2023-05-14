@@ -2,8 +2,12 @@
   display: grid;
   justify-content: center;
   column-gap: 3rem;
-  row-gap: 3rem;
+  row-gap: 6rem;
   margin-inline: auto;
   width: var(--wrapper-width);
-  grid-template-columns: repeat(auto-fill, min(31rem, 100%));
+  grid-template-columns: repeat(auto-fill, min(26rem, 100%));
+
+  @media (min-width: 706px) {
+    grid-template-columns: repeat(auto-fill, min(30rem, 100%));
+  }
 }
