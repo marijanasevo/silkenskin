@@ -1,7 +1,6 @@
 .products {
   display: grid;
   grid-template-columns: repeat(auto-fill, min(28rem, 100%));
-  grid-template-areas: "message message";
   justify-content: center;
   column-gap: 3rem;
   row-gap: 50px;
