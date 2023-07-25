@@ -82,7 +82,7 @@ States are handled with Redux.
 
 ### Live URL
 
-- [Live URL](silken-skin.netlify.app](https://silken-skin.netlify.app/)
+- [Live URL](https://silken-skin.netlify.app/)
 
 ## My process
 
